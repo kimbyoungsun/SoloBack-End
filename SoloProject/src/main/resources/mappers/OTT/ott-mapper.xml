@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 향후 Mapper interface가 정의 될 위치 -->
+<mapper namespace="com.multi.solo.ott.model.mapper.OTTMapper">
+
+	<select id="selectMovieList"
+		resultType="com.multi.solo.ott.model.vo.Movie" parameterType="map">
+		SELECT
+		adult ,backdrop_path ,genre_ids ,id ,original_language ,original_title ,overview ,
+		popularity ,poster_path ,release_date ,title ,video ,vote_average ,vote_count
+		FROM Movie
+		
+		WHERE 1=1
+		<if test="genre != null">
+			AND GENRE_IDS LIKE '%${genre}%'
+		</if>
+		<if test="title != null">
+			AND title LIKE '%${title}%'
+		</if>
+		
+		ORDER BY vote_average DESC LIMIT ${limit} OFFSET ${offset}		
+	</select>
+
+	<select id="selectMovieCount" resultType="int" parameterType="map">
+		SELECT  
+			 COUNT(*)
+		FROM Movie
+				
+		WHERE 1=1
+		<if test="genre != null">
+			AND GENRE_IDS LIKE '%${genre}%'
+		</if>
+	</select>
+	
+	<select id="selectMovieById" parameterType="String" resultType="com.multi.solo.ott.model.vo.Movie">
+		SELECT  
+			*
+		FROM Movie
+		WHERE 1=1 AND id LIKE #{id}
+	</select>
+	
+	
+	<select id="selectMovieCredit" parameterType="String" resultType="com.multi.solo.ott.model.vo.MovieCredit">
+	SELECT  
+			*
+		FROM MovieCredit
+		WHERE 1=1 AND m_id LIKE #{id}
+	</select>
+	
+	<select id="selectMovieVideo" parameterType="String" resultType="com.multi.solo.ott.model.vo.MovieVideo">
+		SELECT  *
+		FROM MovieVideo
+		WHERE 1=1 AND mId LIKE #{id}
+	</select>
+	
+	<select id="selectTVList" parameterType="map" resultType="com.multi.solo.ott.model.vo.TV">
+		SELECT 	*
+		FROM TVShow
+		WHERE 1=1
+	</select>
+	
+	<select id="selectTVCount" resultType="int" parameterType="map">
+		SELECT  
+			 COUNT(*)
+		FROM TVShow
+				
+		WHERE 1=1
+		<if test="name != null">
+			AND name LIKE '%${name}%'
+		</if>
+		<if test="original_name != null">
+			AND original_name LIKE '%${original_name}%'
+		</if>
+	</select>
+	
+	<select id="selectTVById" parameterType="String" resultType="com.multi.solo.ott.model.vo.TV">
+		SELECT  *
+		FROM TVShow
+		WHERE 1=1 AND id LIKE #{id}
+	</select>
+	
+	<select id="selectVideoByTV" parameterType="String" resultType="com.multi.solo.ott.model.vo.TVVideo">
+		SELECT  *
+		FROM tvshowvideo
+		WHERE 1=1 AND mid LIKE #{id}
+	</select>
+	
+	<select id="selectCreditByTV" parameterType="String" resultType="com.multi.solo.ott.model.vo.TVCredit">
+		SELECT  *
+		FROM TVCredit
+		WHERE 1=1 AND t_id LIKE #{id}
+	</select>
+	
+</mapper>

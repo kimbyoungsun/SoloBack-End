@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 향후 Mapper interface가 정의 될 위치 -->
+<mapper
+	namespace="com.multi.solo.sports.model.mapper.SportsMapper">
+
+	<select id="selectSportsVideoList"
+		resultType="com.multi.solo.sports.model.vo.SportsVideo"
+		parameterType="map">
+		select * from sportvideo
+		where 1=1
+		<if test="title != null">
+			AND title like '%${title}%'
+		</if>
+		ORDER BY no LIMIT ${limit} OFFSET ${offset}
+	</select>
+
+	<select id="selectSportsVideoCount" resultType="int"
+		parameterType="map">
+		select count(*) from sportvideo
+	</select>
+
+	<select id="selectSportsVideoByNo" parameterType="int"
+		resultType="com.multi.solo.sports.model.vo.SportsVideo">
+		SELECT *
+		FROM sportvideo
+		WHERE 1=1 AND no=#{no}
+	</select>
+
+	<select id="selectSportsFacilityList"
+		resultType="com.multi.solo.sports.model.vo.SportsFacility"
+		parameterType="map">
+		select * from SportsFacility
+		where 1=1
+		<if test="minclassnm != null">
+			AND MINCLASSNM like '%${minclassnm}%'
+		</if>
+		<if test="svcnm != null">
+			AND SVCNM like '%${svcnm}%'
+		</if>
+		<if test="areanm != null">
+			AND AREANM like '%${areanm}%'
+		</if>
+		ORDER BY svcid LIMIT ${limit} OFFSET ${offset}
+	</select>
+
+	<select id="selectSportsFacilityCount" resultType="int"
+		parameterType="map">
+		select count(*) from SportsFacility
+		where 1=1
+		<if test="minclassnm != null">
+			AND MINCLASSNM like '%${minclassnm}%'
+		</if>
+		<if test="svcnm != null">
+			AND SVCNM like '%${svcnm}%'
+		</if>
+		<if test="areanm != null">
+			AND AREANM like '%${areanm}%'
+		</if>
+	</select>
+
+	<select id="selectSportsFacilityById" parameterType="String"
+		resultType="com.multi.solo.sports.model.vo.SportsFacility">
+		SELECT
+		*
+		FROM SportsFacility
+		WHERE 1=1 AND svcid LIKE #{id}
+	</select>
+
+</mapper>

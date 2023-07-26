@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<!-- 향후 Mapper interface가 정의 될 위치 -->
+<mapper
+	namespace="com.multi.solo.perform.model.mapper.PerformMapper">
+	<select id="selectPerformList"
+		resultType="com.multi.solo.perform.model.vo.PerformInfo"
+		parameterType="map">
+		SELECT * FROM PERFORMINFO
+		WHERE 1=1
+		<if test="title != null">
+			AND prfnm LIKE '%${title}%'
+		</if>
+		<if test="genrenm != null">
+			AND genrenm LIKE '%${genrenm}'
+		</if>
+		ORDER BY prfpdfrom desc
+	</select>
+
+	<select id="selectPerformCount" resultType="int"
+		parameterType="map">
+		SELECT count(*) FROM PERFORMINFO
+		WHERE 1=1
+		<if test="title != null">
+			AND prfnm LIKE '%${title}%'
+		</if>
+		<if test="genrenm != null">
+			AND genrenm LIKE '%${genrenm}%'
+		</if>
+	</select>
+
+	<select id="selectPerformById"
+		resultType="com.multi.solo.perform.model.vo.PerformInfo"
+		parameterType="String">
+		SELECT * FROM PERFORMINFO
+		WHERE 1=1
+		AND mt20id LIKE
+		'${id}'
+	</select>
+
+	<select id="selectPerformPlaceList"
+		resultType="com.multi.solo.perform.model.vo.PerformPlaceInfo"
+		parameterType="map">
+		SELECT * FROM PERFORMPLACEINFO
+		WHERE 1=1
+		<if test="address != null">
+			AND adres LIKE '%${address}%'
+		</if>
+	</select>
+
+	<select id="selectPerformPlaceCount" resultType="int"
+		parameterType="map">
+		SELECT COUNT(*) FROM PERFORMPLACEINFO
+		WHERE 1=1
+		<if test="address != null">
+			AND adres LIKE '%${address}%'
+		</if>
+	</select>
+
+	<select id="selectPerformPlaceById"
+		resultType="com.multi.solo.perform.model.vo.PerformPlaceInfo"
+		parameterType="String">
+		SELECT * FROM PERFORMPLACEINFO
+		WHERE 1=1
+			AND mt10id LIKE '${id}' 
+	</select>
+</mapper>

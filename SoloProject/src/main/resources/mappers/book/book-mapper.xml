@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.multi.solo.book.model.mapper.BookMapper">
+
+	<select id="selectBookList"
+		resultType="com.multi.solo.book.model.vo.Book" parameterType="map">
+		SELECT * FROM ALADIN
+		WHERE 1=1
+		<if test="title != null">
+			AND title LIKE '%${title}%'
+		</if>
+		<if test="author != null">
+			AND author LIKE '%${author}%'
+		</if>
+	</select>
+
+	<select id="selectBookCount" resultType="int"
+		parameterType="map">
+		SELECT COUNT(*) FROM ALADIN
+		WHERE 1=1
+		<if test="title != null">
+			AND title LIKE '%${title}%'
+		</if>
+		<if test="author != null">
+			AND author LIKE '%${author}%'
+		</if>
+	</select>
+
+	<select id="selectBookById" resultType="com.multi.solo.book.model.vo.Book" parameterType="int">
+		SELECT * FROM ALADIN
+		WHERE bID=#{id}
+	</select>
+
+
+</mapper>

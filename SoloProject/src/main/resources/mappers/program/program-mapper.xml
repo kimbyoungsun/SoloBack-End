@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper namespace="com.multi.solo.program.model.mapper.ProgramMapper">
+	<select id="selectProgramList" resultType="com.multi.solo.program.model.vo.Program" parameterType="map">
+		SELECT * FROM PROGRAM
+		WHERE 1=1 
+		<if test="address !=null">
+			AND ATDRC_NM LIKE '%${address}%'		
+		</if>
+	</select>
+	
+	<select id="selectProgramCount" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM PROGRAM
+		WHERE 1=1
+		<if test="ATDRC_NM !=null">
+			AND ATDRC_NM LIKE '%${ATDRC_NM}'		
+		</if>
+	</select>
+	
+	<select id="selectProgramByNo" resultType="com.multi.solo.program.model.vo.Program" parameterType="int">
+		SELECT * FROM PROGRAM
+		WHERE 1=1
+			AND pno ='${pno}'		
+	</select>
+	
+</mapper>

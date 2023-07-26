@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+<mapper
+	namespace="com.multi.solo.location.model.mapper.LocationMapper">
+	<select id="selectRestaurantList"
+		resultType="com.multi.solo.location.model.vo.Restaurant"
+		parameterType="map">
+		SELECT * FROM RESTAURANT
+		WHERE 1=1
+		<if test="address != null">
+			AND addr1 LIKE '%${address}%'
+		</if>
+	</select>
+
+	<select id="selectRestaruntCount" resultType="int"
+		parameterType="map">
+		SELECT COUNT(*) FROM RESTAURANT
+		WHERE 1=1
+		<if test="address != null">
+			AND addr1 LIKE '%${address}%'
+		</if>
+	</select>
+
+	<select id="selectRestaruntById"
+		resultType="com.multi.solo.location.model.vo.Restaurant"
+		parameterType="String">
+		SELECT * FROM RESTAURANT
+		WHERE 1=1
+		AND contentid LIKE
+		'${id}'
+	</select>
+
+	<select id="selectRentalHouseList"
+		resultType="com.multi.solo.location.model.vo.RentalHouse"
+		parameterType="map">
+		SELECT * FROM RENTALHOUSE
+		WHERE 1=1
+		<if test="address != null">
+			AND brtcNm LIKE '%${address}%'
+		</if>
+	</select>
+
+	<select id="selectRentalHouseCount" resultType="int"
+		parameterType="map">
+		SELECT COUNT(*) FROM RENTALHOUSE
+		WHERE 1=1
+		<if test="address != null">
+			AND brtcNm LIKE '%${address}%'
+		</if>
+	</select>
+
+
+</mapper>
