@@ -40,7 +40,7 @@
           <div class="col text-center">
             <img
               class="figure"
-              src="img/yg/맛집.png"
+              src="${path}/resources/img/yg/맛집.png"
               style="width: 30rem; left: 100px"
               alt=""
             />
@@ -88,7 +88,7 @@
             <div class="align-text-bottom">
               <img
                 class="position-relative"
-                src="img/kbs/Badminton-amico.png"
+                src="${path}/resources/img/kbs/Badminton-amico.png"
                 style="width: 25rem; top: 40rem; left: -12.5rem"
                 alt=""
               />
@@ -100,7 +100,7 @@
                 <img
                   class="d-block p-2 mb-2 rounded-5"
                   style="width: 12.5rem"
-                  src="img/yg/쌈밥집.jpg"
+                  src="${path}/resources/img/yg/쌈밥집.jpg"
                   alt="Padmé Amidala"
                 />
               </div>
@@ -128,7 +128,7 @@
                 <img
                   class="d-block p-2 mb-2 rounded-5"
                   style="width: 12.5rem "
-                  src="img/yg/신생루.jpg"
+                  src="${path}/resources/img/yg/신생루.jpg"
                   alt="Padmé Amidala"
                 />
               </div>
@@ -156,7 +156,7 @@
                   <img
                     class="d-block p-2 mb-2 rounded-5"
                     style="width: 12.5rem"
-                    src="img/yg/쌈밥집.jpg"
+                    src="${path}/resources/img/yg/쌈밥집.jpg"
                     alt="Padmé Amidala"
                   />
                 </div>
@@ -184,7 +184,7 @@
                   <img
                     class="d-block p-2 mb-2 rounded-5"
                     style="width: 12.5rem "
-                    src="img/yg/신생루.jpg"
+                    src="${path}/resources/img/yg/신생루.jpg"
                     alt="Padmé Amidala"
                   />
                 </div>
@@ -212,7 +212,7 @@
                   <img
                     class="d-block p-2 mb-2 rounded-5"
                     style="width: 12.5rem "
-                    src="img/yg/신생루.jpg"
+                    src="${path}/resources/img/yg/신생루.jpg"
                     alt="Padmé Amidala"
                   />
                 </div>
