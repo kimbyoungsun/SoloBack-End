@@ -65,6 +65,6 @@ public class HomeController {
 //		test();
 		
 		
-		return "perform/Perform_detail";
+		return "MainIndex";
 	}
 }
