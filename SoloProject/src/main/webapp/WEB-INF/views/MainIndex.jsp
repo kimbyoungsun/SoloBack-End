@@ -48,6 +48,7 @@
         </div>
       </div>
     </section>
+    
     <!-- 라이프 -->
     <section>
       <div class="container my-5">
