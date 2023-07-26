@@ -65,6 +65,6 @@ public class HomeController {
 //		test();
 		
 		
-		return "MainIndex";
+		return "etc/restaurant";
 	}
 }
