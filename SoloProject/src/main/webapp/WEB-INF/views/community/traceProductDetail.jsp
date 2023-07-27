@@ -64,7 +64,16 @@
                 <!-- 카로셀 시작 -->
                 <div id="carousel" class="carousel slide" data-bs-ride="carousel"
                   style="background-position: center center; background-repeat: no-repeat; background-size: contain; background-color: #0b3d2d;">
-        
+
+                  <!-- 찜하기 button -->
+                  <div class="position-absolute border border-1 rounded-3 bg-light" style="top:10px; right:10px; border-color: #50a78b !important;">
+                    <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                      <a href="#" style="color:#50a78b;">
+                        <i class="fa-regular fa-heart"></i>
+                      </a>
+                    </div>
+                  </div>
+                          
                   <!-- Indicators/dots -->
                   <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"></button>
@@ -140,7 +149,7 @@
                 <div class="card-body container">
                   <div class="d-flex align-items-center mb-2">
                     <div class="border-1 bg-light rounded-circle flex-shrink-0">
-                      <img src="${path}/resources/img/icon/user.png" alt="유저 프로필 이미지" style="height: 40px; border-radius: 50%;" />
+                      <img src="${path}/resources/static/img/avatar/avatar-0.jpg" alt="유저 프로필 이미지" style="height: 40px; border-radius: 50%;" />
                     </div>
                     <div class="row ms-2 container">
                       <div class="col-10">
@@ -157,7 +166,7 @@
                   <hr>
                   <div class="d-flex align-items-center mb-2">
                     <div class="border-1 bg-light rounded-circle flex-shrink-0">
-                      <img src="${path}/resources/img/icon/user.png" alt="유저 프로필 이미지" style="height: 40px; border-radius: 50%;" />
+                   	 <img src="${path}/resources/static/img/avatar/avatar-1.jpg" alt="유저 프로필 이미지" style="height: 40px; border-radius: 50%;" />
                     </div>
                     <div class="row ms-2 container">
                       <div class="col-10">
@@ -201,11 +210,13 @@
                 <!-- 요약정보 header END -->
         
                 <!-- icon and info START -->
-                <div class="container">
+                <div class="container ps-0">
                   <!-- 작성자 정보 -->
                   <div class="d-flex align-items-center mb-2">
-                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 3px solid #50a78b;">
-                      <img src="${path}/resources/img/icon/user.png" alt="작성자 아이콘" style="height: 40px; border-radius: 50%;" />
+                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 2px solid #50a78b;">
+                      <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color:#50a78b;">
+                        <i class="fa-solid fa-user"></i>
+                      </div>
                     </div>
                     <div class="ms-2">
                       <h6 class="mb-0">작성자</h6>
@@ -214,8 +225,10 @@
                   </div>
                   <!-- 작성시간 정보 -->
                   <div class="d-flex align-items-center mb-2">
-                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 3px solid #50a78b;">
-                      <img src="${path}/resources/img/icon/user.png" alt="작성시간 아이콘" style="height: 40px; border-radius: 50%;" />
+                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 2px solid #50a78b;">
+                      <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color:#50a78b;">
+                        <i class="fa-solid fa-calendar-days"></i>
+                      </div>
                     </div>
                     <div class="ms-2">
                       <h6 class="mb-0">작성시간</h6>
@@ -224,8 +237,10 @@
                   </div>
                   <!-- 카테고리 정보 -->
                   <div class="d-flex align-items-center mb-2">
-                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 3px solid #50a78b;">
-                      <img src="${path}/resources/img/icon/user.png" alt="카테고리 아이콘" style="height: 40px; border-radius: 50%;" />
+                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 2px solid #50a78b;">
+                      <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color:#50a78b;">
+                        <i class="fa-solid fa-folder-open"></i>
+                      </div>
                     </div>
                     <div class="ms-2">
                       <h6 class="mb-0">카테고리</h6>
@@ -234,8 +249,10 @@
                   </div>
                   <!-- 상태 정보 -->
                   <div class="d-flex align-items-center mb-2">
-                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 3px solid #50a78b;">
-                      <img src="${path}/resources/img/icon/user.png" alt="상태 아이콘" style="height: 40px; border-radius: 50%;" />
+                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 2px solid #50a78b;">
+                      <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color:#50a78b;">
+                        <i class="fa-solid fa-star"></i>
+                      </div>
                     </div>
                     <div class="ms-2">
                       <h6 class="mb-0">상태</h6>
@@ -244,8 +261,10 @@
                   </div>
                   <!-- 위치 정보 -->
                   <div class="d-flex align-items-center mb-2">
-                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 3px solid #50a78b;">
-                      <img src="${path}/resources/img/icon/user.png" alt="위치 아이콘" style="height: 40px; border-radius: 50%;" />
+                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 2px solid #50a78b;">
+                      <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color:#50a78b;">
+                        <i class="fa-solid fa-location-dot"></i>
+                      </div>
                     </div>
                     <div class="ms-2">
                       <h6 class="mb-0">위치</h6>
@@ -254,8 +273,10 @@
                   </div>
                   <!-- 가격 정보 -->
                   <div class="d-flex align-items-center mb-2">
-                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 3px solid #50a78b;">
-                      <img src="${path}/resources/img/icon/user.png" alt="가격 아이콘" style="height: 40px; border-radius: 50%;" />
+                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 2px solid #50a78b;">
+                      <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color:#50a78b;">
+                        <i class="fa-solid fa-credit-card"></i>
+                      </div>
                     </div>
                     <div class="ms-2">
                       <h6 class="mb-0">가격</h6>
@@ -264,8 +285,10 @@
                   </div>
                   <!-- 직거래 정보 -->
                   <div class="d-flex align-items-center mb-2">
-                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 3px solid #50a78b;">
-                      <img src="${path}/resources/img/icon/user.png" alt="직거래 아이콘" style="height: 40px; border-radius: 50%;" />
+                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 2px solid #50a78b;">
+                      <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color:#50a78b;">
+                        <i class="fa-solid fa-handshake"></i>
+                      </div>
                     </div>
                     <div class="ms-2">
                       <h6 class="mb-0">직거래</h6>
@@ -274,8 +297,10 @@
                   </div>
                   <!-- 네고 정보 -->
                   <div class="d-flex align-items-center mb-2">
-                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 3px solid #50a78b;">
-                      <img src="${path}/resources/img/icon/user.png" alt="네고 아이콘" style="height: 40px; border-radius: 50%;" />
+                    <div class="border-1 bg-light rounded-circle flex-shrink-0" style="border: 2px solid #50a78b;">
+                      <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; color:#50a78b;">
+                        <i class="fa-solid fa-coins"></i>
+                      </div>
                     </div>
                     <div class="ms-2">
                       <h6 class="mb-0">네고</h6>
@@ -288,7 +313,7 @@
                 <!-- 찜 추가하기 버튼 START -->
                 <div class="d-grid gap-2 mb-2">
                   <a href="#" class="btn btn-custom">
-                    찜 추가하기
+                    <i class="fa-regular fa-heart"></i>찜 추가하기
                   </a>
                 </div>
                 <!-- 찜 추가하기 버튼 END -->
@@ -296,7 +321,7 @@
                 <!-- 목록으로 버튼 START -->
                 <div class="d-grid gap-2 mb-2">
                   <a href="#" class="btn btn-return-custom">
-                    목록으로
+                    <i class="fa-solid fa-bars"></i>목록으로
                   </a>
                 </div>
                 <!-- 목록으로 버튼 END -->
