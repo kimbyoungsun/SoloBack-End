@@ -12,15 +12,19 @@
 		popularity ,poster_path ,release_date ,title ,video ,vote_average ,vote_count
 		FROM Movie
 		
-		WHERE 1=1
-		<if test="genre != null">
-			AND GENRE_IDS LIKE '%${genre}%'
-		</if>
+		WHERE 1=1	
 		<if test="title != null">
 			AND title LIKE '%${title}%'
 		</if>
-		
-		ORDER BY vote_average DESC LIMIT ${limit} OFFSET ${offset}		
+		<if test="all != null">
+			AND
+				title like '%${all}%' 
+			
+		</if>	
+		<if test="sort !=null">
+			ORDER BY ${sort} DESC LIMIT ${limit} OFFSET ${offset}	
+		</if>
+		<!-- ORDER BY vote_average DESC LIMIT ${limit} OFFSET ${offset}  -->		
 	</select>
 
 	<select id="selectMovieCount" resultType="int" parameterType="map">
@@ -53,12 +57,25 @@
 		SELECT  *
 		FROM MovieVideo
 		WHERE 1=1 AND mId LIKE #{id}
+		ORDER BY published_at DESC
+	</select>
+	
+	<select id="selectMovieVideoList" parameterType="map" resultType="com.multi.solo.ott.model.vo.MovieVideo">
+		SELECT  *
+		FROM MovieVideo		
+		ORDER BY published_at DESC
 	</select>
 	
 	<select id="selectTVList" parameterType="map" resultType="com.multi.solo.ott.model.vo.TV">
 		SELECT 	*
 		FROM TVShow
 		WHERE 1=1
+		<if test="title != null">
+			AND title LIKE '%${title}%'
+		</if>
+		<if test="sort !=null">
+			ORDER BY ${sort} DESC LIMIT ${limit} OFFSET ${offset}	
+		</if>
 	</select>
 	
 	<select id="selectTVCount" resultType="int" parameterType="map">

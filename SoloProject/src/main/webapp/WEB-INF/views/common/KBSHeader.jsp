@@ -21,6 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
       rel="stylesheet"
     />
+    
     <!-- 나눔스퀘어 -->
     <link
       rel="stylesheet"
@@ -36,6 +37,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700"
     />
+    
     <!-- swiper-->
     <link
       rel="stylesheet"

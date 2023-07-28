@@ -29,6 +29,21 @@
           href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700"
         />
 
+ <!-- Price Slider Stylesheets -->
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css" />
+    <!-- Google fonts - Playfair Display-->
+    <!-- 노토 산스-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- 나눔스퀘어 -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css"
+    />
   <!-- swiper-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css" />
   <!-- Magnigic Popup-->

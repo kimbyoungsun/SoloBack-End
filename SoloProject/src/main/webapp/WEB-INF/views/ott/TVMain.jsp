@@ -39,10 +39,10 @@
 								class=" text-black rounded-3 h4 my-3 col-1 text-center ms-4"
 								style="left: 5%; background-color: gainsboro">7.3</div>
 							<div id="title"
-								class="position-relative display-3 text-light my-3" style="">
+								class="position-relative display-4 text-light my-3">
 								Fast X</div>
 							<div id="overview" class="position-relative text-light my-3"
-								style="">돔과 그의 패밀리 앞에 나타난 운명의 적 단테. 과거의 그림자는 돔의 모든 것을 파괴하기
+								style="overflow:auto;">돔과 그의 패밀리 앞에 나타난 운명의 적 단테. 과거의 그림자는 돔의 모든 것을 파괴하기
 								위해 달려온다. 단테에 의해 산산히 흩어진 패밀리들은 모두 목숨을 걸고 맞서야 하는 함정에 빠지고 마는데...</div>
 						</div>
 						<div class="col">
@@ -66,17 +66,25 @@
 		</div>
 </section>
 
+<section>
+	<div class="container">
+		<div class="row text-center h3 text-solo-6 my-3">
+			<div class="col border border-2" onclick="">영화</div>
+			<div class="col border border-2" onclick="">드라마</div>
+		</div>
+	</div>
+</section>
 
 <section>
 	<div class="container">
-		<div class="h3 text-solo6 text-center my-3 pt-4">최신 영화</div>
+		<div class="h3 text-solo6 text-center my-3">최신 영화</div>
 		<div class="swiper-container swiper-main">
 			<div class="swiper-wrapper">
 				<c:forEach var="item" items="${list}">
 					<div class="swiper-slide swiper-slide-main">
 						<img style="height: 100%"
 							src="https://image.tmdb.org/t/p/original${item.poster_path}"
-							alt="" onclick="openInfoModal('${item.id}')" />
+							alt="" onclick="openInfoModalTV('${item.id}')" />
 					</div>
 				</c:forEach>
 
@@ -88,12 +96,12 @@
 <section>
 	<div class="container py-5">
 		<div class="p-lg-1 ps-lg-4">
-			<form action="${path}/ott/OTTSearch" class="search-bar row">
+			<form action="#" class="search-bar row">
 				<div class="col d-flex align-items-center flex-grow-1">
 					<input class="form-control border-0 shadow-0" type="text"
-						name="searchValue" placeholder="영화 검색해보세요."value="${param.searchValue}" />
+						name="search" placeholder="드라마 검색해보세요." />
 				</div>
- <input type="hidden" name="searchType" value="title">
+
 				<div class="col-lg-4 px-0 d-grid flex-grow-0">
 					<button class="btn btn-primary rounded-pill h-100" type="submit">
 						검색</button>
@@ -106,7 +114,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col text-solo-6 h3 my-3">인기가 많은 영화</div>
-			<div class="col text-end my-3" onclick="location.href='OTTSearch'">더보기</div>
+			<div class="col text-end my-3">더보기</div>
 		</div>
 		<div class="swiper-container swiper-list">
 			<div class="swiper-wrapper">
@@ -114,7 +122,7 @@
 					<div class="swiper-slide">
 						<img style="height: 100%"
 							src="https://image.tmdb.org/t/p/original${item.poster_path}"
-							alt="" onClick="openInfoModal('${item.id}')" />
+							alt="" onClick="openInfoModalTV('${item.id}')" />
 					</div>
 				</c:forEach>
 			</div>
@@ -134,7 +142,7 @@
 					<div class="swiper-slide">
 						<img style="height: 100%"
 							src="https://image.tmdb.org/t/p/original${item.poster_path }"
-							alt="" onClick="openInfoModal('${item.id}')" />
+							alt="" onClick="openInfoModalTV('${item.id}')" />
 					</div>
 				</c:forEach>
 			</div>

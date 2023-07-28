@@ -24,4 +24,5 @@ public interface OTTMapper {
 	TV selectTVById(String id);
 	List<TVVideo> selectVideoByTV(String id);
 	List<TVCredit> selectCreditByTV(String id);
+	List<MovieVideo> selectMovieVideoList(Map<String,String>map);
 }
