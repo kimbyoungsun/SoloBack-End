@@ -33,9 +33,14 @@
 		FROM Movie
 				
 		WHERE 1=1
-		<if test="genre != null">
-			AND GENRE_IDS LIKE '%${genre}%'
+		<if test="title != null">
+			AND title LIKE '%${title}%'
 		</if>
+		<if test="all != null">
+			AND
+				title like '%${all}%' 
+			
+		</if>	
 	</select>
 	
 	<select id="selectMovieById" parameterType="String" resultType="com.multi.solo.ott.model.vo.Movie">

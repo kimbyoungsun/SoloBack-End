@@ -110,21 +110,25 @@
 <section>
 	<div class="container">
 		<div class="row text-center h3 text-solo-6 my-3">
-			<div class="col-5" onclick=""></div>
-			<div class="col-5" onclick=""></div>
+			<div class="col-5" ></div>
+			<div class="col-5" ></div>
 			<div class="col-2 text-end">
 				<div class="dropdown">
-					<a class="btn btn-primary dropdown-toggle"
+				<form action="${path}/ott/OTTSearch" method="get">
+					<a id="sortDrop" class="btn btn-primary dropdown-toggle"
 						id="homeDropdownMenuLink" href="index.html"
 						data-bs-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> 조회수 </a>
+						aria-expanded="false"> 
+							${sortText}		
+						</a>
 
 					<div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
-						<a class="dropdown-item" href="index.html">Action</a> <a
-							class="dropdown-item" href="index.html">Another action</a> <a
-							class="dropdown-item" href="index.html">Something
-							else here</a>
+						<button type=submit class="dropdown-item" name="sort" value="vote_average">추천순</button> <button
+							id="popularity" class="dropdown-item" name="sort"  value="popularity" >인기순</button> <button
+							 id="release_date" class="dropdown-item" name="sort"  value="release_date" >최신순 
+						</button>
 					</div>
+				</form>
 				</div>
 			</div>
 			
@@ -149,8 +153,8 @@
 		<nav aria-label="Page navigation example ">
 			<ul
 				class="pagination pagination-template d-flex justify-content-center">
-				<li class="page-item"><a class="page-link" href="#"> <i
-						class="fa fa-angle-left"></i></a></li>
+				<li class="page-item"><button class="page-link" href="#" onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-left"></i></button></li>
 				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}"
 					varStatus="status" step="1">
 
@@ -165,8 +169,8 @@
 					</c:if>
 
 				</c:forEach>
-				<li class="page-item"><a class="page-link" href="#"> <i
-						class="fa fa-angle-right"></i></a></li>
+				<li class="page-item"><button class="page-link" href="#"onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-right" ></i></button></li>
 			</ul>
 		</nav>
 	</div>
@@ -175,7 +179,6 @@
 <jsp:include page="/WEB-INF/views/common/KBSFooter.jsp"></jsp:include>
 
 <script type="text/javascript">
- 	const backdrop ="${list[0].backdrop_path}";
 	function movePage(page){
 		searchForm.page.value = page;
 		searchForm.submit();

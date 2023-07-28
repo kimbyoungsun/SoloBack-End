@@ -7,20 +7,21 @@
 
 <jsp:include page="/WEB-INF/views/common/KBSHeader.jsp"></jsp:include>
 
-    <section class="hero-home"style="background-color: #50a78b">
-      <div class="container py-6 py-md-7 text-white z-index-20">
+    <section class="hero-home"style="background-color: #50a78b" >
+      <div class="container text-white z-index-20">
         <div class="row">
           <div class="col-xl-6 mt-7">
             <div class="text-center text-lg-start">
               <h1 class="display-3 fw-bold text-shadow">생활체육시설</h1>
             </div>
             <div class="p-lg-1 ps-lg-4">
-              <form action="#" class="search-bar row">
+              <form id="searchForm" action="${path}/sports/SportMain" class="search-bar row">
                 <div class="col d-flex align-items-center flex-grow-1">
+                <input type="hidden" name="page" value="1"/> 
                   <input
                     class="form-control border-0 shadow-0"
                     type="text"
-                    name="search"
+                    name="svcnm"
                     placeholder="키워드를 입력해 보세요."
                   />
                 </div>
@@ -53,7 +54,7 @@
         <div class="row">
           <div class="col-sm-2">
             <div class="px-3 py-3 border border-1 rounded-3">
-              <form class="border-1 rounded-3" action="">
+              <form  class="border-1 rounded-3" action="${path}/sports/SportMain">
                 <label class="form-label">종류</label>
                 <ul class="list-unstyled mb-0">
                   <li>
@@ -61,8 +62,10 @@
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        name="sports"
-                        id="soccer"
+                        name="minclassnm"
+                        value="축구장"
+                        id="soccer"                        
+                        ${fn:contains(minclassnm, '축구장') ? 'checked':'' }
                       />
                       <label class="form-check-label" for="soccer">
                         축구장
@@ -74,11 +77,13 @@
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        name="sports"
-                        id="pingPong"
+                        name="minclassnm"
+                         value="배구장"
+                        id="pingPong"                      
+                        ${fn:contains(minclassnm, '배구장') ? 'checked':'' }
                       />
                       <label class="form-check-label" for="pingPong">
-                        탁구장
+                        배구장
                       </label>
                     </div>
                   </li>
@@ -87,8 +92,10 @@
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        name="sports"
+                        name="minclassnm"
+                         value="족구장"
                         id="footVolleyball"
+                        ${fn:contains(minclassnm, '족구장') ? 'checked' : ''}
                       />
                       <label class="form-check-label" for="footVolleyball">
                         족구장
@@ -100,8 +107,10 @@
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        name="sports"
+                        name="minclassnm"
+                        value="테니스장"
                         id="tennis"
+                           ${fn:contains(minclassnm, '테니스장') ? 'checked' : ''}
                       />
                       <label class="form-check-label" for="tennis">
                         테니스장
@@ -113,8 +122,10 @@
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        name="sports"
+                         name="minclassnm"
+                        value="야구장"
                         id="baseball"
+                       ${fn:contains(minclassnm, '야구장') ? 'checked' : ''}
                       />
                       <label class="form-check-label" for="baseball">
                         야구장
@@ -126,8 +137,10 @@
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        name="sports"
-                        id="badminton"
+                        name="minclassnm"
+                        value="배드민턴장"
+                        id="badminton"                        
+                         ${fn:contains(minclassnm, '배드민턴장') ? 'checked':'' }
                       />
                       <label class="form-check-label" for="badminton">
                         배드민턴장
@@ -135,33 +148,7 @@
                     </div>
                   </li>
                 </ul>
-                <label class="form-label">요금</label>
-                <ul class="list-unstyled mb-0">
-                  <li>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="price"
-                        id="notfree"
-                      />
-                      <label class="form-check-label" for="notfree">
-                        유료
-                      </label>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="price"
-                        id="free"
-                      />
-                      <label class="form-check-label" for="free"> 무료 </label>
-                    </div>
-                  </li>
-                </ul>
+                <button class="btn btn-primary mt-3" type="submit">검색</button>
               </form>
             </div>
             <div class="align-text-bottom">
@@ -174,17 +161,19 @@
             </div>
           </div>
           <div class="col">
+          <c:forEach var="item" items="${list}">
             <div class="d-flex d-block d-sm-flex review">
               <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
                 <img
                   class="d-block p-2 mb-2 rounded-5"
                   style="width: 12.5rem"
-                  src="${path}/resources/img/avatar/avatar-8.jpg"
-                  alt="Padmé Amidala"
+                  style="height: 12.5rem"
+                  src="${item.imgurl}"
+                  alt=""
                 />
               </div>
               <div>
-                <h6 class="mt-2 mb-1">다목적 구장 - 응봉공원(2023년)</h6>
+                <h6 class="mt-2 mb-1">${item.svcnm }</h6>
                 <div class="mb-2">
                   <i class="fa fa-xs fa-star text-primary"></i
                   ><i class="fa fa-xs fa-star text-primary"></i
@@ -193,145 +182,49 @@
                   ><i class="fa fa-xs fa-star text-primary"></i>
                 </div>
                 <p class="text-muted text-sm">
-                  서울특별시 성동구 금호로 172 - 1(금호동1가)
+                  	${item.areanm}
                 </p>
-                <p class="text-muted text-sm">개방 시간 : 07:00 ~ 19:00</p>
-                <p class="text-muted text-sm">전화 번호 : 02-2293-7646</p>
+                <p class="text-muted text-sm">개방 시간 : ${item.v_min} ~ ${item.v_min}</p>
+                <p class="text-muted text-sm">전화 번호 : ${item.telno}</p>
               </div>
               <div class="flex-lg-grow-1 text-end">
-                <button class="btn btn-primary">세부정보</button>
+                <button class="btn btn-primary" onclick="location.href='${item.svcurl}'" >세부정보</button>
               </div>
             </div>
-            <div class="d-flex d-block d-sm-flex review">
-              <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                <img
-                  class="d-block p-2 mb-2 rounded-5"
-                  style="width: 12.5rem"
-                  src="${path}/resources/img/avatar/avatar-8.jpg"
-                  alt="Padmé Amidala"
-                />
-              </div>
-              <div>
-                <h6 class="mt-2 mb-1">다목적 구장 - 응봉공원(2023년)</h6>
-                <div class="mb-2">
-                  <i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i>
-                </div>
-                <p class="text-muted text-sm">
-                  서울특별시 성동구 금호로 172 - 1(금호동1가)
-                </p>
-                <p class="text-muted text-sm">개방 시간 : 07:00 ~ 19:00</p>
-                <p class="text-muted text-sm">전화 번호 : 02-2293-7646</p>
-              </div>
-              <div class="flex-lg-grow-1 text-end">
-                <button class="btn btn-primary">세부정보</button>
-              </div>
-            </div>
-            <div class="d-flex d-block d-sm-flex review">
-              <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                <img
-                  class="d-block p-2 mb-2 rounded-5"
-                  style="width: 12.5rem"
-                  src="${path}/resources/img/avatar/avatar-8.jpg"
-                  alt="Padmé Amidala"
-                />
-              </div>
-              <div>
-                <h6 class="mt-2 mb-1">다목적 구장 - 응봉공원(2023년)</h6>
-                <div class="mb-2">
-                  <i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i>
-                </div>
-                <p class="text-muted text-sm">
-                  서울특별시 성동구 금호로 172 - 1(금호동1가)
-                </p>
-                <p class="text-muted text-sm">개방 시간 : 07:00 ~ 19:00</p>
-                <p class="text-muted text-sm">전화 번호 : 02-2293-7646</p>
-              </div>
-              <div class="flex-lg-grow-1 text-end">
-                <button class="btn btn-primary">세부정보</button>
-              </div>
-            </div>
-            <div class="d-flex d-block d-sm-flex review">
-              <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                <img
-                  class="d-block p-2 mb-2 rounded-5"
-                  style="width: 12.5rem"
-                  src="${path}/resources/img/avatar/avatar-8.jpg"
-                  alt="Padmé Amidala"
-                />
-              </div>
-              <div>
-                <h6 class="mt-2 mb-1">다목적 구장 - 응봉공원(2023년)</h6>
-                <div class="mb-2">
-                  <i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i>
-                </div>
-                <p class="text-muted text-sm">
-                  서울특별시 성동구 금호로 172 - 1(금호동1가)
-                </p>
-                <p class="text-muted text-sm">개방 시간 : 07:00 ~ 19:00</p>
-                <p class="text-muted text-sm">전화 번호 : 02-2293-7646</p>
-              </div>
-              <div class="flex-lg-grow-1 text-end">
-                <button class="btn btn-primary">세부정보</button>
-              </div>
-            </div>
-
-            <div class="d-flex d-block d-sm-flex review">
-              <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-                <img
-                  class="d-block p-2 mb-2 rounded-5"
-                  style="width: 12.5rem"
-                  src="${path}/resources/img/avatar/avatar-8.jpg"
-                  alt="Padmé Amidala"
-                />
-              </div>
-              <div>
-                <h6 class="mt-2 mb-1">다목적 구장 - 응봉공원(2023년)</h6>
-                <div class="mb-2">
-                  <i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i
-                  ><i class="fa fa-xs fa-star text-primary"></i>
-                </div>
-                <p class="text-muted text-sm">
-                  서울특별시 성동구 금호로 172 - 1(금호동1가)
-                </p>
-                <p class="text-muted text-sm">개방 시간 : 07:00 ~ 19:00</p>
-                <p class="text-muted text-sm">전화 번호 : 02-2293-7646</p>
-              </div>
-              <div class="flex-lg-grow-1 text-end">
-                <button class="btn btn-primary">세부정보</button>
-              </div>
-            </div>
+          </c:forEach>
           </div>
         </div>
       </div>
-      <nav aria-label="Page navigation example">
-        <ul
-          class="pagination pagination-template d-flex justify-content-center"
-        >
-          <li class="page-item">
-            <a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a>
-          </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a>
-          </li>
-        </ul>
-      </nav>
+      <nav aria-label="Page navigation example ">
+			<ul
+				class="pagination pagination-template d-flex justify-content-center">
+				<li class="page-item"><button class="page-link"  onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-left"></i></button></li>
+				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}"
+					varStatus="status" step="1">
+
+					<c:if test="${status.current == pageInfo.currentPage}">
+						<li class="page-item active"><a class="page-link" href="#">${status.current}</a>
+						</li>
+					</c:if>
+
+					<c:if test="${status.current != pageInfo.currentPage}">
+						<li class="page-item"><a class="page-link" href="#"
+							onclick="movePage(${status.current})">${status.current}</a></li>
+					</c:if>
+
+				</c:forEach>
+				<li class="page-item"><button class="page-link" onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-right" ></i></button></li>
+			</ul>
+		</nav>
     </section>
  <jsp:include page="/WEB-INF/views/common/KBSFooter.jsp"></jsp:include>
+ 
+ <script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+	
+</script>

@@ -159,13 +159,13 @@
                   class="dropdown-menu"
                   aria-labelledby="homeDropdownMenuLink"
                 >
-                  <a class="dropdown-item" href="index.html">Rooms</a
-                  ><a class="dropdown-item" href="index-2.html">Restaurants</a
-                  ><a class="dropdown-item" href="index-3.html">Travel</a
+                  <a class="dropdown-item" href="index.html">공연</a
+                  ><a class="dropdown-item" href="index-2.html">OTT</a
+                  ><a class="dropdown-item" href="index-3.html">식당 카페</a
                   ><a class="dropdown-item" href="index-4.html"
-                    >Real Estate
+                    >생활 체육
                     <span class="badge badge-info-light ms-1 mt-n1"
-                      >New</span
+                      >도서</span
                     ></a
                   >
                 </div>
