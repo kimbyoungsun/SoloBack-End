@@ -76,7 +76,7 @@ public class OTTController {
 		int page = 1;
 		Map<String, String> searchMap = new HashMap<String, String>();
 		String searchType = "all";
-
+		
 		try {
 			String searchValue = param.get("searchValue"); // 정확한 요청 매개변수 이름을 사용해야 합니다.
 			if (searchValue != null && !searchValue.isEmpty()) {
@@ -89,15 +89,42 @@ public class OTTController {
 			page = Integer.parseInt(param.get("page"));
 		} catch (Exception e) {
 		}
-
+		
+		
+		searchMap.put("sort", param.get("sort"));
+		
+		if(param.get("sort") == null) {
+			searchMap.put("sort", "release_date");
+		}
+		
 		int ottCount = service.getMoiveCount(searchMap);
 		PageInfo pageInfo = new PageInfo(page, 5, ottCount, 9);
-		searchMap.put("sort", "release_date");
+		
 		List<Movie> list = service.getMovieList(pageInfo, searchMap);
+		String sortValue = searchMap.get("sort");
+		String sortText;
+		System.out.println("@@@@@@"+pageInfo.getStartPage());
+		System.out.println("@@@@@@"+pageInfo.getEndPage());
+		switch (sortValue) {
+	    case "vote_average":
+	        sortText = "추천순";
+	        break;
+	    case "popularity":
+	        sortText = "인기순";
+	        break;
+	    case "release_date":
+	        sortText = "최신순";
+	        break;
+	    default:
+	        sortText = "최신순"; // 필요에 따라 기본값을 설정할 수 있습니다.
+	}
+
 
 		model.addAttribute("list", list);
 		model.addAttribute("param", param);
 		model.addAttribute("pageInfo", pageInfo);
+		model.addAttribute("searchMap", searchMap);
+		model.addAttribute("sortText", sortText);
 		return "ott/OTTSearch";
 	}
 

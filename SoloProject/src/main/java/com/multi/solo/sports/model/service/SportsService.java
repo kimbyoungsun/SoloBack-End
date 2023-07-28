@@ -31,13 +31,13 @@ public class SportsService {
 		return mapper.selectSportsVideoByNo(no);
 	}
 	
-	public List<SportsFacility> getSportsFacilityList(PageInfo pageInfo, Map<String, String> param){
+	public List<SportsFacility> getSportsFacilityList(PageInfo pageInfo, Map<String, Object> param){
 		param.put("limit", "" + pageInfo.getListLimit());
 		param.put("offset", "" + (pageInfo.getStartList() - 1));
 		return mapper.selectSportsFacilityList(param);
 	}
 	
-	public int getSportsFacilityCount(Map<String, String > param) {
+	public int getSportsFacilityCount(Map<String, Object > param) {
 		return mapper.selectSportsFacilityCount(param);
 	}
 	

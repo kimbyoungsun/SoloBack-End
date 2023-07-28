@@ -62,8 +62,7 @@ public class HomeController {
 
 //		Member loginMember = memberService.login("admin", "1212");
 //		session.setAttribute("loginMember", loginMember);
-//		test();
-		
+//		test();		
 		
 		return "MainIndex";
 	}

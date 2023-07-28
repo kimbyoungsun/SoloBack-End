@@ -13,7 +13,7 @@ public interface SportsMapper {
 	List<SportsVideo> selectSportsVideoList(Map<String,String> map);
 	int selectSportsVideoCount(Map<String,String> map);
 	SportsVideo selectSportsVideoByNo(int no);
-	List<SportsFacility> selectSportsFacilityList(Map<String, String> map);
-	int selectSportsFacilityCount(Map<String,String> map);
+	List<SportsFacility> selectSportsFacilityList(Map<String, Object> map);
+	int selectSportsFacilityCount(Map<String,Object> map);
 	SportsFacility selectSportsFacilityById(String id);
 }
