@@ -61,4 +61,10 @@ public class OTTService {
 	public List<TVCredit> findCreditByTV(String id){
 		return mapper.selectCreditByTV(id);
 	}
+	
+	public List<MovieVideo> getMovieVideoList(PageInfo pageInfo,Map<String,String> param){
+		param.put("limit",""+pageInfo.getListLimit());
+		param.put("offset",""+(pageInfo.getStartList() - 1));
+		return mapper.selectMovieVideoList(param);
+	}
 }

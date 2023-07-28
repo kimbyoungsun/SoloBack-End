@@ -39,6 +39,7 @@ dependencies {
     implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api' 
     implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl' 
     implementation 'javax.servlet:jstl'
+    implementation 'org.jsoup:jsoup-1.15.4'
 }
 
 tasks.named('test') {

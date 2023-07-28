@@ -12,7 +12,7 @@ public class TVVideo {
 	private String iso_639_1;
 	private String iso_3166_1;
 	private String name;
-	private String key;
+	private String param;
 	private String site;
 	private String size;
 	private String type;

@@ -76,7 +76,7 @@
             </div>
           </div>
           <div class="col d-flex">
-            <div class="card border-0 bg-solo-2">
+            <div class="card border-0 bg-solo-2" onclick="location.href='${path}/ott/OTTMain'">
               <div class="container">
                 <div class="mt-3 ms-3 fw-bold">가장 편안한 영화관, 우리집</div>
                 <div class="mt-3 ms-3 h4 fw-bold">OTT</div>

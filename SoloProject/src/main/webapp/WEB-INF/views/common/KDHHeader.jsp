@@ -13,8 +13,23 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="all,follow" />
+     <!-- Price Slider Stylesheets -->
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css" />
+    <!-- Google fonts - Playfair Display-->
+    <!-- 노토 산스-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- 나눔스퀘어 -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css"
+    />
     <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="vendor/nouislider/nouislider.css" />
+    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css" />
     <!-- Google fonts - Playfair Display-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700"/>
     <!-- Google fonts - Poppins-->
