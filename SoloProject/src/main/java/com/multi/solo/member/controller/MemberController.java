@@ -30,6 +30,12 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 	
+	@GetMapping("/member/login")
+	public String loginFormPage() {
+		log.info("로그인 페이지 요청");
+		return "member/loginForm";
+	}
+	
 	@PostMapping("/login")
 	String login(Model model, String userId, String userPwd) {
 		log.info("id : " + userId + ", pwd : " + userPwd);

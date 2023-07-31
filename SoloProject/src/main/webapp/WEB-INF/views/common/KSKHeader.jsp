@@ -61,7 +61,7 @@
     <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
       <div class="container">
         <div class="d-flex align-items-center">
-          <a class="navbar-brand py-1" href="index.html"><img src="img/logo.svg" alt="Directory logo" /></a>
+          <a class="navbar-brand py-1" href="index.html"><img src="${path}/resources/img/logo.svg" alt="Directory logo" /></a>
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
