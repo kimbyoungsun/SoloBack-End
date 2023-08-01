@@ -33,12 +33,12 @@
         <div class="row my-3">
         <c:forEach var="item" items="${list}">
         <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-            <div class="card shadow border-0 h-100">
+          <div class="card shadow border-0 h-100">
               <img
                 src="https://1in.seoul.go.kr${item.src1}
                 "
                 alt=""
-                style="height: 100%"
+                style="width:100% ;height: 600px"
                  onclick="location.href='${path}/program/ProgramDetail?pNo=${item.pno}'"
               />
             </div>

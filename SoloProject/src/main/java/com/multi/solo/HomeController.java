@@ -64,8 +64,10 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		Map<String, String> map = new HashMap<String, String>();
 		int programCount = programService.getProgramCount(map); 
+		
 		PageInfo pageInfo = new PageInfo(page, 5,programCount,4);
 		List<Program> program = programService.getProgramList(pageInfo, map);
+		
 		try {
 			List<NewsInfo> news = NewsCrawling.crawling();
 			model.addAttribute("news", news);
@@ -76,6 +78,7 @@ public class HomeController {
 		List<HotPlace> hotplace = locationService.getHotPlaceList(pageInfo, map);
 		model.addAttribute("hotplace",hotplace);
 		model.addAttribute("program",program);
+		
 //		Member loginMember = memberService.login("admin", "1212");
 //		session.setAttribute("loginMember", loginMember);
 //		test();		

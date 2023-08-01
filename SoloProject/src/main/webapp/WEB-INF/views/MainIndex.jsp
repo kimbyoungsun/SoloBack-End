@@ -130,6 +130,7 @@
             </a>
           </div>
           <div class="col d-flex">
+          <a class="nav-link" href="${path}/book/BookSearch">
             <div class="card border-0 bg-solo-5">
               <div class="container">
                 <div class="mt-3 ms-3 fw-bold">책은 마음의 양식!</div>
@@ -139,11 +140,12 @@
                     class="card-img-bottom mt-5 mb-3 mx-2"
                     src="${path}/resources/img/kbs/book-stack 1.png"
                     alt="Card image cap"
-                    style="width: 70% !important"
+                    style="width: 75% !important"
                   />
                 </div>
               </div>
             </div>
+            </a>
           </div>
         </div>
       </div>
@@ -446,4 +448,3 @@
       </div>
     </section>
 <jsp:include page="/WEB-INF/views/common/KBSFooter.jsp"></jsp:include>
-

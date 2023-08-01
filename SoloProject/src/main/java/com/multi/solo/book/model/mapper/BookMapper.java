@@ -9,9 +9,10 @@ import com.multi.solo.book.model.vo.Book;
 
 @Mapper
 public interface BookMapper {
-	List<Book> selectBookList(Map<String, String> param);
-
-	int selectBookCount(Map<String, String> param);
-
+	List<Book> selectBestList(Map<String, String> param);
+	int selectBestCount(Map<String, String> param);
+	Book selectBestById(int no);
+	List<Book> selectBookList(Map<String, Object> param);
+	int selectBookCount(Map<String, Object> param);
 	Book selectBookById(int no);
 }
