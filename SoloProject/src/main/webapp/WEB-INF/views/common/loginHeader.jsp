@@ -29,21 +29,6 @@
           href="https://fonts.googleapis.com/css?family=Poppins:300,400,400i,700"
         />
 
- <!-- Price Slider Stylesheets -->
-    <link rel="stylesheet" href="${path}/resources/vendor/nouislider/nouislider.css" />
-    <!-- Google fonts - Playfair Display-->
-    <!-- 노토 산스-->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-      rel="stylesheet"
-    />
-    
-    <!-- 나눔스퀘어 -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css"
-    />
   <!-- swiper-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css" />
   <!-- Magnigic Popup-->
@@ -133,11 +118,19 @@
               </div>
             </li>
           </ul>
-          <div class="ms-auto">
-            <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block">
-              <a class="btn btn-primary" href="user-add-0.html">로그인/회원가입</a>
-            </li>
-          </div>
+            <div class="ms-auto d-flex">
+              <li class="justify-content-sm-end nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block">
+                <a class="btn btn-custom" href="user-add-0.html"
+                  >로그아웃</a
+                >
+                <div class="avatar avatar-sm mb-2 ms-2">
+                    <a href="${path}/AccountProfile.jsp">
+                        <img style="width:2.5rem; height:2.5rem;" class="rounded-circle border border-1 border-white"
+                        src="${path}/resources/img/avatar/avatar-2.jpg" alt="프로필 사진"/>
+                    </a>
+                </div>
+              </li>
+            </div>
         </div>
       </div>
     </nav>
