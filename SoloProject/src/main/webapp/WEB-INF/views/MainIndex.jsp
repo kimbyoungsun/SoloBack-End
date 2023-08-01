@@ -76,7 +76,8 @@
             </div>
           </div>
           <div class="col d-flex">
-            <div class="card border-0 bg-solo-2" onclick="location.href='${path}/ott/OTTMain'">
+           <a class="nav-link" href="${path}/ott/OTTMain">
+            <div class="card border-0 bg-solo-2" >
               <div class="container">
                 <div class="mt-3 ms-3 fw-bold">가장 편안한 영화관, 우리집</div>
                 <div class="mt-3 ms-3 h4 fw-bold">OTT</div>
@@ -90,6 +91,7 @@
                 </div>
               </div>
             </div>
+            </a>
           </div>
           <div class="col d-flex">
             <div class="card border-0 bg-solo-3">
@@ -108,6 +110,7 @@
             </div>
           </div>
           <div class="col d-flex">
+          <a class="nav-link" href="${path}/sports/SportMain">
             <div class="card border-0 bg-solo-4">
               <div class="container">
                 <div class="mt-3 ms-3 fw-bold">늘어나는 체력, 커지는 행복</div>
@@ -122,6 +125,7 @@
                 </div>
               </div>
             </div>
+            </a>
           </div>
           <div class="col d-flex">
             <div class="card border-0 bg-solo-5">
@@ -147,70 +151,27 @@
       <div class="container">
         <div class="row">
           <div class="h3 fw-bold col text-solo-6">1인가구 프로그램</div>
-          <div class="col text-end">더보기</div>
+          <div class="col text-end" ><a class="nav-link" href="${path}/program/ProgramMain">더보기</a></div>
         </div>
         <div>
           <div class="row">
+          <c:forEach var="item" items="${program}">
             <div class="col d-flex">
               <div class="container">
-                <div class="">
+                <a href="${path}/program/ProgramDetail?pNo=${item.pno}">
                   <img
                     class="figure figure-img"
-                    src="${path}/resources/img/kbs/Rectangle 51.png"
+                    src="https://1in.seoul.go.kr${item.src1}"
                     alt="Card image cap"
-                    style="width: 100% !important"
+                    style="width: 280px; height:400px"
                   />
-                </div>
-                <div class="fw-bold h5">경기도 청년 1인가구 지원사업</div>
-                <div class="fw-bold text-solo-6">2023.05.18. ~ 2023.06.04.</div>
-                <div class="fw-bold text-solo-6">경기도</div>
+                </a>
+                <div class="fw-bold h5">${item.partcptn_sj }</div>
+                <div class="fw-bold text-solo-6">${item.progrs_de1} ~ ${item.progrs_de1}</div>
+                <div class="fw-bold text-solo-6">${item.atdrc_nm }</div>
               </div>
             </div>
-            <div class="col d-flex">
-              <div class="container">
-                <div class="">
-                  <img
-                    class="figure figure-img"
-                    src="${path}/resources/img/kbs/Rectangle 52.png"
-                    alt="Card image cap"
-                    style="width: 100% !important"
-                  />
-                </div>
-                <div class="fw-bold h5">1인가구 생활 밀착형 프로그램</div>
-                <div class="fw-bold text-solo-6">2023.05.18. ~ 2023.06.04.</div>
-                <div class="fw-bold text-solo-6">경기도</div>
-              </div>
-            </div>
-            <div class="col d-flex">
-              <div class="container">
-                <div class="">
-                  <img
-                    class="figure figure-img"
-                    src="${path}/resources/img/kbs/Rectangle 53.png"
-                    alt="Card image cap"
-                    style="width: 100% !important"
-                  />
-                </div>
-                <div class="fw-bold h5">동일이네 행복한 밥상</div>
-                <div class="fw-bold text-solo-6">2023.05.18. ~ 2023.06.04.</div>
-                <div class="fw-bold text-solo-6">경기도</div>
-              </div>
-            </div>
-            <div class="col d-flex">
-              <div class="container">
-                <div class="">
-                  <img
-                    class="figure figure-img"
-                    src="${path}/resources/img/kbs/Rectangle 54.png"
-                    alt="Card image cap"
-                    style="width: 100% !important"
-                  />
-                </div>
-                <div class="fw-bold h5">1인가구 친구찾기 PET-프킬라</div>
-                <div class="fw-bold text-solo-6">2023.05.18. ~ 2023.06.04.</div>
-                <div class="fw-bold text-solo-6">경기도</div>
-              </div>
-            </div>
+          </c:forEach>
           </div>
         </div>
       </div>
@@ -241,7 +202,7 @@
           </div>
 
           <div class="col">
-            <div class="text-center h1 fw-bold text-solo-6">동네 핫스팟</div>
+            <div class="text-center h1 fw-bold text-solo-6"><a class="nav-link" href="${path}/location/HotPlace">동네 핫스팟</a></div>
             <div class="text-center fw-bold text-solo-5">
               요즘 우리 동네에서 사람들이 많이 찾는 곳은 어딜까?
             </div>
@@ -320,42 +281,26 @@
           <div class="col">
             <div class="swiper-container my-slider mx-n2">
               <div class="swiper-wrapper pb-5 ms-3">
-                <div class="swiper-slide h-auto px-2">
+              
+              <c:forEach var="item" items="${hotplace}">
+              <div class="swiper-slide h-auto px-2">
                   <div
                     class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"
                   >
-                    <a class="tile-link" href="category.html"></a
+                    <a class="tile-link" href="https://data.seoul.go.kr/SeoulRtd/?hotspotNm=${item.area_nm}"></a
                     ><img
                       class="bg-image"
-                      src="${path}/resources/img/photo/new-york.jpg"
+                      src="https://data.seoul.go.kr/resources/img/guide/hotspot/${item.area_nm}.jpg"
                       alt="Card image"
                     />
                     <div class="card-body overlay-content">
                       <h6 class="card-title text-shadow text-uppercase">
-                        New York
+                       ${item.area_nm}
                       </h6>
-                      <p class="card-text text-sm">The big apple</p>
                     </div>
                   </div>
                 </div>
-                <div class="swiper-slide h-auto px-2">
-                  <div
-                    class="card card-poster gradient-overlay hover-animate mb-4 mb-lg-0"
-                  >
-                    <a class="tile-link" href="category.html"></a
-                    ><img
-                      class="bg-image"
-                      src="${path}/resources/img/photo/new-york.jpg"
-                      alt="Card image"
-                    />
-                    <div class="card-body overlay-content">
-                      <h6 class="card-title text-shadow text-uppercase">
-                        New York
-                      </h6>
-                      <p class="card-text text-sm">The big apple</p>
-                    </div>
-                  </div>
-                </div>
+              </c:forEach>
               </div>
             </div>
           </div>
@@ -368,7 +313,7 @@
       <div class="container my-5">
         <div class="row">
           <div class="col h1 fw-bold text-solo-6">지역별 공공임대주택 정보</div>
-          <div class="col text-end">더보기</div>
+          <div class="col text-end"><a class="nav-link" href="${path}/location/RentalHouse?category=서울특별시">더보기</a></div>
         </div>
       </div>
       <div class="container-fluid">
@@ -376,6 +321,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -4.5625rem; left: 26.25rem"
+          onclick="location.href='${path}/location/RentalHouse?category=서울특별시'"
         >
           서울
         </div>
@@ -383,6 +329,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -8.75rem; left: 3.125rem"
+           onclick="location.href='${path}/location/RentalHouse?category=인천광역시'"
         >
           인천
         </div>
@@ -390,6 +337,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -12.25rem; left: 36.0625rem"
+          onclick="location.href='${path}/location/RentalHouse?category=경기도'"
         >
           경기
         </div>
@@ -397,6 +345,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -27.6875rem; left: 6.0625rem"
+           onclick="location.href='${path}/location/RentalHouse?category=강원도'"
         >
           강원
         </div>
@@ -404,6 +353,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -17.3125rem; left: 49.625rem"
+          onclick="location.href='${path}/location/RentalHouse?category=대전광역시'"
         >
           대전
         </div>
@@ -411,6 +361,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -33.125rem; left: 45.625rem"
+          onclick="location.href='${path}/location/RentalHouse?category=울산광역시'"
         >
           울산
         </div>
@@ -418,6 +369,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -27.75rem; left: 54.25rem"
+          onclick="location.href='${path}/location/RentalHouse?category=대구광역시'"
         >
           대구
         </div>
@@ -425,6 +377,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -4.5rem; left: 48.25rem"
+          onclick="location.href='${path}/location/RentalHouse?category=광주광역시'"
         >
           광주
         </div>
@@ -432,6 +385,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -10.1875rem; left: 70.1875rem"
+          onclick="location.href='${path}/location/RentalHouse?category=제주특별자치도'"
         >
           제주
         </div>
@@ -439,6 +393,7 @@
         <div
           class="btn btn-danger position-relative"
           style="top: -29.1875rem; left: 64.25rem"
+          onclick="location.href='${path}/location/RentalHouse?category=부산광역시'"
         >
           부산
         </div>
@@ -456,15 +411,16 @@
 
         <div class="row">
           <div class="col my-3">
-            <div>광주 동구 1인 가구 위한 요리 레시피 북 발간</div>
-            <div>광주 동구 1인 가구 위한 요리 레시피 북 발간</div>
-            <div>광주 동구 1인 가구 위한 요리 레시피 북 발간</div>
-            <div>광주 동구 1인 가구 위한 요리 레시피 북 발간</div>
-            <div>광주 동구 1인 가구 위한 요리 레시피 북 발간</div>
-            <div>광주 동구 1인 가구 위한 요리 레시피 북 발간</div>
-            <div>광주 동구 1인 가구 위한 요리 레시피 북 발간</div>
-            <div>광주 동구 1인 가구 위한 요리 레시피 북 발간</div>
-            <div>광주 동구 1인 가구 위한 요리 레시피 북 발간</div>
+          <c:forEach var="item" items="${news}" begin="0" end="4">
+		<a class="nav-link" href="${item.url}">
+          <div class="row my-2">
+          	<div class="col-2">
+          	<img class="rounded-3"alt="" src="${item.img }" style="width:100%">
+          	</div>
+          	<div class="col-10 align-middle">${item.text}</div>
+          	</div>
+          	</a>
+          </c:forEach>
           </div>
           <div class="col position-relative" style="top: -50px">
             <ul class="list-group">

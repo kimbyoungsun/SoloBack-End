@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.multi.solo.common.util.PageInfo;
 import com.multi.solo.sports.model.service.SportsService;
 import com.multi.solo.sports.model.vo.SportsFacility;
+import com.multi.solo.sports.model.vo.SportsVideo;
 
 @RequestMapping("/sports") // 요청 url의 상위 url을 모두 처리할때 사용
 @Controller
@@ -28,7 +29,6 @@ public class SportController {
 			@RequestParam(required = false) String[] minclassnm
 			) {
 		int page = 1;
-		System.out.println(param.get("svcnm"));
 		Map<String, Object> searchMap = new HashMap<String, Object>();
 		try {
 			Object searchValue = param.get("String, String");
@@ -69,5 +69,22 @@ public class SportController {
 		return "sports/SportMain";
 	}
 	
+	@GetMapping("/SportVideo")
+	public String SportVideo(Model model, @RequestParam Map<String, String> param) {
+		int page = 1;
+		try {
+			page = Integer.parseInt(param.get("page"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		int sportCount = service.getSportsVideoCount(param);
+		PageInfo pageInfo = new PageInfo(page, 5, sportCount, 9);
+		List<SportsVideo> list = service.getSportsVideoList(pageInfo, param);
+		
+		model.addAttribute("list",list);
+		model.addAttribute("pageInfo",pageInfo);
+		model.addAttribute("param",param);
+		return "sports/SportVideo";
+	}
 	
 }

@@ -31,6 +31,7 @@
         </div>
       </div>
     </section>
+    
     <section class="hero-home" style="background-color: #50a78b">
       <div class="container  py-md-3 text-white z-index-20">
         <div class="row">
@@ -39,12 +40,13 @@
               <h1 class="display-3 fw-bold text-shadow">홈 트레이닝</h1>
             </div>
             <div class="p-lg-1 ps-lg-4">
-              <form action="#" class="search-bar row">
+              <form id="searchForm" action="${path}/sports/SportVideo" class="search-bar row">
                 <div class="col d-flex align-items-center flex-grow-1">
+                 <input type="hidden" name="page" value="1"/> 
                   <input
                     class="form-control border-0 shadow-0"
                     type="text"
-                    name="search"
+                    name="title"
                     placeholder="키워드를 입력해 보세요."
                   />
                 </div>
@@ -72,226 +74,76 @@
       </div>
     </section>
 
+<section>
+	<div class="container">
+		<div class="row ">
+			<div class="col-2 pt-3 px-3">
+				<a class="nav-link text-center border border-1 rounded-3 py-2 px-1" href="${path}/sports/SportMain">
+				시설보기
+				</a>
+			</div>
+			<div class="col-2  pt-3 px-3">
+				<a class="nav-link text-center border border-1 rounded-3 py-2 px-1" href="${path}/sports/SportVideo">
+				건강비디오
+			</a>
+			</div>
+		</div>
+	</div>
+	
+	</section>
+	
     <section>
       <div class="container pt-3">
         <div class="row my-3">
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
+        <c:forEach var="item" items="${list}">
+        <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
             <div class="card shadow border-0 h-100">
               <img
-                src="https://img.youtube.com/vi/2gHcoelhHw0/0.jpg"
+                src="https://img.youtube.com/vi/${item.youtube}/0.jpg"
                 alt=""
-                onclick="openModal('https://www.youtube.com/embed/2gHcoelhHw0?autoplay=1&mute=1')"
+                width="100%"
+                onclick="openModal('https://www.youtube.com/embed/${item.youtube}?autoplay=1&mute=1')"
               />
 
               <div class="card-body">
                 <h5 class="my-2">
                   <a
                     class="text-dark"
-                    href="https://www.youtube.com/watch?v=2gHcoelhHw0"
+                    href="https://www.youtube.com/watch?v=${item.youtube}"
                   >
-                    !!!!집중력 버프가 필요할 때? (ep1. 뇌를 자극시키는 집중력
-                    향상 운동) 집콕운동</a
-                  >
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-            <div class="card shadow border-0 h-100">
-              <img
-                src="https://img.youtube.com/vi/2gHcoelhHw0/0.jpg"
-                alt=""
-                onclick="openModal('https://www.youtube.com/embed/2gHcoelhHw0?autoplay=1&mute=1')"
-              />
-
-              <div class="card-body">
-                <h5 class="my-2">
-                  <a
-                    class="text-dark"
-                    href="https://www.youtube.com/watch?v=2gHcoelhHw0"
-                  >
-                    !!!!집중력 버프가 필요할 때? (ep1. 뇌를 자극시키는 집중력
-                    향상 운동) 집콕운동</a
+                    ${item.title} </a
                   >
                 </h5>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-            <div class="card shadow border-0 h-100">
-              <img
-                src="https://img.youtube.com/vi/2gHcoelhHw0/0.jpg"
-                alt=""
-                onclick="openModal('https://www.youtube.com/embed/2gHcoelhHw0?autoplay=1&mute=1')"
-              />
-
-              <div class="card-body">
-                <h5 class="my-2">
-                  <a
-                    class="text-dark"
-                    href="https://www.youtube.com/watch?v=2gHcoelhHw0"
-                  >
-                    !!!!집중력 버프가 필요할 때? (ep1. 뇌를 자극시키는 집중력
-                    향상 운동) 집콕운동</a
-                  >
-                </h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row my-3">
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-            <div class="card shadow border-0 h-100">
-              <img
-                src="https://img.youtube.com/vi/2gHcoelhHw0/0.jpg"
-                alt=""
-                onclick="openModal('https://www.youtube.com/embed/2gHcoelhHw0?autoplay=1&mute=1')"
-              />
-
-              <div class="card-body">
-                <h5 class="my-2">
-                  <a
-                    class="text-dark"
-                    href="https://www.youtube.com/watch?v=2gHcoelhHw0"
-                  >
-                    !!!!집중력 버프가 필요할 때? (ep1. 뇌를 자극시키는 집중력
-                    향상 운동) 집콕운동</a
-                  >
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-            <div class="card shadow border-0 h-100">
-              <img
-                src="https://img.youtube.com/vi/2gHcoelhHw0/0.jpg"
-                alt=""
-                onclick="openModal('https://www.youtube.com/embed/2gHcoelhHw0?autoplay=1&mute=1')"
-              />
-
-              <div class="card-body">
-                <h5 class="my-2">
-                  <a
-                    class="text-dark"
-                    href="https://www.youtube.com/watch?v=2gHcoelhHw0"
-                  >
-                    !!!!집중력 버프가 필요할 때? (ep1. 뇌를 자극시키는 집중력
-                    향상 운동) 집콕운동</a
-                  >
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-            <div class="card shadow border-0 h-100">
-              <img
-                src="https://img.youtube.com/vi/2gHcoelhHw0/0.jpg"
-                alt=""
-                onclick="openModal('https://www.youtube.com/embed/2gHcoelhHw0?autoplay=1&mute=1')"
-              />
-
-              <div class="card-body">
-                <h5 class="my-2">
-                  <a
-                    class="text-dark"
-                    href="https://www.youtube.com/watch?v=2gHcoelhHw0"
-                  >
-                    !!!!집중력 버프가 필요할 때? (ep1. 뇌를 자극시키는 집중력
-                    향상 운동) 집콕운동</a
-                  >
-                </h5>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row my-3">
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-            <div class="card shadow border-0 h-100">
-              <img
-                src="https://img.youtube.com/vi/2gHcoelhHw0/0.jpg"
-                alt=""
-                onclick="openModal('https://www.youtube.com/embed/2gHcoelhHw0?autoplay=1&mute=1')"
-              />
-
-              <div class="card-body">
-                <h5 class="my-2">
-                  <a
-                    class="text-dark"
-                    href="https://www.youtube.com/watch?v=2gHcoelhHw0"
-                  >
-                    !!!!집중력 버프가 필요할 때? (ep1. 뇌를 자극시키는 집중력
-                    향상 운동) 집콕운동</a
-                  >
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-            <div class="card shadow border-0 h-100">
-              <img
-                src="https://img.youtube.com/vi/2gHcoelhHw0/0.jpg"
-                alt=""
-                onclick="openModal('https://www.youtube.com/embed/2gHcoelhHw0?autoplay=1&mute=1')"
-              />
-
-              <div class="card-body">
-                <h5 class="my-2">
-                  <a
-                    class="text-dark"
-                    href="https://www.youtube.com/watch?v=2gHcoelhHw0"
-                  >
-                    !!!!집중력 버프가 필요할 때? (ep1. 뇌를 자극시키는 집중력
-                    향상 운동) 집콕운동</a
-                  >
-                </h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
-            <div class="card shadow border-0 h-100">
-              <img
-                src="https://img.youtube.com/vi/2gHcoelhHw0/0.jpg"
-                alt=""
-                onclick="openModal('https://www.youtube.com/embed/2gHcoelhHw0?autoplay=1&mute=1')"
-              />
-
-              <div class="card-body">
-                <h5 class="my-2">
-                  <a
-                    class="text-dark"
-                    href="https://www.youtube.com/watch?v=2gHcoelhHw0"
-                  >
-                    !!!!집중력 버프가 필요할 때? (ep1. 뇌를 자극시키는 집중력
-                    향상 운동) 집콕운동</a
-                  >
-                </h5>
-              </div>
-            </div>
-          </div>
+        </c:forEach>
         </div>
       </div>
       <div class="pt-5">
         <nav aria-label="Page navigation example ">
-          <ul
-            class="pagination pagination-template d-flex justify-content-center"
-          >
-            <li class="page-item">
-              <a class="page-link" href="#">
-                <i class="fa fa-angle-left"></i
-              ></a>
-            </li>
-            <li class="page-item active">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">
-                <i class="fa fa-angle-right"></i
-              ></a>
-            </li>
-          </ul>
-        </nav>
+			<ul
+				class="pagination pagination-template d-flex justify-content-center">
+				<li class="page-item"><button class="page-link"  onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-left"></i></button></li>
+				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}"
+					varStatus="status" step="1">
+
+					<c:if test="${status.current == pageInfo.currentPage}">
+						<li class="page-item active"><a class="page-link" href="#">${status.current}</a>
+						</li>
+					</c:if>
+
+					<c:if test="${status.current != pageInfo.currentPage}">
+						<li class="page-item"><a class="page-link" href="#"
+							onclick="movePage(${status.current})">${status.current}</a></li>
+					</c:if>
+
+				</c:forEach>
+				<li class="page-item"><button class="page-link" onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-right" ></i></button></li>
+			</ul>
+		</nav>
       </div>
       <div class="text-center">
         <img
@@ -303,3 +155,9 @@
     </section>
 
 <jsp:include page="/WEB-INF/views/common/KBSFooter.jsp"></jsp:include>
+<script type="text/javascript">
+	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+</script>

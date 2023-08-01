@@ -8,7 +8,7 @@
 <jsp:include page="/WEB-INF/views/common/KBSHeader.jsp"></jsp:include>
 
     <section class="hero-home" style="background-color: #50a78b">
-      <div class="container py-md-2 text-white z-index-20">
+      <div class="container  text-white z-index-20">
         <div class="row">
           <div class="col-xl-6 mt-7 pt-5">
             <div class="text-center text-lg-start">
@@ -35,80 +35,48 @@
           <!-- ****상품 소개글 시작**** -->
           <div class="px-3 py-3 border border-1 rounded-3 mb-3">
             <!-- 카로셀 시작 -->
-            <div
-              id="carousel"
-              class="carousel slide"
-              data-bs-ride="carousel"
-              style="
-                background-position: center center;
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-color: #0b3d2d;
-              "
-            >
-              <!-- Indicators/dots -->
-              <div class="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#carousel"
-                  data-bs-slide-to="0"
-                  class="active"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carousel"
-                  data-bs-slide-to="1"
-                ></button>
-              </div>
+            
+            <div class="swiper-container my-swiper">
+			  <!-- Additional required wrapper -->
+			  <div class="swiper-wrapper">
+			    <!-- Slides -->
+			    <c:if test="${list.src1 != '-'}">
+			    <div class="swiper-slide swiper-slide-items text-center">
+			    <img alt="" src="https://1in.seoul.go.kr${list.src1}" style="height: 100%">
+			    </div>
+			    </c:if>
+			    <c:if test="${list.src2 != '-'}">
+			    <div class="swiper-slide swiper-slide-items text-center">
+<img alt="" src="https://1in.seoul.go.kr${list.src2}"
+ style="height: 100%">
+</div>
+			    </c:if>
+			    <c:if test="${list.src3 != '-'}">
+			    <div class="swiper-slide swiper-slide-items text-center">
+<img alt="" src="https://1in.seoul.go.kr${list.src3}" style="height: 100%">
+</div>
+			    </c:if>
+			    <c:if test="${list.src4 != '-'}">
+			    <div class="swiper-slide swiper-slide-items text-center">
+<img alt="" src="https://1in.seoul.go.kr${list.src4}" style="height: 100%">
+</div>
+			    </c:if>
+			    <c:if test="${list.src5 != '-'}">
+			    <div class="swiper-slide swiper-slide-items text-center">
 
-              <!-- carousel images -->
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div
-                    class="p-4 p-sm-5"
-                    style="
-                      background-image: url(https://1in.seoul.go.kr/contents/commoneditor/20210823165753f01a9ac9-a3d1-4e7d-8aa7-a3785a778475.png);
-                      background-position: center center;
-                      background-repeat: no-repeat;
-                      background-size: contain;
-                      height: 600px;
-                    "
-                  ></div>
-                </div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <div
-                      class="p-4 p-sm-5"
-                      style="
-                        background-image: url(https://1in.seoul.go.kr/contents/commoneditor/2021082316580355126499-0f68-45c0-8f08-e507cbbd2ad0.png);
-                        background-position: center center;
-                        background-repeat: no-repeat;
-                        background-size: contain;
-                        height: 600px;
-                      "
-                    ></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- left and right control buttons -->
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#carousel"
-                data-bs-slide="prev"
-              >
-                <span class="carousel-control-prev-icon"></span>
-              </button>
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#carousel"
-                data-bs-slide="next"
-              >
-                <span class="carousel-control-next-icon"></span>
-              </button>
-            </div>
+<img alt="" src="https://1in.seoul.go.kr${list.src5}" style="height: 100%"></div>
+			    </c:if>
+			  </div>
+			  <!-- If we need pagination -->
+			  <div class="swiper-pagination"></div>
+			
+			  <!-- If we need navigation buttons -->
+			  <div class="swiper-button-prev"></div>
+			  <div class="swiper-button-next"></div>
+			
+			  <!-- If we need scrollbar -->
+			  <div class="swiper-pagination"></div>
+			</div>
             <!-- 카로셀 끝 -->
           </div>
           <!-- ****상품 소개글 끝**** -->
@@ -132,15 +100,10 @@
                   class="border-1 bg-light rounded-circle flex-shrink-0"
                   style="border: 3px solid #50a78b"
                 >
-                  <img
-                    src="${path}/resources/img/icon/user.png"
-                    alt="작성자 아이콘"
-                    style="height: 40px; border-radius: 50%"
-                  />
                 </div>
                 <div class="ms-2">
-                  <h6 class="mb-0">작성자</h6>
-                  <span class="small">권수경</span>
+                  <h6 class="mb-0">대상자</h6>
+                  <span class="small">${list.sexdstn_nm}</span>
                 </div>
               </div>
               <!-- 작성시간 정보 -->
@@ -149,15 +112,10 @@
                   class="border-1 bg-light rounded-circle flex-shrink-0"
                   style="border: 3px solid #50a78b"
                 >
-                  <img
-                    src="${path}/resources/img/icon/user.png"
-                    alt="작성시간 아이콘"
-                    style="height: 40px; border-radius: 50%"
-                  />
                 </div>
                 <div class="ms-2">
-                  <h6 class="mb-0">작성시간</h6>
-                  <span class="small">2023/07/05</span>
+                  <h6 class="mb-0">시작시간</h6>
+                  <span class="small">${list.progrs_de1 }</span>
                 </div>
               </div>
               <!-- 카테고리 정보 -->
@@ -166,15 +124,10 @@
                   class="border-1 bg-light rounded-circle flex-shrink-0"
                   style="border: 3px solid #50a78b"
                 >
-                  <img
-                    src="${path}/resources/img/icon/user.png"
-                    alt="카테고리 아이콘"
-                    style="height: 40px; border-radius: 50%"
-                  />
                 </div>
                 <div class="ms-2">
-                  <h6 class="mb-0">카테고리</h6>
-                  <span class="small">디지털기기</span>
+                  <h6 class="mb-0">종료시간</h6>
+                  <span class="small">${list.progrs_de2 }</span>
                 </div>
               </div>
               <!-- 상태 정보 -->
@@ -183,15 +136,10 @@
                   class="border-1 bg-light rounded-circle flex-shrink-0"
                   style="border: 3px solid #50a78b"
                 >
-                  <img
-                    src="${path}/resources/img/icon/user.png"
-                    alt="상태 아이콘"
-                    style="height: 40px; border-radius: 50%"
-                  />
                 </div>
                 <div class="ms-2">
-                  <h6 class="mb-0">상태</h6>
-                  <span class="small">상급</span>
+                  <h6 class="mb-0">나이대</h6>
+                  <span class="small">${list.agrde_nm }</span>
                 </div>
               </div>
               <!-- 위치 정보 -->
@@ -200,82 +148,57 @@
                   class="border-1 bg-light rounded-circle flex-shrink-0"
                   style="border: 3px solid #50a78b"
                 >
-                  <img
-                    src="${path}/resources/img/icon/user.png"
-                    alt="위치 아이콘"
-                    style="height: 40px; border-radius: 50%"
-                  />
                 </div>
                 <div class="ms-2">
                   <h6 class="mb-0">위치</h6>
-                  <span class="small">서울특별시 송파구</span>
+                  <span class="small">${list.place_adres1} ${list.place_adres2}</span>
+                  
                 </div>
               </div>
               <!-- 가격 정보 -->
+              <c:if test="${list.progrs_inqry != '' }">
               <div class="d-flex align-items-center mb-2">
                 <div
                   class="border-1 bg-light rounded-circle flex-shrink-0"
                   style="border: 3px solid #50a78b"
                 >
-                  <img
-                    src="${path}/resources/img/icon/user.png"
-                    alt="가격 아이콘"
-                    style="height: 40px; border-radius: 50%"
-                  />
                 </div>
                 <div class="ms-2">
-                  <h6 class="mb-0">가격</h6>
-                  <span class="small">100,000원</span>
+                  <h6 class="mb-0">문의 전화</h6>
+                  <span class="small">${list.progrs_inqry}</span>
                 </div>
               </div>
+              </c:if>
+              
               <!-- 직거래 정보 -->
+              <c:if test="${list.rcept_mth_link != '' }">
               <div class="d-flex align-items-center mb-2">
                 <div
                   class="border-1 bg-light rounded-circle flex-shrink-0"
                   style="border: 3px solid #50a78b"
                 >
-                  <img
-                    src="${path}/resources/img/icon/user.png"
-                    alt="직거래 아이콘"
-                    style="height: 40px; border-radius: 50%"
-                  />
                 </div>
                 <div class="ms-2">
-                  <h6 class="mb-0">직거래</h6>
-                  <span class="small">가능</span>
+                  <h6 class="mb-0">신청링크</h6>
+                  <span class="small">${list.rcept_mth_link }</span>
                 </div>
               </div>
+              </c:if>
               <!-- 네고 정보 -->
               <div class="d-flex align-items-center mb-2">
                 <div
                   class="border-1 bg-light rounded-circle flex-shrink-0"
                   style="border: 3px solid #50a78b"
                 >
-                  <img
-                    src="${path}/resources/img/icon/user.png"
-                    alt="네고 아이콘"
-                    style="height: 40px; border-radius: 50%"
-                  />
                 </div>
                 <div class="ms-2">
-                  <h6 class="mb-0">네고</h6>
-                  <span class="small">가능</span>
+                  <h6 class="mb-0">종류</h6>
+                  <span class="small">${list.ty_nm }</span>
                 </div>
               </div>
             </div>
             <!-- icon and info END -->
 
-            <!-- 찜 추가하기 버튼 START -->
-            <div class="d-grid gap-2 mb-2">
-              <a href="#" class="btn btn-custom"> 찜 추가하기 </a>
-            </div>
-            <!-- 찜 추가하기 버튼 END -->
-
-            <!-- 목록으로 버튼 START -->
-            <div class="d-grid gap-2 mb-2">
-              <a href="#" class="btn btn-return-custom"> 목록으로 </a>
-            </div>
-            <!-- 목록으로 버튼 END -->
           </div>
         </div>
         <!-- **********요약정보 END********** -->

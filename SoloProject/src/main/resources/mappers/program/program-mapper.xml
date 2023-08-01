@@ -9,6 +9,7 @@
 		<if test="address !=null">
 			AND ATDRC_NM LIKE '%${address}%'		
 		</if>
+		ORDER BY pNo LIMIT ${limit} OFFSET ${offset}
 	</select>
 	
 	<select id="selectProgramCount" resultType="int" parameterType="map">
