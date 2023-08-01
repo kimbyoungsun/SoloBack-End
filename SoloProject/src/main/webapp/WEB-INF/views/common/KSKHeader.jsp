@@ -120,7 +120,20 @@
           </ul>
           <div class="ms-auto">
             <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block">
+            <c:if test="${loginMember == null}">
               <a class="btn btn-primary" href="${path}/login">로그인/회원가입</a>
+            </c:if>
+            <c:if test="${loginMember != null}">
+              <a class="btn btn-custom" href="${path}/logout"
+                  >로그아웃</a
+                >
+                <div class="avatar avatar-sm mb-2 ms-2">
+                    <a href="AccountProfile.html">
+                        <img style="width:2.5rem; height:2.5rem;" class="rounded-circle border border-1 border-white"
+                        src="${path}/resources/img/avatar/${loginMember.reFileNm}" alt="프로필 사진"/>
+                    </a>
+                </div>
+             </c:if>
             </li>
           </div>
         </div>

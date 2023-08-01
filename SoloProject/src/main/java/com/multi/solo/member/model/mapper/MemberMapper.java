@@ -12,20 +12,24 @@ import com.multi.solo.member.model.vo.Member;
 //※ 주의 :  mapper의 id와 동일한 메소드 네이밍을 맞춰야한다. 
 
 @Mapper
-public interface MemberMapper {
-	int selectCount();
-	List<Member> selectAll();
-	Member selectMember(@Param("id") String id); // @Param : 파라메터임을 알리는 어노테이션. 없어 된다.
+public interface MemberMapper {	
+	/**
+	 * id를 입력하면 Member객체를 반환
+	 * @param id
+	 * @return Member
+	 */
+	
+	Member selectMemberById(String id);
+	// Member selectMember(@Param("id") String id); // @Param : 파라메터임을 알리는 어노테이션. 없어 된다.
 	int insertMember(Member member);
 	int updateMember(Member member);
 	int updatePwd(Map<String, Object> param);
 	int deleteMember(int no); 
-	int duplID(String id);
-	Member findById(String id);
-	int updateID(@Param("id") String id, @Param("mno") int mno);
-	Member findByMno(int mno);
-	Member selectMemberById(String id);
-	int deleteAllWishlist(int mno);
+	// int duplID(String id);
+	// Member findById(String id);
+	// int updateID(@Param("id") String id, @Param("mno") int mno);
+	// Member findByMno(int mno);
+	// int deleteAllWishlist(int mno);
 
 }
 

@@ -64,6 +64,7 @@ public class MemberService {
 	 */
 	public Member login(String inputId, String inputPwd) {
 		log.info(inputId);
+		log.info(inputPwd);
 		Member member = mapper.selectMemberById(inputId);
 		if(member == null) {
 			return null;
@@ -96,6 +97,7 @@ public class MemberService {
 	 * @param member
 	 * @return 성공시 1, 실패시 0
 	 */
+	/*
 	@Transactional(rollbackFor = Exception.class)
 	public int saveMember(Member member) {
 		int result = 0;
@@ -114,6 +116,7 @@ public class MemberService {
 		
 		return result;
 	}
+	*/
 	
 	@Transactional(rollbackFor = Exception.class)
 	public int delete(int mno) {
@@ -126,9 +129,11 @@ public class MemberService {
 	 * @param id
 	 * @return member
 	 */
+	/*
 	public Member findById(String id) {
 		return mapper.findById(id);
 	}
+	*/
 	
 	/**
 	 * id 변경
@@ -136,6 +141,7 @@ public class MemberService {
 	 * @param mno 
 	 * @return 성공 1, 실패 0
 	 */
+	/*
 	@Transactional(rollbackFor = Exception.class)
 	public int updateID(String id, int mno) {
 		if (mapper.duplID(id) != 0) {
@@ -143,10 +149,7 @@ public class MemberService {
 		}
 		return mapper.updateID(id, mno);
 	}
-
-	public Member findByMno(int mno) {
-		return mapper.findByMno(mno);
-	}
+	*/
 
 	public int updatePwd(String password, int mno) {
 		Map<String, Object> param = new HashMap<String, Object>();
@@ -160,9 +163,4 @@ public class MemberService {
 		return pwEncoder.matches(password, mapper.selectMemberById(id).getPassword()) ? true : false;
 	}
 	
-
-	public int deleteAllWishlist(int mno) {
-		return mapper.deleteAllWishlist(mno);
-	}
-
 }

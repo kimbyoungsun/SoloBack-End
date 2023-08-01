@@ -3,40 +3,10 @@
 
 
 <!-- 향후 Mapper interface가 정의 될 위치 -->
-<mapper namespace="com.multi.solo.member.model.mapper.MemberMapper">
-	<sql id="selectMemberSql">
-		SELECT 	
-			MNO, ID, PASSWORD, ROLE, NAME, PHONE,
-			EMAIL, ADDRESS, HOBBY,
-			STATUS, ENROLL_DATE, MODIFY_DATE 
-		FROM MEMBER
-	</sql>
-	
-	<resultMap type="Member" id="memberResultMap">
-		<id 	property="mNo" 		column="MNO" />
-		<result property="id" 		column="ID" />
-		<result property="password" column="PASSWORD" />
-		<result property="role" 	column="ROLE" />
-		<result property="name" 	column="NAME" />
-		<result property="phone" 	column="PHONE" />
-		<result property="email" 	column="EMAIL" />
-		<result property="address" 	column="ADDRESS" />
-		<result property="hobby" 	column="HOBBY" />
-		<result property="status" 	column="STATUS" />
-		<result property="enrollDate" column="ENROLL_DATE" />
-		<result property="modifyDate" column="MODIFY_DATE" />
-	</resultMap>
-	
-	<select id="selectCount" resultType="int">
-		SELECT COUNT(*) FROM MEMBER
-	</select>
-	
-	<select id="selectAll" resultMap="memberResultMap">
-		<include refid="selectMemberSql"/>
-	</select>
-	
+<mapper namespace="com.multi.solo.member.model.mapper.MemberMapper">	
+		
 	<select id="selectMemberById" parameterType="string" resultType="Member">
-		SELECT * FROM MEMBER WHERE ID = #{id} AND STATUS = 'Y'
+		SELECT * FROM MEMBER WHERE id = 'admin' AND status = 'Y';
 	</select>
 	
 	<insert id="insertMember" parameterType="Member">
@@ -44,12 +14,14 @@
 			MNO, ID, PASSWORD, 	
 			ROLE, NAME, PHONE,
 			EMAIL, ADDRESS,HOBBY, 		
-			STATUS, ENROLL_DATE, MODIFY_DATE
+			STATUS, ENROLL_DATE, MODIFY_DATE,
+			BIRTH, ORIFILENM, REFILENM 
 		) VALUES (
 			 0, #{id}, #{password},
 			 default, #{name}, #{phone},
 			 #{email}, #{address}, #{hobby},
-			 DEFAULT, DEFAULT, DEFAULT)
+			 DEFAULT, DEFAULT, DEFAULT,
+			 #{birth}, DEFAULT, DEFAULT)
 	</insert>
 	
 	 <update id="updateMember" parameterType="Member">

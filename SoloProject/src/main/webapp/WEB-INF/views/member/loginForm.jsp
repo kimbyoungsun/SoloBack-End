@@ -33,14 +33,14 @@
                                     </div>
             
                                     <!-- Form START -->
-                                    <form class="mt-4 text-start" action="login" method="post">
+                                    <form class="mt-4 text-start" action="${path}/login" method="post">
                                         <!-- Email -->
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" name="id" placeholder="아이디를 입력해주세요">
+                                            <input type="text" class="form-control" name="inputId" id="id" placeholder="아이디를 입력해주세요" required>
                                         </div>
                                         <!-- Password -->
                                         <div class="mb-3 position-relative">
-                                            <input class="form-control fakepassword" type="password" name="password" id="psw-input" placeholder="비밀번호를 입력해주세요">
+                                            <input class="form-control fakepassword" type="password" name="inputPwd" id="password" placeholder="비밀번호를 입력해주세요" required>
                                             <span class="position-absolute top-50 end-0 translate-middle-y p-0">
                                                 <i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
                                             </span>
