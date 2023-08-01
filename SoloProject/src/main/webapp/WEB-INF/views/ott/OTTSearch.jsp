@@ -68,7 +68,7 @@
 
 <section>
 <c:if test="${list[0].backdrop_path == null }">
-	<div class="hero-home" id="home"
+<div class="hero-home" id="home"
 	style="background-image: url('https://image.tmdb.org/t/p/original/2iNUodSKykQ4VtvtG280ntNy7hB.jpg'); background-size: cover;">
 </c:if>
 <c:if test="${list[0].backdrop_path != null }">

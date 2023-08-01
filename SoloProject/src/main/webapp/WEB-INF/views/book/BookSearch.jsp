@@ -26,12 +26,13 @@
                         <h2>검 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 색</h2>
                       </div>
                       <div class="search-bar2 p-3 p-lg-1 ps-lg-4 col-lg-8 mt-3 mb-4 mr-5">
-                        <form action="#">
+                        <form id="searchForm" action="${path}/book/BookSearch" >
+                        <input type="hidden"name="page" value="1"/>
                           <div class="row">
                             <div class="col-lg-2 d-flex align-items-center form-group no-divider">
                               <select class="selectpicker" title="Categories" data-style="btn-form-control">
-                                <option value="bookname" selected>도서명</option>
-                                <option value="writer">저자</option>
+                                <option value="title" selected>도서명</option>
+                                <option value="author">저자</option>
                                 <option value="publisher">출판사</option>
                               </select>
                             </div>
@@ -42,7 +43,6 @@
                               <button class="btn btn-green" style="width:80px" type="submit">검색</button>
                             </div>
                           </div>
-                        </form>
                       </div>
                     </div> 
                     <div class="row">
@@ -53,20 +53,16 @@
                         <div class="container" style="margin-left: 10px">
                           <div class="row row-cols-4">
                             <div class="form-check col">
-                              <input name="sort" type="radio" id="type_0" class="form-check-input" checked>
-                              <label title="" for="type_0" class="form-check-label">판매량</label>
+                              <input name="sort" type="radio" id="SalesPoint" class="form-check-input" value="salesPoint" ${fn:contains(param.sort,'salesPoint')? 'checked': '' }>
+                              <label title="" for="SalesPoint" class="form-check-label">판매량</label>
                             </div>
                             <div class="form-check col">
-                              <input name="sort" type="radio" id="type_1" class="form-check-input">
-                                <label title="" for="type_1" class="form-check-label">북마크</label>
+                              <input name="sort" type="radio" id="Title" class="form-check-input" value="title" ${fn:contains(param.sort,'title')? 'checked': '' }>
+                                <label title="" for="Title" class="form-check-label">제목</label>
                             </div>
                             <div class="form-check col">
-                              <input name="sort" type="radio" id="type_2" class="form-check-input">
-                              <label title="" for="type_2" class="form-check-label">리뷰</label>
-                            </div>
-                            <div class="form-check col">
-                              <input name="sort" type="radio" id="type_3" class="form-check-input">
-                              <label title="" for="type_3" class="form-check-label">발행일</label>
+                              <input name="sort" type="radio" id="PublishTime" class="form-check-input" value="author" ${fn:contains(param.sort,'author')? 'checked': '' }>
+                              <label title="" for="PublishTime" class="form-check-label">글쓴이</label>
                             </div>
                           </div>
                         </div>
@@ -78,133 +74,108 @@
                       </div>
                       <div class="row col-lg-9" style="text-align:start">
                         <div class="container" style="margin-left: 10px">
-                          <div class="row row-cols-4">
-                            <div class="form-check col">
-                              <input name="category" type="radio" id="type_0" class="form-check-input" checked>
-                              <label title="" for="type_0" class="form-check-label">전체</label>
-                            </div>
-                            <div class="form-check col">
-                              <input name="category" type="radio" id="type_1" class="form-check-input">
-                                <label title="" for="type_1" class="form-check-label">국내도서</label>
-                              </div>
-                            <div class="form-check col">
-                              <input name="category" type="radio" id="type_2" class="form-check-input">
-                              <label title="" for="type_2" class="form-check-label">외국도서</label>
-                            </div>
-                          </div>  
                           <div class = "row row-cols-4">
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_0" class="form-check-input">
-                              <label title="" for="type_0" class="form-check-label">인문학</label>
+                              <input name="category" type="checkbox" id="type_0" class="form-check-input" value="요리" ${fn:contains(category,'요리')? 'checked': '' }>
+                              <label title="" for="type_0" class="form-check-label">가정/요리/뷰티</label>
                             </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_1" class="form-check-input">
-                                <label title="" for="type_1" class="form-check-label">사회과학</label>
+                              <input name="category" type="checkbox" id="type_1" class="form-check-input" value="건강/취미" ${fn:contains(category,'건강/취미')? 'checked': '' }>
+                                <label title="" for="type_1" class="form-check-label">건강/취미/레저</label>
                               </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_2" class="form-check-input">
-                              <label title="" for="type_2" class="form-check-label">경제경영</label>
+                              <input name="category" type="checkbox" id="type_2" class="form-check-input" value="고등학교참고서" ${fn:contains(category,'고등학교참고서')? 'checked': '' }>
+                              <label title="" for="type_2" class="form-check-label">고등학교참고서</label>
                             </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_3" class="form-check-input">
-                              <label title="" for="type_3" class="form-check-label">종교</label>
+                              <input name="category" type="checkbox" id="type_3" class="form-check-input" value="고전" ${fn:contains(category,'고전')? 'checked': '' }>
+                              <label title="" for="type_3" class="form-check-label">고전</label>
                             </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_5" class="form-check-input">
-                              <label title="" for="type_0" class="form-check-label">역사</label>
+                              <input name="category" type="checkbox" id="type_5" class="form-check-input" value="과학" ${fn:contains(category,'과학')? 'checked': '' }>
+                              <label title="" for="type_5" class="form-check-label">과학</label>
                             </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_6" class="form-check-input">
-                                <label title="" for="type_1" class="form-check-label">과학</label>
+                              <input name="category" type="checkbox" id="type_6" class="form-check-input" value="경제경영" ${fn:contains(category,'경제경영')? 'checked': '' }>
+                                <label title="" for="type_6" class="form-check-label">경제경영</label>
+                              </div>
+                          </div>
+                          <div class = "row row-cols-4">
+                            <div class="form-check col">
+                              <input name="category" type="checkbox" id="type_8" class="form-check-input" value="만화" ${fn:contains(category,'만화')? 'checked': '' }>
+                              <label title="" for="type_8" class="form-check-label">만화</label>
+                            </div>
+                            <div class="form-check col">
+                              <input name="category" type="checkbox" id="type_10" class="form-check-input" value="사회과학" ${fn:contains(category,'사회과학')? 'checked': '' }>
+                              <label title="" for="type_10" class="form-check-label">사회과학</label>
+                            </div>
+                            <div class="form-check col">
+                              <input name="category" type="checkbox" id="type_11" class="form-check-input" value="소설" ${fn:contains(category,'소설')? 'checked': '' }>
+                              <label title="" for="type_11" class="form-check-label">소설/시/희곡</label>
+                            </div>
+                            <div class="form-check col">
+                              <input name="category" type="checkbox" id="type_12" class="form-check-input" value="수험서" ${fn:contains(category,'수험서')? 'checked': '' }>
+                              <label title="" for="type_12" class="form-check-label">수험서/자격증</label>
+                            </div>
+                            <div class="form-check col">
+                              <input name="category" type="checkbox" id="type_13" class="form-check-input" value="에세이" ${fn:contains(category,'에세이')? 'checked': '' }>
+                                <label title="" for="type_13" class="form-check-label">에세이</label>
                               </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_7" class="form-check-input">
-                              <label title="" for="type_2" class="form-check-label">전문서적</label>
+                              <input name="category" type="checkbox" id="type_14" class="form-check-input" value="여행" ${fn:contains(category,'여행')? 'checked': '' }>
+                              <label title="" for="type_14" class="form-check-label">여행</label>
                             </div>
                           </div>
                           <div class = "row row-cols-4">
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_8" class="form-check-input">
-                              <label title="" for="type_0" class="form-check-label">소설</label>
+                              <input name="category" type="checkbox" id="type_15" class="form-check-input" value="역사" ${fn:contains(category,'역사')? 'checked': '' }>
+                              <label title="" for="type_15" class="form-check-label">역사</label>
                             </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_9" class="form-check-input">
-                                <label title="" for="type_1" class="form-check-label">시/희곡</label>
+                              <input name="category" type="checkbox" id="type_16" class="form-check-input" value="예술" ${fn:contains(category,'예술')? 'checked': '' }>
+                                <label title="" for="type_16" class="form-check-label">예술/대중문화</label>
                               </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_10" class="form-check-input">
-                              <label title="" for="type_2" class="form-check-label">에세이</label>
+                              <input name="category" type="checkbox" id="type_17" class="form-check-input" value="외국어" ${fn:contains(category,'외국어')? 'checked': '' }>
+                              <label title="" for="type_17" class="form-check-label">외국어</label>
                             </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_11" class="form-check-input">
-                              <label title="" for="type_3" class="form-check-label">장르소설</label>
-                            </div>
-                            <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_12" class="form-check-input">
-                              <label title="" for="type_0" class="form-check-label">학업 참고서</label>
-                            </div>
-                            <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_13" class="form-check-input">
-                                <label title="" for="type_1" class="form-check-label">수험서</label>
-                              </div>
-                            <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_14" class="form-check-input">
-                              <label title="" for="type_2" class="form-check-label">외국어</label>
-                            </div>
-                          </div>
-                          <div class = "row row-cols-4">
-                            <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_15" class="form-check-input">
-                              <label title="" for="type_0" class="form-check-label">여행</label>
-                            </div>
-                            <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_16" class="form-check-input">
-                                <label title="" for="type_1" class="form-check-label">대중문예</label>
-                              </div>
-                            <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_17" class="form-check-input">
-                              <label title="" for="type_2" class="form-check-label">만화</label>
-                            </div>
-                            <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_18" class="form-check-input">
-                              <label title="" for="type_3" class="form-check-label">자기계발</label>
+                              <input name="category" type="checkbox" id="type_18" class="form-check-input" value="유아" ${fn:contains(category,'유아')? 'checked': '' }>
+                              <label title="" for="type_18" class="form-check-label">유아</label>
                             </div>
                           </div>
                           <div class = "row row-cols-3"> 
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_19" class="form-check-input">
-                              <label title="" for="type_0" class="form-check-label">컴퓨터/모바일</label>
+                              <input name="category" type="checkbox" id="type_19" class="form-check-input" value="인문학" ${fn:contains(category,'인문학')? 'checked': '' }>
+                              <label title="" for="type_19" class="form-check-label">인문학</label>
                             </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_20" class="form-check-input">
-                                <label title="" for="type_1" class="form-check-label">가정/요리/뷰티</label>
+                              <input name="category" type="checkbox" id="type_20" class="form-check-input" value="종교" ${fn:contains(category,'종교')? 'checked': '' }>
+                                <label title="" for="type_20" class="form-check-label">종교/역학</label>
                               </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_21" class="form-check-input">
-                              <label title="" for="type_2" class="form-check-label">건강/취미/레저</label>
+                              <input name="category" type="checkbox" id="type_21" class="form-check-input" value="좋은부모" ${fn:contains(category,'좋은부모')? 'checked': '' }>
+                              <label title="" for="type_21" class="form-check-label">좋은부모</label>
                             </div>
                           </div> 
                           <div class = "row row-cols-4">
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_22" class="form-check-input">
-                              <label title="" for="type_0" class="form-check-label">부모</label>
+                              <input name="category" type="checkbox" id="type_22" class="form-check-input" value="청소년" ${fn:contains(category,'청소년')? 'checked': '' }>
+                              <label title="" for="type_22" class="form-check-label">청소년</label>
                             </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_23" class="form-check-input">
-                                <label title="" for="type_1" class="form-check-label">청소년</label>
+                              <input name="category" type="checkbox" id="type_23" class="form-check-input" value="초등학교참고서" ${fn:contains(category,'초등학교참고서')? 'checked': '' }>
+                                <label title="" for="type_23" class="form-check-label">초등학교참고서</label>
                               </div>
                             <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_24" class="form-check-input">
-                              <label title="" for="type_2" class="form-check-label">어린이</label>
-                            </div>
-                            <div class="form-check col">
-                              <input name="category" type="checkbox" id="type_25" class="form-check-input">
-                              <label title="" for="type_3" class="form-check-label">유아</label>
+                              <input name="category" type="checkbox" id="type_24" class="form-check-input" value="컴퓨터" ${fn:contains(category,'컴퓨터')? 'checked': '' }>
+                              <label title="" for="type_24" class="form-check-label">컴퓨터/모바일</label>
                             </div>
                           </div> 
                         </div>
                       </div>
                     </div>
+                    </form>
                   </div> 
                 </div>
               </div>
@@ -215,206 +186,76 @@
     </section>
     <!--책 나열-->
     <section class="mt-lg-5">
-      <div class="container text-block" style="margin-top:70px;" >
-        <div class="d-flex d-block d-sm-flex review" style="margin-top: -170px; font-size:20px">
-          <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
+    <c:forEach var="item" items="${book}">
+    <div class="container text-block mt-5" >
+        <div class="row  hover-animate" font-size:20px">
+          <div class=" col-2 text-md-center flex-shrink-0 me-4 me-xl-5">
+          <a class="nav-link"href="${path}/book/BookDetail?bId=${item.bid}">
             <img
-              class="d-block mb-2"
-              style="width: 12.5rem; border:0.5px solid black;"
-              src="${path}/resources/img\books\searchedbook1.png"
+              class="img-fluid"
+              style="width: 200px; border:0.5px solid black;"
+              src="${item.cover}"
               alt="세이노의 가르침"
+              onclick="location.href='${path}/book/BookDetail?bId=${item.bid}'"
             />
+            </a>
           </div>
-          <div>
-            <div style="display:flex;">
-              <button class="btn btn-green" style="margin-right:40px; margin-top:-10px;">BEST1</button>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
+          <div class=" col">
+          
+            <div class="row">
+              <button class="col-2 btn btn-green" style="margin-right:40px; margin-top:-10px;">BEST1</button>
+              <a class=" col-2 nav-item nav-link active" style="margin-right:40px;" href="${path}/book/BookDetail">
                 <img src="${path}/resources/img\bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크&nbsp;42</a>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
+              <a class="col-2 nav-item nav-link active" style="margin-right:40px;" href="${path}/book/BookDetail">
                 <img src="${path}/resources/img\comment-regular.svg" style="height:20px;"/>&nbsp;리뷰&nbsp;36</a>
-                <div class="star-rating"> <i class="fas fa-star"></i>&nbsp; <span style="color:black; margin-right:40px;">4.7<span></div>  
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
+                <div class="col-2 star-rating"> <i class="fas fa-star"></i>&nbsp; <span  style="color:black; margin-right:40px;">4.7<span></div>  
+              <a class="col-2 nav-item nav-link active" style="margin-right:40px;" href="${path}/book/BookDetail">
                 <img src="${path}/resources/img\check-to-slot-solid.svg" style="height:20px;"/>&nbsp;내가 읽은 책</a>
             </div>
             <div>
-              <h4 class="mt-3 mb-2">세이노의 가르침</h4>
+            <a class="nav-link" href="${path}/book/BookDetail?bId=${item.bid}">
+              <h4 class="mt-3 mb-2">${item.title}</h4>
+              </a>
             </div>
-            <p class="text-lg mb-1">저자: 세이노(SayNo)</p>
-            <p class="text-lg mb-1">출판사: 데이원</p>
-            <p class="text-lg mb-1">발행일:  2023.03.02</p>
-            <p class="text-lg mb-1">2000년부터 발표된 그의 주옥같은 글들. 독자들이 자발적으로 만든 제본서는 물론, 전자책과 앱까지 나왔던 《세이노의 가르침》이 드디어 전국 서점에서 독자들을 마주한다. 여러 판본을...</p>
+            <p class="text-lg mb-1">저자: ${item.author}</p>
+            <p class="text-lg mb-1">출판사: ${item.publisher}</p>
+            <p class="text-lg mb-1">발행일: ${item.pubDate}</p>
+            <p class="text-lg mb-1">${item.description}</p>
           </div>
         </div>
       </div>
-      <div class="container text-block" style="margin-top: 200px;">
-        <div class="d-flex d-block d-sm-flex review" style="margin-top: -170px; font-size:20px">
-          <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-            <img
-              class="d-block mb-2"
-              style="width: 12.5rem; border:0.5px solid black;"
-              src="${path}/resources/img\books\searchedbook2.png"
-              alt="세이노의 가르침"
-            />
-          </div>
-          <div>
-            <div style="display:flex;">
-              <button class="btn btn-green" style="margin-right:40px; margin-top:-10px;">BEST2</button>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크</a>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\comment-regular.svg" style="height:20px;"/>&nbsp;리뷰</a>
-                <div class="star-rating"> <i class="fas fa-star"></i>&nbsp; <span style="color:black; margin-right:40px;">4.7<span></div>  
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\check-to-slot-solid.svg" style="height:20px;"/>&nbsp;내가 읽은 책</a>
-            </div>
-            <div>
-              <h4 class="mt-3 mb-2">세이노의 가르침</h4>
-            </div>
-            <p class="text-lg mb-1">저자: 세이노(SayNo)</p>
-            <p class="text-lg mb-1">출판사: 데이원</p>
-            <p class="text-lg mb-1">발행일:  2023.03.02</p>
-            <p class="text-lg mb-1">2000년부터 발표된 그의 주옥같은 글들. 독자들이 자발적으로 만든 제본서는 물론, 전자책과 앱까지 나왔던 《세이노의 가르침》이 드디어 전국 서점에서 독자들을 마주한다. 여러 판본을...</p>
-          </div>
-        </div>
-      </div>
-      <div class="container text-block" style="margin-top: 200px;">
-        <div class="d-flex d-block d-sm-flex review" style="margin-top: -170px; font-size:20px">
-          <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-            <img
-              class="d-block mb-2"
-              style="width: 12.5rem; border:0.5px solid black;"
-              src="${path}/resources/img\books\searchedbook3.png"
-              alt="세이노의 가르침"
-            />
-          </div>
-          <div>
-            <div style="display:flex;">
-              <button class="btn btn-green" style="margin-right:40px; margin-top:-10px;">BEST3</button>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크</a>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\comment-regular.svg" style="height:20px;"/>&nbsp;리뷰</a>
-                <div class="star-rating"> <i class="fas fa-star"></i>&nbsp; <span style="color:black; margin-right:40px;">4.7<span></div>  
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\check-to-slot-solid.svg" style="height:20px;"/>&nbsp;내가 읽은 책</a>
-            </div>
-            <div>
-              <h4 class="mt-3 mb-2">세이노의 가르침</h4>
-            </div>
-            <p class="text-lg mb-1">저자: 세이노(SayNo)</p>
-            <p class="text-lg mb-1">출판사: 데이원</p>
-            <p class="text-lg mb-1">발행일:  2023.03.02</p>
-            <p class="text-lg mb-1">2000년부터 발표된 그의 주옥같은 글들. 독자들이 자발적으로 만든 제본서는 물론, 전자책과 앱까지 나왔던 《세이노의 가르침》이 드디어 전국 서점에서 독자들을 마주한다. 여러 판본을...</p>
-          </div>
-        </div>
-      </div>
-      <div class="container text-block" style="margin-top: 200px;">
-        <div class="d-flex d-block d-sm-flex review" style="margin-top: -170px; font-size:20px">
-          <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-            <img
-              class="d-block mb-2"
-              style="width: 12.5rem; border:0.5px solid black;"
-              src="${path}/resources/img\books\searchedbook4.png"
-              alt="세이노의 가르침"
-            />
-          </div>
-          <div>
-            <div style="display:flex;">
-              <button class="btn btn-green" style="margin-right:40px; margin-top:-10px;">4</button>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크</a>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\comment-regular.svg" style="height:20px;"/>&nbsp;리뷰</a>
-                <div class="star-rating"> <i class="fas fa-star"></i>&nbsp; <span style="color:black; margin-right:40px;">4.7<span></div>  
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\check-to-slot-solid.svg" style="height:20px;"/>&nbsp;내가 읽은 책</a>
-            </div>
-            <div>
-              <h4 class="mt-3 mb-2">세이노의 가르침</h4>
-            </div>
-            <p class="text-lg mb-1">저자: 세이노(SayNo)</p>
-            <p class="text-lg mb-1">출판사: 데이원</p>
-            <p class="text-lg mb-1">발행일:  2023.03.02</p>
-            <p class="text-lg mb-1">2000년부터 발표된 그의 주옥같은 글들. 독자들이 자발적으로 만든 제본서는 물론, 전자책과 앱까지 나왔던 《세이노의 가르침》이 드디어 전국 서점에서 독자들을 마주한다. 여러 판본을...</p>
-          </div>
-        </div>
-      </div>
-      <div class="container text-block" style="margin-top: 200px;">
-        <div class="d-flex d-block d-sm-flex review" style="margin-top: -170px; font-size:20px">
-          <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-            <img
-              class="d-block mb-2"
-              style="width: 12.5rem; border:0.5px solid black;"
-              src="${path}/resources/img\books\searchedbook5.png"
-              alt="세이노의 가르침"
-            />
-          </div>
-          <div>
-            <div style="display:flex;">
-              <button class="btn btn-green" style="margin-right:40px; margin-top:-10px;">5</button>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크</a>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\comment-regular.svg" style="height:20px;"/>&nbsp;리뷰</a>
-                <div class="star-rating"> <i class="fas fa-star"></i>&nbsp; <span style="color:black; margin-right:40px;">4.7<span></div>  
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\check-to-slot-solid.svg" style="height:20px;"/>&nbsp;내가 읽은 책</a>
-            </div>
-            <div>
-              <h4 class="mt-3 mb-2">세이노의 가르침</h4>
-            </div>
-            <p class="text-lg mb-1">저자: 세이노(SayNo)</p>
-            <p class="text-lg mb-1">출판사: 데이원</p>
-            <p class="text-lg mb-1">발행일:  2023.03.02</p>
-            <p class="text-lg mb-1">2000년부터 발표된 그의 주옥같은 글들. 독자들이 자발적으로 만든 제본서는 물론, 전자책과 앱까지 나왔던 《세이노의 가르침》이 드디어 전국 서점에서 독자들을 마주한다. 여러 판본을...</p>
-          </div>
-        </div>
-      </div>
-      <div class="container text-block" style="margin-top: 200px;">
-        <div class="d-flex d-block d-sm-flex review" style="margin-top: -170px; font-size:20px">
-          <div class="text-md-center flex-shrink-0 me-4 me-xl-5">
-            <img
-              class="d-block mb-2"
-              style="width: 12.5rem; border:0.5px solid black;"
-              src="${path}/resources/img\books\searchedbook6.png"
-              alt="세이노의 가르침"
-            />
-          </div>
-          <div>
-            <div style="display:flex;">
-              <button class="btn btn-green" style="margin-right:40px; margin-top:-10px;">6</button>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크</a>
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\comment-regular.svg" style="height:20px;"/>&nbsp;리뷰</a>
-                <div class="star-rating"> <i class="fas fa-star"></i>&nbsp; <span style="color:black; margin-right:40px;">4.7<span></div>  
-              <a class="nav-item nav-link active" style="margin-right:40px;" href="BookDetail.html">
-                <img src="${path}/resources/img\check-to-slot-solid.svg" style="height:20px;"/>&nbsp;내가 읽은 책</a>
-            </div>
-            <div>
-              <h4 class="mt-3 mb-2">세이노의 가르침</h4>
-            </div>
-            <p class="text-lg mb-1">저자: 세이노(SayNo)</p>
-            <p class="text-lg mb-1">출판사: 데이원</p>
-            <p class="text-lg mb-1">발행일:  2023.03.02</p>
-            <p class="text-lg mb-1">2000년부터 발표된 그의 주옥같은 글들. 독자들이 자발적으로 만든 제본서는 물론, 전자책과 앱까지 나왔던 《세이노의 가르침》이 드디어 전국 서점에서 독자들을 마주한다. 여러 판본을...</p>
-          </div>
-        </div>
-      </div>
+    
+    </c:forEach>
 
       <nav aria-label="Page navigation example ">
-        <ul
-          class="pagination2 pagination-template d-flex justify-content-center my-5">
-          <li class="page-item">
-            <a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a>
-          </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a>
-          </li>
-        </ul>
-      </nav>
+			<ul
+				class="pagination pagination-template d-flex justify-content-center">
+				<li class="page-item"><button class="page-link" href="#" onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-left"></i></button></li>
+				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}"
+					varStatus="status" step="1">
+
+					<c:if test="${status.current == pageInfo.currentPage}">
+						<li class="page-item active"><a class="page-link" href="#">${status.current}</a>
+						</li>
+					</c:if>
+
+					<c:if test="${status.current != pageInfo.currentPage}">
+						<li class="page-item"><a class="page-link" href="#"
+							onclick="movePage(${status.current})">${status.current}</a></li>
+					</c:if>
+
+				</c:forEach>
+				<li class="page-item"><button class="page-link" href="#"onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-right" ></i></button></li>
+			</ul>
+		</nav>
     </section>
 <jsp:include page="/WEB-INF/views/common/KDHFooter.jsp"></jsp:include>
+<!-- 시간 슬라이더 -->
+<script>
+ 	function movePage(page){
+		searchForm.page.value = page;
+		searchForm.submit();
+	}
+</script>

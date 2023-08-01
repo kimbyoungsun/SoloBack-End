@@ -4,7 +4,7 @@
 
 <mapper namespace="com.multi.solo.book.model.mapper.BookMapper">
 
-	<select id="selectBookList"
+	<select id="selectBestList"
 		resultType="com.multi.solo.book.model.vo.Book" parameterType="map">
 		SELECT * FROM ALADIN
 		WHERE 1=1
@@ -14,9 +14,10 @@
 		<if test="author != null">
 			AND author LIKE '%${author}%'
 		</if>
+		ORDER BY PUBDATE DESC LIMIT ${limit} OFFSET ${offset}	
 	</select>
 
-	<select id="selectBookCount" resultType="int"
+	<select id="selectBestCount" resultType="int"
 		parameterType="map">
 		SELECT COUNT(*) FROM ALADIN
 		WHERE 1=1
@@ -28,10 +29,68 @@
 		</if>
 	</select>
 
-	<select id="selectBookById" resultType="com.multi.solo.book.model.vo.Book" parameterType="int">
+	<select id="selectBestById" resultType="com.multi.solo.book.model.vo.Book" parameterType="int">
 		SELECT * FROM ALADIN
 		WHERE bID=#{id}
 	</select>
 
+
+
+	<select id="selectBookList"
+		resultType="com.multi.solo.book.model.vo.Book" parameterType="map">
+		SELECT * FROM BOOK
+		WHERE 1=1
+		<if test="title != null">
+			AND title LIKE '%${title}%'
+		</if>
+		<if test="author != null">
+			AND author LIKE '%${author}%'
+		</if>
+			<if test="publisher != null">
+			AND publisher LIKE '%${publisher}%'
+		</if>
+		
+		<if test="categoryId != null">
+			AND categoryId LIKE '%${categoryId}%'
+		</if>
+		<if test="category != null">
+				AND (
+				<foreach collection="category" item="item" separator="or">
+					categoryName LIKE '%${item}%'
+				</foreach>
+				)
+		</if>
+		<if test="sort != null">
+			ORDER BY ${sort} DESC LIMIT ${limit} OFFSET ${offset}	
+		</if>
+	</select>
+
+	<select id="selectBookCount" resultType="int"
+		parameterType="map">
+		SELECT COUNT(*) FROM BOOK
+		WHERE 1=1
+		<if test="title != null">
+			AND title LIKE '%${title}%'
+		</if>
+		<if test="author != null">
+			AND author LIKE '%${author}%'
+		</if>
+		<if test="publisher != null">
+			AND publisher LIKE '%${publisher}%'
+		</if>
+		
+		<if test="category != null">
+			AND (
+			<foreach collection="category" item="item" separator="or">
+				categoryName LIKE '%${item}%'
+			</foreach>
+			)
+		</if>
+	</select>
+
+	<select id="selectBookById" resultType="com.multi.solo.book.model.vo.Book" parameterType="int">
+		SELECT * FROM BOOK
+		WHERE bID=#{id}
+	</select>
 
 </mapper>
