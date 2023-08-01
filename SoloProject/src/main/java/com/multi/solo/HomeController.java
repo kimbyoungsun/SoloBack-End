@@ -80,6 +80,6 @@ public class HomeController {
 //		session.setAttribute("loginMember", loginMember);
 //		test();		
 		
-		return "etc/restaurant";
+		return "MainIndex";
 	}
 }

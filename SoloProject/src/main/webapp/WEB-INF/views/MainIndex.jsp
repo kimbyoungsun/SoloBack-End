@@ -94,6 +94,7 @@
             </a>
           </div>
           <div class="col d-flex">
+          <a class="nav-link" href="${path}/location/Restaurant">
             <div class="card border-0 bg-solo-3">
               <div class="container">
                 <div class="mt-3 ms-3 fw-bold">동네 맛집은 내가 접수한다</div>
@@ -108,6 +109,7 @@
                 </div>
               </div>
             </div>
+            </a>
           </div>
           <div class="col d-flex">
           <a class="nav-link" href="${path}/sports/SportMain">
@@ -319,15 +321,15 @@
       <div class="container-fluid">
         <img width="100%" src="${path}/resources/img/kbs/RentalMap.png" alt="" />
         <div
-          class="btn btn-danger position-relative"
-          style="top: -4.5625rem; left: 26.25rem"
+          class="btn btn-light rounded-circle position-relative"
+          style="top: -4.5625rem; left: 26.25rem; "
           onclick="location.href='${path}/location/RentalHouse?category=서울특별시'"
         >
           서울
         </div>
 
         <div
-          class="btn btn-danger position-relative"
+          class="btn btn-light rounded-circle position-relative"
           style="top: -8.75rem; left: 3.125rem"
            onclick="location.href='${path}/location/RentalHouse?category=인천광역시'"
         >
@@ -335,7 +337,7 @@
         </div>
 
         <div
-          class="btn btn-danger position-relative"
+          class="btn btn-light rounded-circle position-relative"
           style="top: -12.25rem; left: 36.0625rem"
           onclick="location.href='${path}/location/RentalHouse?category=경기도'"
         >
@@ -343,7 +345,7 @@
         </div>
 
         <div
-          class="btn btn-danger position-relative"
+          class="btn btn-light rounded-circle position-relative"
           style="top: -27.6875rem; left: 6.0625rem"
            onclick="location.href='${path}/location/RentalHouse?category=강원도'"
         >
@@ -351,7 +353,7 @@
         </div>
 
         <div
-          class="btn btn-danger position-relative"
+          class="btn btn-light rounded-circle position-relative"
           style="top: -17.3125rem; left: 49.625rem"
           onclick="location.href='${path}/location/RentalHouse?category=대전광역시'"
         >
@@ -359,7 +361,7 @@
         </div>
 
         <div
-          class="btn btn-danger position-relative"
+          class="btn btn-light rounded-circle position-relative"
           style="top: -33.125rem; left: 45.625rem"
           onclick="location.href='${path}/location/RentalHouse?category=울산광역시'"
         >
@@ -367,7 +369,7 @@
         </div>
 
         <div
-          class="btn btn-danger position-relative"
+          class="btn btn-light rounded-circle position-relative"
           style="top: -27.75rem; left: 54.25rem"
           onclick="location.href='${path}/location/RentalHouse?category=대구광역시'"
         >
@@ -375,7 +377,7 @@
         </div>
 
         <div
-          class="btn btn-danger position-relative"
+          class="btn btn-light rounded-circle position-relative"
           style="top: -4.5rem; left: 48.25rem"
           onclick="location.href='${path}/location/RentalHouse?category=광주광역시'"
         >
@@ -383,7 +385,7 @@
         </div>
 
         <div
-          class="btn btn-danger position-relative"
+          class="btn btn-light rounded-circle position-relative"
           style="top: -10.1875rem; left: 70.1875rem"
           onclick="location.href='${path}/location/RentalHouse?category=제주특별자치도'"
         >
@@ -391,7 +393,7 @@
         </div>
 
         <div
-          class="btn btn-danger position-relative"
+          class="btn btn-light rounded-circle position-relative"
           style="top: -29.1875rem; left: 64.25rem"
           onclick="location.href='${path}/location/RentalHouse?category=부산광역시'"
         >

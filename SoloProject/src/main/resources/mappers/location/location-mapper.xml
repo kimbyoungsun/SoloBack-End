@@ -12,6 +12,7 @@
 		<if test="address != null">
 			AND addr1 LIKE '%${address}%'
 		</if>
+		ORDER BY contentid LIMIT ${limit} OFFSET ${offset}
 	</select>
 
 	<select id="selectRestaruntCount" resultType="int"

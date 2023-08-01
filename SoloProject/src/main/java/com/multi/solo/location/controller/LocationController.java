@@ -21,6 +21,7 @@ import com.multi.solo.common.util.PageInfo;
 import com.multi.solo.location.model.service.LocationService;
 import com.multi.solo.location.model.vo.HotPlace;
 import com.multi.solo.location.model.vo.RentalHouse;
+import com.multi.solo.location.model.vo.Restaurant;
 import com.multi.solo.ott.model.vo.Movie;
 import com.multi.solo.ott.model.vo.MovieCredit;
 import com.multi.solo.ott.model.vo.MovieVideo;
@@ -146,8 +147,21 @@ public class LocationController {
 	
 	@GetMapping("/Restaurant")
 	public String restaurant(Model model,@RequestParam Map<String, String> param) {
+		int page = 1;
+		try {
+			page =Integer.parseInt(param.get("page"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
+		int restCount = service.getRestaurantCount(param);
+		PageInfo pageInfo = new PageInfo(page, 5, restCount, 9);
+		List<Restaurant> list = service.getRestaurantList(pageInfo, param);
 		
-		return "etc/Restaurant";
+		model.addAttribute("list",list);
+		model.addAttribute("pageInfo",pageInfo);
+		model.addAttribute("param",param);
+		
+		return "etc/restaurant";
 	}
 }
