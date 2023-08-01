@@ -99,7 +99,7 @@
       >
         <div class="container">
           <div class="d-flex align-items-center">
-            <a class="navbar-brand py-1" href="index.html"
+            <a class="navbar-brand py-1" href="${path}/"
               ><img src="${path}/resources/img/logo.svg" alt="Directory logo"
             /></a>
           </div>

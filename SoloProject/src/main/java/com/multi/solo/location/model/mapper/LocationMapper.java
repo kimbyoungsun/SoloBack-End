@@ -5,8 +5,10 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.multi.solo.location.model.vo.HotPlace;
 import com.multi.solo.location.model.vo.RentalHouse;
 import com.multi.solo.location.model.vo.Restaurant;
+import com.multi.solo.location.model.vo.SignguCode;
 
 @Mapper
 public interface LocationMapper {
@@ -15,5 +17,7 @@ public interface LocationMapper {
 	Restaurant selectRestaruntById(String id);
 	List<RentalHouse> selectRentalHouseList(Map<String,String> param);	
 	int selectRentalHouseCount(Map<String, String> param);
+	List<HotPlace> selectHotPlaceList(Map<String, String> param);
+	int selectHotPlaceCount(Map<String, String> param);
+	List<SignguCode> selectSignguCodeList(Map<String,Object> param);
 }
-

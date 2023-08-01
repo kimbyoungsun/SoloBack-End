@@ -37,19 +37,53 @@
 		parameterType="map">
 		SELECT * FROM RENTALHOUSE
 		WHERE 1=1
-		<if test="address != null">
-			AND brtcNm LIKE '%${address}%'
+		<if test="category != null">
+			AND rnAdres LIKE '%${category}%'
 		</if>
+		ORDER BY signguCode LIMIT ${limit} OFFSET ${offset}
 	</select>
 
 	<select id="selectRentalHouseCount" resultType="int"
 		parameterType="map">
 		SELECT COUNT(*) FROM RENTALHOUSE
 		WHERE 1=1
-		<if test="address != null">
-			AND brtcNm LIKE '%${address}%'
+		<if test="category != null">
+			AND brtcNm LIKE '%${category}%'
 		</if>
 	</select>
-
+	
+	<select id="selectSignguCodeList" resultType="com.multi.solo.location.model.vo.SignguCode" parameterType="map">
+		SELECT * FROM signguCode
+		WHERE 1=1
+		<if test="brtcCode != null">
+			AND brtcCode LIKE '%${brtcCode}%'
+		</if>
+		<if test="address != null">
+			AND (
+			<foreach collection="address" item="item" separator="or">
+				signguNm LIKE '%${item}%'
+			</foreach>
+			)
+		</if>
+	</select>
+	
+	<select id="selectHotPlaceList"
+		resultType="com.multi.solo.location.model.vo.HotPlace"
+		parameterType="map">
+		SELECT * FROM hotplace
+		WHERE 1=1
+		<if test="category != null">
+			AND  category LIKE '%${category}%'
+		</if>
+		ORDER BY no LIMIT ${limit} OFFSET ${offset}
+	</select>
+	<select id="selectHotPlaceCount" resultType="int"
+		parameterType="map">
+		SELECT COUNT(*) FROM hotplace
+		WHERE 1=1
+		<if test="category != null">
+			AND  category LIKE '%${category}%'
+		</if>
+	</select>
 
 </mapper>

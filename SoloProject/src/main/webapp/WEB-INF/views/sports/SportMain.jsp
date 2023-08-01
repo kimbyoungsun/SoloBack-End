@@ -48,7 +48,24 @@
         </div>
       </div>
     </section>
-
+	<section>
+	<div class="container">
+		<div class="row ">
+			<div class="col-2"></div>
+			<div class="col-2 pt-3 px-3">
+				<a class="nav-link text-center border border-1 rounded-3 py-2 px-1" href="${path}/sports/SportMain">
+				시설보기
+				</a>
+			</div>
+			<div class="col-2  pt-3 px-3">
+				<a class="nav-link text-center border border-1 rounded-3 py-2 px-1" href="${path}/sports/SportVideo">
+				건강비디오
+			</a>
+			</div>
+		</div>
+	</div>
+	
+	</section>
     <section>
       <div class="container text-block mt-lg-5">
         <div class="row">

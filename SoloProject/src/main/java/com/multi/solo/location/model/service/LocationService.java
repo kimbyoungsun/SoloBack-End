@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.multi.solo.common.util.PageInfo;
 import com.multi.solo.location.model.mapper.LocationMapper;
+import com.multi.solo.location.model.vo.HotPlace;
 import com.multi.solo.location.model.vo.RentalHouse;
 import com.multi.solo.location.model.vo.Restaurant;
+import com.multi.solo.location.model.vo.SignguCode;
 
 @Service
 public class LocationService {
@@ -42,4 +44,19 @@ public class LocationService {
 		return mapper.selectRentalHouseCount(param);
 	}
 	
+	
+	public List<HotPlace> getHotPlaceList(PageInfo pageInfo, Map<String, String> param){
+		param.put("limit", "" + pageInfo.getListLimit());
+		param.put("offset", "" + (pageInfo.getStartList() - 1));
+		
+		return mapper.selectHotPlaceList(param);
+	}
+	
+	public int getHotPlaceCount(Map<String, String> param) {
+		return mapper.selectHotPlaceCount(param);
+	}
+	
+	public List<SignguCode> getSignguCodeList(Map<String, Object> param){
+		return mapper.selectSignguCodeList(param);
+	}
 }
