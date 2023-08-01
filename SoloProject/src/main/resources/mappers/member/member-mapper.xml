@@ -35,10 +35,9 @@
 		<include refid="selectMemberSql"/>
 	</select>
 	
-	<select id="selectMember" parameterType="string" resultMap="memberResultMap">
-		<include refid="selectMemberSql"/>
-		WHERE ID = #{id} AND STATUS = 'Y'
-	</select>	
+	<select id="selectMemberById" parameterType="string" resultType="Member">
+		SELECT * FROM MEMBER WHERE ID = #{id} AND STATUS = 'Y'
+	</select>
 	
 	<insert id="insertMember" parameterType="Member">
 		INSERT INTO MEMBER(

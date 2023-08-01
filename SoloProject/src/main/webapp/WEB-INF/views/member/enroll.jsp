@@ -6,9 +6,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 
-<jsp:include page="/WEB-INF/views/common/KSKHeader.jsp">
-	<jsp:param value="회원 가입" name="title" />
-</jsp:include>
+<jsp:include page="/WEB-INF/views/common/KSKHeader.jsp"></jsp:include>
 
 <section id="content">
 	<div class="container">

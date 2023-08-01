@@ -33,14 +33,14 @@
                                     </div>
             
                                     <!-- Form START -->
-                                    <form class="mt-4 text-start">
+                                    <form class="mt-4 text-start" action="login" method="post">
                                         <!-- Email -->
                                         <div class="mb-3">
-                                            <input type="email" class="form-control" placeholder="이메일을 입력해주세요">
+                                            <input type="text" class="form-control" name="id" placeholder="아이디를 입력해주세요">
                                         </div>
                                         <!-- Password -->
                                         <div class="mb-3 position-relative">
-                                            <input class="form-control fakepassword" type="password" id="psw-input" placeholder="비밀번호를 입력해주세요">
+                                            <input class="form-control fakepassword" type="password" name="password" id="psw-input" placeholder="비밀번호를 입력해주세요">
                                             <span class="position-absolute top-50 end-0 translate-middle-y p-0">
                                                 <i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
                                             </span>
@@ -66,7 +66,7 @@
                                         </div>
     
                                         <p class="mb-0 mt-3 text-center">
-                                            <a href="${path}/member/enroll" class="px-3 text-black-50">회원가입</a>|<a href="#" class="px-3 text-black-50">비밀번호 찾기</a>
+                                            <a href="${path}/enroll" class="px-3 text-black-50">회원가입</a>|<a href="#" class="px-3 text-black-50">비밀번호 찾기</a>
                                         </p>
             
                                         <!-- Copyright -->

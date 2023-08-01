@@ -1,5 +1,9 @@
 package com.multi.solo.member.model.service;
 
+
+import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,77 +11,158 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.multi.solo.member.model.mapper.MemberMapper;
 import com.multi.solo.member.model.vo.Member;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class MemberService {
 
 	@Autowired
 	private MemberMapper mapper;
 	
-	private BCryptPasswordEncoder pwEncoder = new BCryptPasswordEncoder();
+	@Autowired(required=false)
+	private BCryptPasswordEncoder pwEncoder;
 	
-	public Member login(String id, String pw) {
-		Member member = mapper.selectMember(id);
+	private static int count = 0;
+	public String saveFile(MultipartFile upfile, String savePath) {
+		File folder = new File(savePath);
+		
+		// 폴더가 없으면 경로채 폴더 만들어주는 코드
+		if(folder.exists() == false) {
+			folder.mkdirs();
+		}
+		log.info(savePath);
+		
+		// 파일 이름을 날짜시간 + 랜덤하게 바꾸는 코드, text.txt -> 20230522_14230230202.txt
+		String originalFileName = upfile.getOriginalFilename();
+		String renamedFileName = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmssSSS"));
+		renamedFileName += (count++);									
+		renamedFileName += originalFileName.substring(originalFileName.lastIndexOf(".")).toLowerCase();
+		String renamedPath = savePath + "/" + renamedFileName;
+		log.info("saveFile method, filePath>> " + renamedFileName);
+		
+		try {
+			// 실제 파일이름을 변경하여 저장하는 코드
+			upfile.transferTo(new File(renamedPath));
+		} catch (Exception e) {
+			return null;
+		}
+		
+		return renamedFileName;
+	}
+	
+	/**
+	 * 로그인 메소드
+	 * @param inputId
+	 * @param inputPwd
+	 * @return 로그인 성공시 member, 실패시 null
+	 */
+	public Member login(String inputId, String inputPwd) {
+		log.info(inputId);
+		Member member = mapper.selectMemberById(inputId);
 		if(member == null) {
 			return null;
 		}
 		
-		// passwordEncoder 활용법
-		System.out.println(member.getPassword()); // hash로 암호화된 코드가 들어있다.
-		System.out.println(pwEncoder.encode(pw)); // encode를 통해 평문에서 hash 코드로 변환
-		System.out.println(pwEncoder.matches(pw, member.getPassword())); // 평문 변환하고 비교까지
-		
-		if(id.equals("admin")) { // admin 테스트를 위한 코드
-			return member;
+		if (member.getId().equals("admin")) {
+			log.info("admin 로그인 시도");
+			if (member != null && inputPwd.equals(member.getPassword())) {
+				return member;
+			} else {
+				return null;
+			}
 		}
 		
-		if(member != null && pwEncoder.matches(pw, member.getPassword()) == true) {
-			// 성공
+		System.out.println(member.getPassword()); // 회원가입을 정상적으로 진행하면 암호화된 hash 
+		System.out.println(pwEncoder.encode(inputPwd)); // encode를 통해 평문을 hash로 변환
+		System.out.println(pwEncoder.matches(inputPwd, member.getPassword())); // 변환하고 검사하는 메소드
+		
+		if(member != null && pwEncoder.matches(inputPwd, member.getPassword())) {
+			log.info("로그인 성공");
 			return member;
-		}else {
-			// 로그인 실패
+		} else {
+			log.info("로그인 실패");
 			return null;
 		}
 	}
 	
-	// @Transactional : DB 트랜잭션 관리를 위한 AOP 어노테이션. 만일 오류가 발생하면 롤백. 아니면 커밋
-	// (rollbackFor = Exception.class) : 사용하지 않은 경우 트랜잭션 코드가 정상적으로 작동하지 않을수 있다.
+	/**
+	 * 회원가입, 회원정보 수정
+	 * @param member
+	 * @return 성공시 1, 실패시 0
+	 */
 	@Transactional(rollbackFor = Exception.class)
-	public int save(Member member) {
+	public int saveMember(Member member) {
 		int result = 0;
-		if(member.getMNo() == 0) { // 회원가입
-			String encodePW = pwEncoder.encode(member.getPassword());
-			member.setPassword(encodePW);
+		if (member.getMNo() == 0) {
+			if (mapper.duplID(member.getId()) != 0) {
+				return 0;
+			}
+			String encodePw = pwEncoder.encode(member.getPassword()); // 암호화 로직
+			member.setPassword(encodePw);
+			log.info("saveMember>> 회원가입");
 			result = mapper.insertMember(member);
-		}else { // 회원 수정
+		} else {
+			log.info("saveMember>> 회원정보 수정");
 			result = mapper.updateMember(member);
 		}
+		
 		return result;
 	}
 	
-	public boolean validate(String userId) {
-		return this.findById(userId) != null;
-	}
-	
-	public Member findById(String id) {
-		return mapper.selectMember(id);
+	@Transactional(rollbackFor = Exception.class)
+	public int delete(int mno) {
+		return mapper.deleteMember(mno);
 	}
 
-	
-	@Transactional(rollbackFor = Exception.class)
-	public int delete(int no) {
-		return mapper.deleteMember(no);
+
+	/**
+	 * id로 회원정보 조회
+	 * @param id
+	 * @return member
+	 */
+	public Member findById(String id) {
+		return mapper.findById(id);
 	}
 	
+	/**
+	 * id 변경
+	 * @param id
+	 * @param mno 
+	 * @return 성공 1, 실패 0
+	 */
 	@Transactional(rollbackFor = Exception.class)
-	public int updatePwd(Member loginMember, String userPW) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("mNo", "" + loginMember.getMNo());
-		map.put("password", pwEncoder.encode(userPW));
-		return mapper.updatePwd(map);
+	public int updateID(String id, int mno) {
+		if (mapper.duplID(id) != 0) {
+			return 0;
+		}
+		return mapper.updateID(id, mno);
+	}
+
+	public Member findByMno(int mno) {
+		return mapper.findByMno(mno);
+	}
+
+	public int updatePwd(String password, int mno) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		password = pwEncoder.encode(password);
+		param.put("password", password);
+		param.put("mno", mno);
+		return mapper.updatePwd(param);
+	}
+
+	public boolean isMatchPwd(String password, String id) {
+		return pwEncoder.matches(password, mapper.selectMemberById(id).getPassword()) ? true : false;
 	}
 	
+
+	public int deleteAllWishlist(int mno) {
+		return mapper.deleteAllWishlist(mno);
+	}
+
 }

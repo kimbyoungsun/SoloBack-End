@@ -120,7 +120,7 @@
           </ul>
           <div class="ms-auto">
             <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block">
-              <a class="btn btn-primary" href="user-add-0.html">로그인/회원가입</a>
+              <a class="btn btn-primary" href="${path}/login">로그인/회원가입</a>
             </li>
           </div>
         </div>
