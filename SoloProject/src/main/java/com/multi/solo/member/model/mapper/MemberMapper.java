@@ -18,7 +18,14 @@ public interface MemberMapper {
 	Member selectMember(@Param("id") String id); // @Param : 파라메터임을 알리는 어노테이션. 없어 된다.
 	int insertMember(Member member);
 	int updateMember(Member member);
-	int updatePwd(Map<String, String> map);
+	int updatePwd(Map<String, Object> param);
 	int deleteMember(int no); 
+	int duplID(String id);
+	Member findById(String id);
+	int updateID(@Param("id") String id, @Param("mno") int mno);
+	Member findByMno(int mno);
+	Member selectMemberById(String id);
+	int deleteAllWishlist(int mno);
+
 }
 

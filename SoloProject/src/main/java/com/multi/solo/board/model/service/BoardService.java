@@ -99,6 +99,11 @@ public class BoardService {
 	public int deleteReply(int no) {
 		return mapper.deleteReply(no);
 	}
+
+	public static List<Board> getReviewsByMNo(int mno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
 
