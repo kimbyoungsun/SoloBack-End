@@ -5,23 +5,27 @@
 <!-- 향후 Mapper interface가 정의 될 위치 -->
 <mapper namespace="com.multi.solo.member.model.mapper.MemberMapper">	
 		
-	<select id="selectMemberById" parameterType="string" resultType="Member">
+	<select id="selectMemberById" parameterType="String" resultType="Member">
 		SELECT * FROM MEMBER WHERE id = 'admin' AND status = 'Y';
 	</select>
 	
+	<select id="duplID" parameterType="String" resultType="int">
+		SELECT count(*) FROM MEMBER WHERE id = #{id}
+	</select>
+	
 	<insert id="insertMember" parameterType="Member">
-		INSERT INTO MEMBER(
-			MNO, ID, PASSWORD, 	
-			ROLE, NAME, PHONE,
-			EMAIL, ADDRESS,HOBBY, 		
-			STATUS, ENROLL_DATE, MODIFY_DATE,
-			BIRTH, ORIFILENM, REFILENM 
+		INSERT INTO member(
+			mNo, id, password, 	
+			role, name, phone,
+			email, address, gender, 		
+			status, enrollDate, modifyDate,
+			birth, oriFileNm, reFileNm 
 		) VALUES (
 			 0, #{id}, #{password},
 			 default, #{name}, #{phone},
-			 #{email}, #{address}, #{hobby},
+			 #{email}, #{address}, #{gender},
 			 DEFAULT, DEFAULT, DEFAULT,
-			 #{birth}, DEFAULT, DEFAULT)
+			 #{birth}, #{oriFileNm}, #{reFileNm})
 	</insert>
 	
 	 <update id="updateMember" parameterType="Member">
@@ -31,8 +35,8 @@
 	 		PHONE		= #{phone},
 	 		EMAIL		= #{email},
 	 		ADDRESS		= #{address},
-	 		HOBBY		= #{hobby},
-	 		MODIFY_DATE	= #{modifyDate}
+	 		GENDER		= #{gender},
+	 		MODIFYDATE	= #{modifyDate}
 	 	WHERE MNO = #{mNo}
 	 </update>
 	 

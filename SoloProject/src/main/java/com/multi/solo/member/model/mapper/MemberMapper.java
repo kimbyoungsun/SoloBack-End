@@ -25,7 +25,7 @@ public interface MemberMapper {
 	int updateMember(Member member);
 	int updatePwd(Map<String, Object> param);
 	int deleteMember(int no); 
-	// int duplID(String id);
+	int duplID(String id);
 	// Member findById(String id);
 	// int updateID(@Param("id") String id, @Param("mno") int mno);
 	// Member findByMno(int mno);

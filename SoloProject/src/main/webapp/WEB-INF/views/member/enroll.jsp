@@ -21,23 +21,23 @@
 						<!-- Card body START -->
 						<div class="card-body">
 							<!-- Form START -->
-							<form id="enroll-container" name="memberEnrollFrm" action="${path}/member/enroll" method="post" class="row g-3">
+							<form id="enroll-container" name="memberEnrollFrm" enctype="multipart/form-data" action="${path}/enroll" method="post" class="row g-3">
 								<!-- Profile photo -->
 								<div class="col-12">
 									<label class="form-label">프로필 사진 업로드<span
 										class="text-danger">*</span></label>
 									<div class="d-flex align-items-center">
-										<label class="position-relative me-4" for="uploadfile-1"
+										<label class="position-relative me-4" for="upfile"
 											title="Replace this pic"> <!-- Avatar place holder -->
 											<div class="avatar avatar-xl mb-2">
 												<img style="width: 7rem; height: 7rem;"
 													class="rounded-circle border border-2 border-white"
-													src="${path}/resources/img/avatar/avatar-2.jpg" alt="" />
+													src="${path}/resources/img/avatar/default-avatar.png" alt="" />
 											</div>
 										</label>
 										<!-- Upload button -->
 										<label class="btn btn-return-custom btn-info-soft mb-0"
-											for="uploadfile-1">변경</label> <input id="uploadfile-1"
+											for="upfile">변경</label> <input name="upfile" id="upfile"
 											class="form-control d-none" type="file">
 									</div>
 								</div>
@@ -45,94 +45,79 @@
 								<!-- 이메일 -->
 								<div class="col-md-6">
 									<label class="form-label">이메일<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value=""
-										placeholder="example@gmail.com">
+									<input type="text" class="form-control" name="email" id="email" value=""
+										placeholder="example@gmail.com" required>
 								</div>
 
-								<!-- 이름 -->
+								<!-- 아이디 -->
 								<div class="col-md-6">
-									<label class="form-label">이름<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value=""
-										placeholder="이름을 입력해주세요">
+									<label class="form-label">아이디<span class="text-danger">*</span></label>
+									<input type="text" class="form-control" name="id" id="id" value=""
+										placeholder="아이디를 입력해주세요" required>
 								</div>
 
 								<!-- 비밀번호 -->
 								<div class="col-md-6">
 									<label class="form-label">비밀번호<span class="text-danger">*</span></label>
-									<input type="password" class="form-control" value=""
-										placeholder="">
+									<input type="password" class="form-control" name="password" id="password" value=""
+										placeholder="" required>
 								</div>
 
 								<!-- 비밀번호 확인 -->
 								<div class="col-md-6">
 									<label class="form-label">비밀번호 확인<span
 										class="text-danger">*</span></label> <input type="password"
-										class="form-control" value="" placeholder="">
+										class="form-control" value="" placeholder="" required>
+								</div>
+								
+								<!-- 이름 -->
+								<div class="col-md-6">
+									<label class="form-label">이름<span class="text-danger">*</span></label>
+									<input type="text" class="form-control" name="name" id="name" value=""
+										placeholder="이름을 입력해주세요" required>
 								</div>
 
 								<!-- 전화번호 -->
 								<div class="col-md-6">
 									<label class="form-label">휴대폰 번호<span
-										class="text-danger">*</span></label> <input type="email"
-										class="form-control" value=""
-										placeholder="- 없이 숫자만 입력해주세요 ex. 01012345678">
+										class="text-danger">*</span></label> <input type="text"
+										class="form-control" name="phone" id="phone" value=""
+										placeholder="- 없이 숫자만 입력해주세요 ex. 01012345678" required>
 								</div>
 
 								<!-- 생년월일 -->
 								<div class="col-md-6">
 									<label class="form-label">생년월일<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value=""
-										placeholder="주민번호 앞자리를 입력해주세요 ex. 990101">
+									<input type="text" class="form-control" name="birth" id="birth" value=""
+										placeholder="yyyy-mm-dd 형식으로 입력해주세요." required>
 								</div>
 
-								<!-- 선호지역 -->
-								<div class="col-md-6">
-									<label class="form-label">선호지역</label> <select
-										class="form-control form-select js-choice">
-										<option value="">지역 선택</option>
-										<option>서울/인천/경기</option>
-										<option>부산/울산/경남</option>
-										<option>대구/경북</option>
-										<option>대전/충청</option>
-										<option>광주/전남</option>
-										<option>전북</option>
-										<option>강원</option>
-										<option>제주</option>
-									</select>
-								</div>
-
-								<!-- Gender -->
+								<!-- 성별 -->
 								<div class="col-md-6">
 									<label class="form-label">성별<span class="text-danger">*</span></label>
 									<div class="d-flex gap-4 mt-3">
 										<div class="form-check radio-bg-light">
 											<input class="form-check-input" type="radio"
-												name="flexRadioDefault" id="flexRadioDefault1" checked="">
-											<label class="form-check-label" for="flexRadioDefault1">
+												name="gender" id="gender1" value="M" checked="">
+											<label class="form-check-label" for="gender1">
 												남 </label>
 										</div>
 										<div class="form-check radio-bg-light">
 											<input class="form-check-input" type="radio"
-												name="flexRadioDefault" id="flexRadioDefault2"> <label
-												class="form-check-label" for="flexRadioDefault2"> 여
+												name="gender" id="gender2" value="F"> <label
+												class="form-check-label" for="gender2"> 여
 											</label>
 										</div>
 									</div>
 								</div>
-
+								
 								<!-- Address -->
-								<div class="col-12">
-									<label class="form-label">주소</label>
-									<textarea class="form-control" rows="3" spellcheck="false"></textarea>
+								<div class="col-md-6">
+									<label class="form-label">주소</label><span
+										class="text-danger">*</span>
+									<textarea class="form-control" rows="2" spellcheck="false" name="address" id="address"></textarea>
 								</div>
-
-							</form>
-							<!-- Form END -->
-						</div>
-						<!-- Card body END -->
-					</div>
-					<!-- Personal info END -->
-
+								
 
 					<!-- Button -->
 					<div class="row">
@@ -145,6 +130,14 @@
 							<input type="submit" id="enrollSubmit" value="회원가입" class="btn btn-success-custom mb-0"/>
 						</div>
 					</div>
+							</form>
+							<!-- Form END -->
+						</div>
+						<!-- Card body END -->
+					</div>
+					<!-- Personal info END -->
+
+
 				</div>
 			</div>
 			<!-- Main content END -->

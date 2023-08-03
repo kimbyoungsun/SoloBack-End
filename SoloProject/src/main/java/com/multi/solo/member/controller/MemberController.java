@@ -74,30 +74,42 @@ public class MemberController {
 		log.info("회원가입 페이지 호출");
 		return "member/enroll";
 	}
+	
+	@PostMapping("/enroll")
+	public String signUp(Model model, Member member, HttpSession session, @RequestParam(value = "upfile", required = false) MultipartFile upfile) {
+		log.info("회원가입 요청");
+		int result = 0;
+		
+		if(upfile != null && upfile.isEmpty() == false) {
+			String rootPath = session.getServletContext().getRealPath("resources");
+			String savePath = rootPath + "/upload/profile";
+			log.info("controller에서 보내는 savePath>> " + savePath);
+			String renamedFileName = service.saveFile(upfile, savePath); // 실제 파일 저장 로직
+			
+			if(renamedFileName != null) {
+				member.setReFileNm(renamedFileName);
+				member.setOriFileNm(upfile.getOriginalFilename());
+			}
+		} else {
+			member.setReFileNm("default-avatar.png");
+		}
+		
+		log.info(member.toString());
+		
+		result = service.saveMember(member);
+		
+		if(result > 0) {
+			model.addAttribute("msg", "회원가입 성공하였습니다.");
+			model.addAttribute("location", "/");
+		} else {
+			model.addAttribute("msg", "회원가입에 실패하였습니다. 입력정보를 확인해주세요.");
+			model.addAttribute("location", "/enroll");
+		}
+		
+		return "common/msg";
+	}
 
 	/*
-	 * @PostMapping(value = "/enroll") public String signUp(Model model, Member
-	 * member, HttpSession session, @RequestParam("upfile") MultipartFile upfile) {
-	 * log.info("회원가입 요청"); int result = 0;
-	 * 
-	 * if(upfile != null && upfile.isEmpty() == false) { String rootPath =
-	 * session.getServletContext().getRealPath("resources"); String savePath =
-	 * rootPath + "/upload/profile"; log.info("controller에서 보내는 savePath>> " +
-	 * savePath); String renamedFileName = service.saveFile(upfile, savePath); // 실제
-	 * 파일 저장로직
-	 * 
-	 * if(renamedFileName != null) { member.setReFileNm(renamedFileName);
-	 * member.setOriFileNm(upfile.getOriginalFilename()); } } else {
-	 * member.setReFileNm("default-avatar.png"); } log.info(member.toString());
-	 * 
-	 * result = service.saveMember(member);
-	 * 
-	 * if(result > 0) { model.addAttribute("msg", "회원가입 성공하였습니다.");
-	 * model.addAttribute("location", "/"); } else { model.addAttribute("msg",
-	 * "회원가입에 실패하였습니다. 입력정보를 확인해주세요."); model.addAttribute("location", "/enroll"); }
-	 * 
-	 * return "common/msg"; }
-	 * 
 	 * @RequestMapping("/member/delete") public String delete(Model model,
 	 * 
 	 * @SessionAttribute(name="loginMember", required = false) Member loginMember //

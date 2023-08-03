@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,17 +16,19 @@ import org.springframework.web.multipart.MultipartFile;
 import com.multi.solo.member.model.mapper.MemberMapper;
 import com.multi.solo.member.model.vo.Member;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class MemberService {
 
 	@Autowired
 	private MemberMapper mapper;
-	
-	@Autowired(required=false)
-	private BCryptPasswordEncoder pwEncoder;
+
+    @Autowired
+    private PasswordEncoder pwEncoder;
 	
 	private static int count = 0;
 	public String saveFile(MultipartFile upfile, String savePath) {
@@ -97,7 +99,7 @@ public class MemberService {
 	 * @param member
 	 * @return 성공시 1, 실패시 0
 	 */
-	/*
+	
 	@Transactional(rollbackFor = Exception.class)
 	public int saveMember(Member member) {
 		int result = 0;
@@ -116,7 +118,7 @@ public class MemberService {
 		
 		return result;
 	}
-	*/
+	
 	
 	@Transactional(rollbackFor = Exception.class)
 	public int delete(int mno) {
