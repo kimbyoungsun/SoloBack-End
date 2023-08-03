@@ -53,7 +53,7 @@ public class MemberController {
 		if (loginMember != null) {
 			model.addAttribute("loginMember", loginMember); // 세션으로 저장되는 코드, @SessionAttributes 사용
 			log.info("@@@로그인 성공>> " + loginMember.toString());
-			return "/community/traceProductDetail";
+			return "redirect:/";
 		} else {
 			model.addAttribute("msg", "아이디와 패스워드를 확인해주세요.");
 			model.addAttribute("location", "/login");
@@ -107,6 +107,12 @@ public class MemberController {
 		}
 		
 		return "common/msg";
+	}
+	
+	@GetMapping("/account")
+	public String accountProfile() {
+		log.info("회원가입 페이지 호출");
+		return "account/AccountProfile";
 	}
 
 	/*

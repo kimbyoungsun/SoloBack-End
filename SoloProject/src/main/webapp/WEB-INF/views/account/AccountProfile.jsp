@@ -57,7 +57,7 @@
 											<!-- Avatar -->
 											<div class="avatar avatar-xl mb-2">
 												<img class="rounded-circle border border-2 border-white"
-													src="${path}/resources/assets/images/avatar/01.jpg" alt="">
+													src="${path}/resources/upload/profile/${loginMember.reFileNm}" alt="">
 											</div>
 											<h6 class="mb-0">테스트계정</h6>
 											<a href="#" class="text-reset text-hover-custom small">test@email.com</a>

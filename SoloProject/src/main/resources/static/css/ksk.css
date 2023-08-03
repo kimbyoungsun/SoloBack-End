@@ -1,5 +1,13 @@
 /* your styles go here */
 
+* {
+	font-family: 'Noto Sans KR', sans-serif !important;
+}
+
+h1 {
+	font-family: 'NanumSquare', sans-serif !important;
+}
+
 .btn-custom {
   --bs-btn-color: #fff;
     --bs-btn-bg: #50a78b;

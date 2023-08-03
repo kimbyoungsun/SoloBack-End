@@ -6,7 +6,7 @@
 <mapper namespace="com.multi.solo.member.model.mapper.MemberMapper">	
 		
 	<select id="selectMemberById" parameterType="String" resultType="Member">
-		SELECT * FROM MEMBER WHERE id = 'admin' AND status = 'Y';
+		SELECT * FROM MEMBER WHERE id = #{id} AND status = 'Y';
 	</select>
 	
 	<select id="duplID" parameterType="String" resultType="int">
