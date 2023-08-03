@@ -3,39 +3,6 @@
 
 
 <mapper namespace="com.multi.solo.book.model.mapper.BookMapper">
-
-	<select id="selectBestList"
-		resultType="com.multi.solo.book.model.vo.Book" parameterType="map">
-		SELECT * FROM ALADIN
-		WHERE 1=1
-		<if test="title != null">
-			AND title LIKE '%${title}%'
-		</if>
-		<if test="author != null">
-			AND author LIKE '%${author}%'
-		</if>
-		ORDER BY PUBDATE DESC LIMIT ${limit} OFFSET ${offset}	
-	</select>
-
-	<select id="selectBestCount" resultType="int"
-		parameterType="map">
-		SELECT COUNT(*) FROM ALADIN
-		WHERE 1=1
-		<if test="title != null">
-			AND title LIKE '%${title}%'
-		</if>
-		<if test="author != null">
-			AND author LIKE '%${author}%'
-		</if>
-	</select>
-
-	<select id="selectBestById" resultType="com.multi.solo.book.model.vo.Book" parameterType="int">
-		SELECT * FROM ALADIN
-		WHERE bID=#{id}
-	</select>
-
-
-
 	<select id="selectBookList"
 		resultType="com.multi.solo.book.model.vo.Book" parameterType="map">
 		SELECT * FROM BOOK
@@ -46,22 +13,25 @@
 		<if test="author != null">
 			AND author LIKE '%${author}%'
 		</if>
-			<if test="publisher != null">
+		<if test="publisher != null">
 			AND publisher LIKE '%${publisher}%'
 		</if>
-		
+
 		<if test="categoryId != null">
 			AND categoryId LIKE '%${categoryId}%'
 		</if>
+		<if test="all != null">
+			AND title like '%${all}%'
+		</if>
 		<if test="category != null">
-				AND (
-				<foreach collection="category" item="item" separator="or">
-					categoryName LIKE '%${item}%'
-				</foreach>
-				)
+			AND (
+			<foreach collection="category" item="item" separator="or">
+				categoryName LIKE '%${item}%'
+			</foreach>
+			)
 		</if>
 		<if test="sort != null">
-			ORDER BY ${sort} DESC LIMIT ${limit} OFFSET ${offset}	
+			ORDER BY ${sort} LIMIT ${limit} OFFSET ${offset}
 		</if>
 	</select>
 
@@ -78,7 +48,10 @@
 		<if test="publisher != null">
 			AND publisher LIKE '%${publisher}%'
 		</if>
-		
+
+		<if test="categoryId != null">
+			AND categoryId LIKE '%${categoryId}%'
+		</if>
 		<if test="category != null">
 			AND (
 			<foreach collection="category" item="item" separator="or">
@@ -88,9 +61,40 @@
 		</if>
 	</select>
 
-	<select id="selectBookById" resultType="com.multi.solo.book.model.vo.Book" parameterType="int">
-		SELECT * FROM BOOK
+	<select id="selectBookById"
+		resultType="com.multi.solo.book.model.vo.Book" parameterType="int">
+		SELECT *
+		FROM BOOK
 		WHERE bID=#{id}
 	</select>
 
+	<select id="selectBookReplyById"
+		resultType="com.multi.solo.book.model.vo.BookReply" parameterType="map">
+		SELECT r.rNo, r.mNo, r.bid, r.content, r.score, r.createDate, m.ID 
+		FROM bookreply r
+		LEFT OUTER JOIN member m
+		ON r.mNO = m.mNO
+		where 1=1
+		<if test="bId != null">
+			AND r.bid LIKE ${bId}
+		</if>
+	</select>
+	
+	<select id="selectBookReplyCount"
+		resultType="int" parameterType="map">
+		SELECT COUNT(*)
+		FROM BOOKREPLY
+		WHERE bID=#{id}
+	</select>
+	
+	<insert id="insertBookReply" parameterType="com.multi.solo.book.model.vo.BookReply">
+		INSERT INTO REPLY(
+				RNO, MNO, BID, 
+				CONTENT, SCORE, CREATE_DATE) 
+			VALUES(
+				0, #{mno}, #{bid}, #{content}, 
+				#{score}, DEFAULT
+			)
+	</insert>
+	
 </mapper>

@@ -409,7 +409,7 @@
       <div class="container my-5">
         <div class="row">
           <div class="col h3 fw-bold text-solo-6">1인 가구 관련 뉴스</div>
-          <div class="col text-end">더보기</div>
+          <div class="col text-end"><a class="nav-link" href="${path}/News">더보기</a></div>
           <div class="col-6"></div>
         </div>
 

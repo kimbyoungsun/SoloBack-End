@@ -10,38 +10,14 @@
       <div class="container-fluid mt-5 pb-5" 
         style="background-image: url('${path}/resources/img/Image20230720104434.png'); background-repeat: no-repeat; display: block; background-size:1910px 1150px; margin-left:0px;">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-3 d-grid">
+          <div class="row mb-5">
+            <div class="col-lg-3">
               <button class="btn btn-turquoise" style="width:210px; height:60px" type="submit" onclick="location.href='${path}/book/BookSearch'">◀ 도서 메인으로</button>
             </div>
-            <div class="col-lg-7 mb-4">
-              <div class="search-bar2 p-3 p-lg-1 ps-lg-4">
-                <form action="#">
-                  <div class="row">
-                    <div class="col-lg-2 d-flex align-items-center form-group no-divider">
-                      <select class="selectpicker" title="Categories" data-style="btn-form-control">
-                        <option value="bookname" selected>도서명</option>
-                        <option value="writer">저자</option>
-                        <option value="publisher">출판사</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-6 d-flex align-items-center form-group" style="margin-left:-30px;">
-                      <input class="form-control border-0 shadow-0" type="text" name="search" placeholder="검색어를 입력하세요">
-                    </div>
-                    <div class="col-lg-2 d-grid ms-5">
-                      <button class="btn btn-green" style="width:75px;" type="submit">검색</button>
-                    </div>
-                    <div class="col-lg-2 d-grid" style="margin-left:-40px">
-                      <button class="btn btn-green" style="width:120px;" type="submit">상세검색</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div> 
-          <div class="mb-4" style="text-align: center;">
-            <p><span style="font-weight:bold;">카테고리</span>/ ${book.categoryName}</p>
+          <div class="col" style="text-align: center;">
+            <span class="align-middle" style="font-weight:bold; margin:auto">카테고리 </span> <span class="align-middle" style="font-weight:none; margin:auto">${book.categoryName } </span>
           </div>   
+          </div> 
           <div class="row mt-1">
             <div class="col-lg-6">
               <img
@@ -93,74 +69,41 @@
     </section>
     <!--리뷰-->
     <div class="container">
-      <div class="text-solo-6 h3 my-3 mt-5" style="display:flex;">
-        <img src="${path}/resources/img\comment-regular.svg" style="height:40px; margin-top:-5px;"/>&nbsp; 리뷰
+    	<div class="text-solo-6 h3 my-3 mt-5" style="display:flex;">
+        <img src="${path}/resources/img/comment-regular.svg" style="height:40px;"/>&nbsp; 리뷰
       </div>
+      
         <div class="container" style="border:2px solid #50A78B; border-radius:20px; overflow:hidden;">
           <table class="text-gray-700 table table-striped table-hover" style="border-spacing:0; border-collapse:collapse;">
             <tbody>
-              <tr>
-                <td class="p-3 text-center align-middle;" style="border-radius: 20px 20px 0 0; padding:0">
-                  <div class="row mt-3 mb-3">
-                    <div class="col-lg-2">
-                    <span style="color:#000000; font-weight:bold;">dkanro<span>
-                    </div>
-                    <div class="col-lg-2">
-                      2023.4.16  
-                    </div>
-                    <div class="col-lg-2" style="margin-top:-5px;">
-                      <div class="star-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <i class="far fa-star"></i>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 pe-5"style="text-align:right;">
-                      <img src="${path}/resources/img\face-smile-wink-regular.svg" style="height:20px;"/>&nbsp; 공감 <span style="color:#50A78B">2<span></a>
-                    </div>
-                  <div>
-                  <div class="mt-3 px-5" style="text-align:justify">  
-                    매년 30%의 꿀벌이 사라지고 있다는데 그 원인이 정확히 밝혀지고 있지 않다고 합니다. 베르나르 베르베르는 이 상황을 어떻게 상상력을 발휘해 그려냈을지 무척 궁금하고 기대가 되는작품입니다.  
-                  </div>  
-                </td>
-              </tr>
-              <tr>
-                <td class="p-3 text-center align-middle;" style="background-color: #e2f2ce;">
-                  <div class="row mt-3 mb-3">
-                    <div class="col-lg-2">
-                    <span style="color:#000000; font-weight:bold;">dkanro<span>
-                    </div>
-                    <div class="col-lg-2">
-                      2023.4.16  
-                    </div>
-                    <div class="col-lg-2" style="margin-top:-5px;">
-                      <div class="star-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <i class="far fa-star"></i>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 pe-5"style="display:flex; justify-content: flex-end;">
-                      <img src="${path}/resources/img\face-smile-wink-regular.svg" style="height:20px;"/>&nbsp; 공감 <span style="color:#50A78B">2<span></a>
-                    </div>
-                  <div>
-                  <div class="mt-3 px-5" style="text-align:justify">  
-                    매년 30%의 꿀벌이 사라지고 있다는데 그 원인이 정확히 밝혀지고 있지 않다고 합니다. 베르나르 베르베르는 이 상황을 어떻게 상상력을 발휘해 그려냈을지 무척 궁금하고 기대가 되는작품입니다.  
-                  </div>  
-                </td>
-              </tr>
-              <tr>
+            
+            <c:if test="${not empty loginMember && (loginMember.id == book.bid 
+									|| loginMember.role == 'ROLE_ADMIN')}">
+            <tr class="text-end">
+             <td class="p-3 text-end align-middle;">
+            	<button class=" btn btn-primary"> 리뷰쓰기</button>
+             </td>
+            </tr>
+            </c:if>
+            
+            <c:if test="${empty reply}">
+               	 <tr>
+            	<td class="p-3 text-center align-middle;">
+            	<img alt="" src="${path}/resources/img/icon/browser-20_icon-icons.com_62178.png">
+					<div class="display-5"> 리뷰가 없습니다.</div>            	
+            	</td>
+            </tr>
+            </c:if>
+           <c:if test="${!empty reply}">
+            <c:forEach var="item" items="${reply}">
+            	<tr>
                 <td class="p-3 text-center align-middle;">
                   <div class="row mt-3 mb-3">
                     <div class="col-lg-2">
-                    <span style="color:#000000; font-weight:bold;">이름없는 사람<span>
+                    <span style="color:#000000; font-weight:bold;"> ${item.id}<span>
                     </div>
                     <div class="col-lg-2">
-                      2023.4.16  
+                      ${item.createdate}
                     </div>
                     <div class="col-lg-2" style="margin-top:-5px;">
                       <div class="star-rating">
@@ -172,84 +115,41 @@
                       </div>
                     </div>
                     <div class="col-lg-6 pe-5"style="display:flex; justify-content: flex-end;">
-                      <img src="${path}/resources/img\face-smile-wink-regular.svg" style="height:20px;"/>&nbsp; 공감 <span style="color:#50A78B">2<span></a>
+                      <img src="${path}/resources/img/face-smile-wink-regular.svg" style="height:20px;"/>&nbsp; 공감 <span style="color:#50A78B">2<span></a>
                     </div>
                   <div>
-                  <div class="mt-3 px-5" style="text-align:justify">  
-                    매년 30%의 꿀벌이 사라지고 있다는데 그 원인이 정확히 밝혀지고 있지 않다고 합니다. 베르나르 베르베르는 이 상황을 어떻게 상상력을 발휘해 그려냈을지 무척 궁금하고 기대가 되는작품입니다.  
+                  <div class="mt-3 px-5" style="text-align:justify">
+                  	${item.content}  
                   </div>  
                 </td>
               </tr>
-              <tr>
-                <td class="p-3 text-center align-middle;" style="background-color: #dce9cb;">
-                  <div class="row mt-3 mb-3">
-                    <div class="col-lg-2">
-                    <span style="color:#000000; font-weight:bold;">dkanro<span>
-                    </div>
-                    <div class="col-lg-2">
-                      2023.4.16  
-                    </div>
-                    <div class="col-lg-2" style="margin-top:-5px;">
-                      <div class="star-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <i class="far fa-star"></i>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 pe-5"style="display:flex; justify-content: flex-end;">
-                      <img src="${path}/resources/img\face-smile-wink-regular.svg" style="height:20px;"/>&nbsp; 공감 <span style="color:#50A78B">2<span></a>
-                    </div>
-                  <div>
-                  <div class="mt-3 px-5" style="text-align:justify">  
-                    매년 30%의 꿀벌이 사라지고 있다는데 그 원인이 정확히 밝혀지고 있지 않다고 합니다. 베르나르 베르베르는 이 상황을 어떻게 상상력을 발휘해 그려냈을지 무척 궁금하고 기대가 되는작품입니다.  
-                  </div>  
-                </td>
-              </tr>
-              <tr>
-                <td class="p-3 text-center align-middle;">
-                  <div class="row mt-3 mb-3">
-                    <div class="col-lg-2">
-                    <span style="color:#000000; font-weight:bold;">amazarashi<span>
-                    </div>
-                    <div class="col-lg-2">
-                      2023.4.16  
-                    </div>
-                    <div class="col-lg-2" style="margin-top:-5px;">
-                      <div class="star-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                        <i class="far fa-star"></i>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 pe-5"style="display:flex; justify-content: flex-end;">
-                      <img src="${path}/resources/img\face-smile-wink-regular.svg" style="height:20px;"/>&nbsp; 공감 <span style="color:#50A78B">2<span></a>
-                    </div>
-                  <div>
-                  <div class="mt-3 px-5" style="text-align:justify">  
-                    매년 30%의 꿀벌이 사라지고 있다는데 그 원인이 정확히 밝혀지고 있지 않다고 합니다. 베르나르 베르베르는 이 상황을 어떻게 상상력을 발휘해 그려냈을지 무척 궁금하고 기대가 되는작품입니다.  
-                  </div>  
-                </td>
-              </tr>
+            </c:forEach>
+            </c:if>
             </tbody>
           </table>
-          <nav aria-label="Page navigation example ">
-            <ul
-              class="pagination2 pagination-template d-flex justify-content-center my-5">
-              <li class="page-item">
-                <a class="page-link" href="#"> <i class="fa fa-angle-left"></i></a>
-              </li>
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#"> <i class="fa fa-angle-right"></i></a>
-              </li>
-            </ul>
-          </nav>
+         <nav aria-label="Page navigation example ">
+			<ul
+				class="pagination pagination-template d-flex justify-content-center">
+				<li class="page-item"><button class="page-link" href="#" onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-left"></i></button></li>
+				<c:forEach begin="${pageInfo.startPage}" end="${pageInfo.endPage}"
+					varStatus="status" step="1">
+
+					<c:if test="${status.current == pageInfo.currentPage}">
+						<li class="page-item active"><a class="page-link" href="#">${status.current}</a>
+						</li>
+					</c:if>
+
+					<c:if test="${status.current != pageInfo.currentPage}">
+						<li class="page-item"><a class="page-link" href="#"
+							onclick="movePage(${status.current})">${status.current}</a></li>
+					</c:if>
+
+				</c:forEach>
+				<li class="page-item"><button class="page-link" href="#"onclick="movePage(${pageInfo.nextPage})"> <i
+						class="fa fa-angle-right" ></i></button></li>
+			</ul>
+		</nav>
         </div>  
       </div>
     
@@ -261,20 +161,19 @@
     </div>  
     <section class="bg-melon py-4">
       <div class="container ">
-        <div class="swiper-container swiper-list">
+        <div class="swiper-container swiper-book">
           <div class="swiper-wrapper">
           <c:forEach var="item" items="${list}">
             <div class="swiper-slide hover-animate">
               <a href="${path}/book/BookDetail?bId=${item.bid}">
               <img
-                style="height: 100%"
+                style=" height: 100%;width:100%"
                 src="${item.cover}"
                 alt=""
               />
               </a>
             </div>
           </c:forEach>
-
           </div>
         </div>
       </div>
