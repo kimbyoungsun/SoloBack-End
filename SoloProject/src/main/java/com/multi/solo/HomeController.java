@@ -85,4 +85,10 @@ public class HomeController {
 		
 		return "MainIndex";
 	}
+	
+	@RequestMapping("/News")
+	public String news() {
+		
+		return "etc/new";
+	}
 }

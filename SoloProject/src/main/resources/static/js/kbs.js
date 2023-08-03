@@ -42,6 +42,16 @@ var swiperList = new Swiper(".swiper-list", {
 	slideToClickedSlide: true,
 });
 
+var swiperList = new Swiper(".swiper-book", {
+	slidesPerView: 5,
+	observer: true,
+	observeParents: true,
+	loop: true,
+	centeredSlides: true,
+	slidesPerView: "auto",
+});
+
+
 var swiperGrids = new Swiper(".swiper-trailer", {
 	loop: true,
 	centeredSlides: true,

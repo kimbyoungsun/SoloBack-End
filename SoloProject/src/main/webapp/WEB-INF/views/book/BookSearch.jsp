@@ -5,7 +5,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <jsp:include page="/WEB-INF/views/common/KDHHeader.jsp"></jsp:include>
-
+<c:set var="searchType" value="${param.searchType}"/>
     <section class="hero-home">
       <div class="swiper-container hero-slider"style="height: 450px;">
         <div class="swiper-slide" style="background-color: #94CF4C; width:100%;"></div>
@@ -26,18 +26,20 @@
                         <h2>검 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 색</h2>
                       </div>
                       <div class="search-bar2 p-3 p-lg-1 ps-lg-4 col-lg-8 mt-3 mb-4 mr-5">
-                        <form id="searchForm" action="${path}/book/BookSearch" >
+                        <form id="searchForm" action="${path}/book/BookSearch">
                         <input type="hidden"name="page" value="1"/>
+                        <input type="hidden" name="searchType" id="searchTypeInput" value="${selected}">
                           <div class="row">
                             <div class="col-lg-2 d-flex align-items-center form-group no-divider">
-                              <select class="selectpicker" title="Categories" data-style="btn-form-control">
-                                <option value="title" selected>도서명</option>
-                                <option value="author">저자</option>
-                                <option value="publisher">출판사</option>
+                              <select class="selectpicker" title="Categories" data-style="btn-form-control" id="searchTypeSelect">
+                                <option value="title" ${fn:contains(selected,'title')? 'selected': '' }>도서명</option>
+                                <option value="author" ${fn:contains(selected,'author')? 'selected': '' }>저자</option>
+                                <option value="publisher" ${fn:contains(selected,'publisher')? 'selected': '' }>출판사</option>
                               </select>
+                              
                             </div>
                             <div class="col-lg-8 d-flex align-items-center form-group">
-                              <input class="form-control border-0 shadow-0" type="text" name="search" placeholder="검색어를 입력하세요">
+                              <input class="form-control border-0 shadow-0" type="text" name="searchValue" placeholder="검색어를 입력하세요">
                             </div>
                             <div class="col-lg-2 d-grid">
                               <button class="btn btn-green" style="width:80px" type="submit">검색</button>
@@ -52,16 +54,17 @@
                       <div class="row col-lg-9" style="text-align:start">
                         <div class="container" style="margin-left: 10px">
                           <div class="row row-cols-4">
-                            <div class="form-check col">
-                              <input name="sort" type="radio" id="SalesPoint" class="form-check-input" value="salesPoint" ${fn:contains(param.sort,'salesPoint')? 'checked': '' }>
-                              <label title="" for="SalesPoint" class="form-check-label">판매량</label>
-                            </div>
-                            <div class="form-check col">
-                              <input name="sort" type="radio" id="Title" class="form-check-input" value="title" ${fn:contains(param.sort,'title')? 'checked': '' }>
+                           <div class="form-check col">
+                              <input name="sort" type="radio" id="Title" class="form-check-input" value="title" ${fn:contains(checked.sort,'title')? 'checked': '' }>
                                 <label title="" for="Title" class="form-check-label">제목</label>
                             </div>
                             <div class="form-check col">
-                              <input name="sort" type="radio" id="PublishTime" class="form-check-input" value="author" ${fn:contains(param.sort,'author')? 'checked': '' }>
+                              <input name="sort" type="radio" id="SalesPoint" class="form-check-input" value="salesPoint" ${fn:contains(checked.sort,'salesPoint')? 'checked': '' }>
+                              <label title="" for="SalesPoint" class="form-check-label">판매량</label>
+                            </div>
+                           
+                            <div class="form-check col">
+                              <input name="sort" type="radio" id="PublishTime" class="form-check-input" value="author" ${fn:contains(checked.sort,'author')? 'checked': '' }>
                               <label title="" for="PublishTime" class="form-check-label">글쓴이</label>
                             </div>
                           </div>
@@ -91,7 +94,8 @@
                               <input name="category" type="checkbox" id="type_3" class="form-check-input" value="고전" ${fn:contains(category,'고전')? 'checked': '' }>
                               <label title="" for="type_3" class="form-check-label">고전</label>
                             </div>
-                            <div class="form-check col">
+                            
+                          <div class="form-check col">
                               <input name="category" type="checkbox" id="type_5" class="form-check-input" value="과학" ${fn:contains(category,'과학')? 'checked': '' }>
                               <label title="" for="type_5" class="form-check-label">과학</label>
                             </div>
@@ -99,8 +103,6 @@
                               <input name="category" type="checkbox" id="type_6" class="form-check-input" value="경제경영" ${fn:contains(category,'경제경영')? 'checked': '' }>
                                 <label title="" for="type_6" class="form-check-label">경제경영</label>
                               </div>
-                          </div>
-                          <div class = "row row-cols-4">
                             <div class="form-check col">
                               <input name="category" type="checkbox" id="type_8" class="form-check-input" value="만화" ${fn:contains(category,'만화')? 'checked': '' }>
                               <label title="" for="type_8" class="form-check-label">만화</label>
@@ -125,8 +127,6 @@
                               <input name="category" type="checkbox" id="type_14" class="form-check-input" value="여행" ${fn:contains(category,'여행')? 'checked': '' }>
                               <label title="" for="type_14" class="form-check-label">여행</label>
                             </div>
-                          </div>
-                          <div class = "row row-cols-4">
                             <div class="form-check col">
                               <input name="category" type="checkbox" id="type_15" class="form-check-input" value="역사" ${fn:contains(category,'역사')? 'checked': '' }>
                               <label title="" for="type_15" class="form-check-label">역사</label>
@@ -143,8 +143,6 @@
                               <input name="category" type="checkbox" id="type_18" class="form-check-input" value="유아" ${fn:contains(category,'유아')? 'checked': '' }>
                               <label title="" for="type_18" class="form-check-label">유아</label>
                             </div>
-                          </div>
-                          <div class = "row row-cols-3"> 
                             <div class="form-check col">
                               <input name="category" type="checkbox" id="type_19" class="form-check-input" value="인문학" ${fn:contains(category,'인문학')? 'checked': '' }>
                               <label title="" for="type_19" class="form-check-label">인문학</label>
@@ -157,8 +155,6 @@
                               <input name="category" type="checkbox" id="type_21" class="form-check-input" value="좋은부모" ${fn:contains(category,'좋은부모')? 'checked': '' }>
                               <label title="" for="type_21" class="form-check-label">좋은부모</label>
                             </div>
-                          </div> 
-                          <div class = "row row-cols-4">
                             <div class="form-check col">
                               <input name="category" type="checkbox" id="type_22" class="form-check-input" value="청소년" ${fn:contains(category,'청소년')? 'checked': '' }>
                               <label title="" for="type_22" class="form-check-label">청소년</label>
@@ -185,9 +181,9 @@
       </div>
     </section>
     <!--책 나열-->
-    <section class="mt-lg-5">
+    <section>
     <c:forEach var="item" items="${book}">
-    <div class="container text-block mt-5" >
+    <div class="container text-block" >
         <div class="row  hover-animate" font-size:20px">
           <div class=" col-2 text-md-center flex-shrink-0 me-4 me-xl-5">
           <a class="nav-link"href="${path}/book/BookDetail?bId=${item.bid}">
@@ -258,4 +254,9 @@
 		searchForm.page.value = page;
 		searchForm.submit();
 	}
+ 	
+ 	 document.getElementById('searchTypeSelect').addEventListener('change', function () {
+ 	    const selectedValue = this.value;
+ 	    document.getElementById('searchTypeInput').value = selectedValue;
+ 	  });
 </script>
