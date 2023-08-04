@@ -421,7 +421,7 @@
           	<div class="col-2">
           	<img class="rounded-3"alt="" src="${item.img }" style="width:100%">
           	</div>
-          	<div class="col-10 align-middle">${item.text}</div>
+          	<div class="col-10 align-middle">${item.title}</div>          	
           	</div>
           	</a>
           </c:forEach>
@@ -429,18 +429,16 @@
           <div class="col position-relative" style="top: -50px">
             <ul class="list-group">
               <li class="list-group-item border-0">
-                <img
+                 <c:forEach var="item" items="${book}">
+                <a href="${path}/book/BookDetail?bId=${item.bid}">
+         		 <img
                   class="mx-2"
-                  src="${path}/resources/img/kbs/341036e74155a49eb4281dab 1.png"
+                  src="${item.cover}"
                   style="width: 280px"
                   alt=""
                 />
-                <img
-                  class="mx-2"
-                  src="${path}/resources/img/kbs/341036e74155a49eb4281dab 2.png"
-                  style="width: 280px"
-                  alt=""
-                />
+                </a>
+          		</c:forEach>
               </li>
             </ul>
           </div>

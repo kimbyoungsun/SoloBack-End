@@ -16,7 +16,6 @@
 		<if test="genrenm != null">
 			AND genrenm LIKE '%${genrenm}'
 		</if>
-		ORDER BY prfpdfrom desc
 	</select>
 
 	<select id="selectPerformCount" resultType="int"

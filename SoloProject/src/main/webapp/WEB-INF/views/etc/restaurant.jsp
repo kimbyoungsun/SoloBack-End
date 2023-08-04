@@ -61,8 +61,8 @@
               <div class="col-3 text-md-center">
                 <img
                   class="p-2 mb-2 rounded-5 text-start"
-                  style="width: 100%; height:160px" 
-                  src="${item.firstimage }"
+                  style="width: 250px; height:170px" 
+                  src="${item.firstimage}"
                   alt="Padmé Amidala"
                 />
               </div>

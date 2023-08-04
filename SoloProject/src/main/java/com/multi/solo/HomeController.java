@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.multi.solo.book.model.service.BookService;
+import com.multi.solo.book.model.vo.Book;
 import com.multi.solo.common.util.NewsCrawling;
 import com.multi.solo.common.util.NewsInfo;
 import com.multi.solo.common.util.PageInfo;
@@ -79,6 +80,11 @@ public class HomeController {
 		model.addAttribute("hotplace",hotplace);
 		model.addAttribute("program",program);
 		
+		Map<String, Object> objectMap = new HashMap<String, Object>();
+		objectMap.put("sort", "pubDate");
+		objectMap.put("categoryId", "7443");
+		List<Book> book = bookService.getBookList(new PageInfo(1,1,2,2), objectMap);
+		model.addAttribute("book",book);
 //		Member loginMember = memberService.login("admin", "1212");
 //		session.setAttribute("loginMember", loginMember);
 //		test();		
@@ -87,8 +93,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/News")
-	public String news() {
-		
+	public String news(Model model) {
+		try {
+			List<NewsInfo> news = NewsCrawling.crawling();
+			model.addAttribute("news", news);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "etc/new";
 	}
 }

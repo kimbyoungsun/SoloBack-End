@@ -4,15 +4,16 @@ public class NewsInfo {
 	private String text;
 	private String img;
 	private String url;
-	
-	public NewsInfo() {
-		
-	}
-	public NewsInfo(String text, String img, String url) {
+	private String compony;
+	private String title;
+	public NewsInfo() {}
+	public NewsInfo(String text, String img, String url, String compony, String title) {
 		super();
 		this.text = text;
 		this.img = img;
 		this.url = url;
+		this.compony = compony;
+		this.title = title;
 	}
 	public String getText() {
 		return text;
@@ -32,6 +33,17 @@ public class NewsInfo {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	
+	public String getCompony() {
+		return compony;
+	}
+	public void setCompony(String componny) {
+		this.compony = componny;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 }
