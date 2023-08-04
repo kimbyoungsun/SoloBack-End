@@ -201,12 +201,12 @@
             <div class="row">
               <button class="col-2 btn btn-green" style="margin-right:40px; margin-top:-10px;">BEST1</button>
               <a class=" col-2 nav-item nav-link active" style="margin-right:40px;" href="${path}/book/BookDetail">
-                <img src="${path}/resources/img\bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크&nbsp;42</a>
+                <img src="${path}/resources/img/book/bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크&nbsp;42</a>
               <a class="col-2 nav-item nav-link active" style="margin-right:40px;" href="${path}/book/BookDetail">
-                <img src="${path}/resources/img\comment-regular.svg" style="height:20px;"/>&nbsp;리뷰&nbsp;36</a>
+                <img src="${path}/resources/img/book/comment-regular.svg" style="height:20px;"/>&nbsp;리뷰&nbsp;36</a>
                 <div class="col-2 star-rating"> <i class="fas fa-star"></i>&nbsp; <span  style="color:black; margin-right:40px;">4.7<span></div>  
               <a class="col-2 nav-item nav-link active" style="margin-right:40px;" href="${path}/book/BookDetail">
-                <img src="${path}/resources/img\check-to-slot-solid.svg" style="height:20px;"/>&nbsp;내가 읽은 책</a>
+                <img src="${path}/resources/img/book/check-to-slot-solid.svg" style="height:20px;"/>&nbsp;내가 읽은 책</a>
             </div>
             <div>
             <a class="nav-link" href="${path}/book/BookDetail?bId=${item.bid}">

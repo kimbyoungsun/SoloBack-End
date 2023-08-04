@@ -106,7 +106,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col text-solo-6 h3 my-3">인기가 많은 영화</div>
-			<div class="col text-end my-3" onclick="location.href='OTTSearch'">더보기</div>
+			<div class="col text-end my-3"><a class="nav-link" href="OTTSearch?sort=popularity">더보기</a></div>
 		</div>
 		<div class="swiper-container swiper-list">
 			<div class="swiper-wrapper">
@@ -126,7 +126,7 @@
 	<div class="container">
 		<div class="row py-3">
 			<div class="col text-solo-6 h3 my-3">평점이 높은 영화</div>
-			<div class="col text-end my-3">더보기</div>
+			<div class="col text-end my-3"><a class="nav-link" href="OTTSearch?sort=sort=vote_average">더보기</a></div>
 		</div>
 		<div class="swiper-container swiper-list">
 			<div class="swiper-wrapper">

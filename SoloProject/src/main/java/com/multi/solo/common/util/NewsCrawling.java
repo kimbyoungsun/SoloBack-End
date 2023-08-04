@@ -21,17 +21,19 @@ public class NewsCrawling {
 		Document document = conn.get(); // Document : html 문서를 말함
 		
 		List<NewsInfo> newsList = new ArrayList<>();
-		List<String> text = new ArrayList<>();
+		List<String> title = new ArrayList<>();
 		List<String> url= new ArrayList<>();
 		List<String> img = new ArrayList<>();
+		List<String> newscompony = new ArrayList<>();
+		List<String> text = new ArrayList<>();
  		NewsInfo newsInfo = new NewsInfo();
 		Elements elements = document.getElementsByTag("a"); // a태그의 모든 elements 가져오기
 		for(int i = 0; i < elements.size(); i++) {
-			// System.out.println(elements.get(i));
+//			System.out.println(elements.get(i));
 			Elements elements2 = elements.get(i).getElementsByClass("news_tit");
 			if(elements2.size() > 0 && elements2.toString().contains("#direct_") == false) {
 				//System.out.println(elements2.get(0).attr("title"));
-				text.add(elements2.get(0).attr("title"));
+				title.add(elements2.get(0).attr("title"));
 				url.add(elements2.get(0).attr("href"));
 			}
 //			elements2 = elements.get(i).getElementsByClass("api_txt_lines dsc_txt_wrap");
@@ -43,6 +45,20 @@ public class NewsCrawling {
 			if(elements2.size() > 0 && elements2.toString().contains("#direct_") == false) {
 				//System.out.println("dsc_thumb : "+elements2.get(0).getElementsByTag("img").attr("data-lazysrc"));
 				img.add(elements2.get(0).getElementsByTag("img").attr("data-lazysrc"));				
+			}
+			
+			elements2 = elements.get(i).getElementsByClass("info press");
+//			System.out.println(elements.get(i).getElementsByClass("info press").text());
+			if(elements2.size() > 0 && elements2.toString().contains("#direct_") == false) {
+				//System.out.println("dsc_thumb : "+elements2.get(0).getElementsByTag("img").attr("data-lazysrc"));
+				newscompony.add(elements.get(i).getElementsByClass("info press").text());				
+			}
+			
+			elements2 = elements.get(i).getElementsByClass("api_txt_lines dsc_txt_wrap");
+//			System.out.println(elements.get(i).getElementsByClass("api_txt_lines dsc_txt_wrap").text());
+			if(elements2.size() > 0 && elements2.toString().contains("#direct_") == false) {
+				//System.out.println("dsc_thumb : "+elements2.get(0).getElementsByTag("img").attr("data-lazysrc"));
+				text.add(elements.get(i).getElementsByClass("api_txt_lines dsc_txt_wrap").text());				
 			}
 		}
 		
@@ -61,8 +77,10 @@ public class NewsCrawling {
 		for(String item : url) {
 			newsInfo = new NewsInfo();
 			newsInfo.setImg(img.get(i));
-			newsInfo.setText(text.get(i));
+			newsInfo.setTitle(title.get(i));
 			newsInfo.setUrl(url.get(i));
+			newsInfo.setText(text.get(i));
+			newsInfo.setCompony(newscompony.get(i));
 			
 			newsList.add(newsInfo);
 //			System.out.println("img : " +newsList.get(i).getImg());
@@ -70,11 +88,13 @@ public class NewsCrawling {
 //			System.out.println("url : " +newsList.get(i).getUrl());
 			i++;
 		}
-//		System.out.println("---------------------------------------------------");
+		System.out.println("---------------------------------------------------");
 //		for (NewsInfo info : newsList) {
 //			System.out.println("img : "+info.getImg());
-//			System.out.println("text : "+info.getText());
+//			System.out.println("title : "+info.getTitle());
 //			System.out.println("url : "+info.getUrl());
+//			System.out.println("text : "+info.getText());
+//			System.out.println("compony : "+info.getCompony());
 //			System.out.println();
 //		}
 		

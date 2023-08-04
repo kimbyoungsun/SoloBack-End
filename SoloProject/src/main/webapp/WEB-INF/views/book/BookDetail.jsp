@@ -15,7 +15,7 @@
               <button class="btn btn-turquoise" style="width:210px; height:60px" type="submit" onclick="location.href='${path}/book/BookSearch'">◀ 도서 메인으로</button>
             </div>
           <div class="col" style="text-align: center;">
-            <span class="align-middle" style="font-weight:bold; margin:auto">카테고리 </span> <span class="align-middle" style="font-weight:none; margin:auto">${book.categoryName } </span>
+            <span class="align-middle" style="font-weight:bold; margin:auto">카테고리 </span> <span class="align-middle" style="font-weight:none; margin:auto">${book.categoryName} </span>
           </div>   
           </div> 
           <div class="row mt-1">
@@ -55,7 +55,7 @@
                 </div>
                 </div> 
                 <div class="row mb-3 mt-5">
-                  <div class="col-lg-3"><img src="${path}/resources/img\bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크</div>
+                  <div class="col-lg-3"><img src="${path}/resources/img/book/bookmark-solid.svg" style="height:20px;"/>&nbsp;북마크</div>
                 </div> 
                 <div class="my-3 py-3">
                 <button class="btn btn-green hover-animate" style="margin-right:40px; margin-top:-10px;" onclick="location.href='${book.link}'">
@@ -70,7 +70,7 @@
     <!--리뷰-->
     <div class="container">
     	<div class="text-solo-6 h3 my-3 mt-5" style="display:flex;">
-        <img src="${path}/resources/img/comment-regular.svg" style="height:40px;"/>&nbsp; 리뷰
+        <img src="${path}/resources/img/book/comment-regular.svg" style="height:40px;"/>&nbsp; 리뷰
       </div>
       
         <div class="container" style="border:2px solid #50A78B; border-radius:20px; overflow:hidden;">
@@ -115,7 +115,7 @@
                       </div>
                     </div>
                     <div class="col-lg-6 pe-5"style="display:flex; justify-content: flex-end;">
-                      <img src="${path}/resources/img/face-smile-wink-regular.svg" style="height:20px;"/>&nbsp; 공감 <span style="color:#50A78B">2<span></a>
+                      <img src="${path}/resources/img/book/face-smile-wink-regular.svg" style="height:20px;"/>&nbsp; 공감 <span style="color:#50A78B">2<span></a>
                     </div>
                   <div>
                   <div class="mt-3 px-5" style="text-align:justify">
@@ -156,7 +156,7 @@
     <!--작가의 다른 도서-->
     <div class="container">
       <div class="text-solo-6 h3 mt-5 my-3" style="display:flex;">
-        <img src="${path}/resources/img\작가의 다른 도서.png" style="height:40px; margin-top:-5px;"/>&nbsp; 이 책과 비슷한 책</a>
+        <img src="${path}/resources/img/book/books.png" style="height:40px; margin-top:-5px;"/>&nbsp; 이 책과 비슷한 책</a>
       </div>
     </div>  
     <section class="bg-melon py-4">

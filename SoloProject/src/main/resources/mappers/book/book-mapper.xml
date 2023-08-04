@@ -30,9 +30,14 @@
 			</foreach>
 			)
 		</if>
+		ORDER BY 
 		<if test="sort != null">
-			ORDER BY ${sort} LIMIT ${limit} OFFSET ${offset}
+			 ${sort} 
 		</if>
+		<if test="sort == null">
+			pubDate
+		</if>
+		LIMIT ${limit} OFFSET ${offset}
 	</select>
 
 	<select id="selectBookCount" resultType="int"
