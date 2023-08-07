@@ -5,6 +5,7 @@
 <!-- 향후 Mapper interface가 정의 될 위치 -->
 <mapper
 	namespace="com.multi.solo.perform.model.mapper.PerformMapper">
+	<!--  
 	<select id="selectPerformList"
 		resultType="com.multi.solo.perform.model.vo.PerformInfo"
 		parameterType="map">
@@ -18,18 +19,64 @@
 		</if>
 		ORDER BY prfpdfrom desc
 	</select>
+	-->
+	<!-- Perform_remake 최상단 스와이퍼-->
+	<select id="selectPerformRemakeTop"
+		resultType="Performinfo"
+		parameterType="map">
+		SELECT * FROM PERFORMINFO
+		ORDER BY RAND()
+		LIMIT 10;
+	</select>
+	
+	<!-- Perform_remake 최신 리스트 -->
+	<select id="selectLatestList"
+		resultType="com.multi.solo.perform.model.vo.PerformInfo"
+		parameterType="map">
+		SELECT * FROM  performinfo a join performplaceinfo b on a.mt10id = b.mt10id 
+		ORDER BY a.prfpdfrom DESC LIMIT 3
+	</select>
 
+	
+	
 	<select id="selectPerformCount" resultType="int"
 		parameterType="map">
-		SELECT count(*) FROM PERFORMINFO
+		SELECT count(*) FROM  performinfo a left join performplaceinfo b on a.mt10id = b.mt10id 
 		WHERE 1=1
-		<if test="title != null">
-			AND prfnm LIKE '%${title}%'
+		<if test="search != null">
+			AND prfnm LIKE '%${search}%'
 		</if>
 		<if test="genrenm != null">
 			AND genrenm LIKE '%${genrenm}%'
 		</if>
+	</select>	
+	
+	<!-- search list -->
+	<select id="selectPerformSearchList"
+		resultType="com.multi.solo.perform.model.vo.PerformInfo"
+		parameterType="map">
+		SELECT * FROM  performinfo a left join performplaceinfo b on a.mt10id = b.mt10id 
+		WHERE 1=1
+		<if test="search != null">
+			AND a.prfnm LIKE '%${search}%'
+		</if>
+		<if test="genrenm != null">
+			AND a.genrenm LIKE '%${genrenm}%'
+		</if>
+		<if test="region != null">
+			AND b.adres LIKE '%${region}%'
+		</if>
+		ORDER BY a.prfpdfrom DESC LIMIT ${limit} OFFSET ${offset}
 	</select>
+	
+	<!-- search detail -->
+	<select id="selectPerformDetail"
+		resultType="com.multi.solo.perform.model.vo.PerformInfo"
+		parameterType="String">
+		SELECT * FROM  performinfo a left join performplaceinfo b on a.mt10id = b.mt10id
+		WHERE mt20id = #{no}
+	</select>
+
 
 	<select id="selectPerformById"
 		resultType="com.multi.solo.perform.model.vo.PerformInfo"
@@ -66,4 +113,46 @@
 		WHERE 1=1
 			AND mt10id LIKE '${id}' 
 	</select>
+	
+	<!-- 검색 -->
+<!-- 	<select id="selectPerformSerch" -->
+<!-- 		resultType="com.multi.solo.perform.model.vo.Performinfo" -->
+<!-- 		parameterType="String"> -->
+<!-- 		SELECT poster,prfnm FROM PERFORMINFO -->
+<!-- 		WHERE 1=1 -->
+<!-- 		<if test="serch != null"> -->
+<!-- 			AND prfnm LIKE '%${serch}%'; -->
+<!-- 		</if> -->
+<!-- 		ORDER BY prfnm desc -->
+<!-- 	</select> -->
+	
+	<!-- 장르별 버튼 -->
+	<select id="selectPerformCategory"
+		resultType="Performinfo"
+		parameterType="map">
+		select * from PERFORMINFO
+		WHERE 1=1
+		<if test="category == '콘서트'">
+			AND genrenm IN('대중음악')
+		</if>
+		<if test="category == '뮤지컬'">
+			AND genrenm IN('뮤지컬')
+		</if>
+		<if test="category == '연극'">
+			AND genrenm IN('연극')
+		</if>
+		<if test="category == '클래식'">
+			AND genrenm IN('서양음악(클래식)')
+		</if>
+		<if test="category == '무용'">
+			AND genrenm IN('무용', '대중무용')
+		</if>
+		<if test="category == '기타'">
+			AND genrenm IN('복합', '서커스/마술', '한국음악(국악)')
+		</if>
+		
+		ORDER BY prfpdfrom desc LIMIT 6 OFFSET 0
+	</select>
+	
+	
 </mapper>
