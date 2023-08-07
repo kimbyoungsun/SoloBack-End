@@ -110,14 +110,9 @@
                   class="dropdown-menu"
                   aria-labelledby="homeDropdownMenuLink"
                 >
-                  <a class="dropdown-item" href="index.html">Rooms</a
-                  ><a class="dropdown-item" href="index-2.html">Restaurants</a
-                  ><a class="dropdown-item" href="index-3.html">Travel</a
-                  ><a class="dropdown-item" href="index-4.html"
-                    >Real Estate
-                    <span class="badge badge-info-light ms-1 mt-n1"
-                      >New</span
-                    ></a
+                  <a class="dropdown-item" href="${path}/program/ProgramMain">1인 가구</a
+                  ><a class="dropdown-item" href="${path}/location/RentalHouse?category=서울특별시">공공 임대 주택 정보</a
+                  ><a class="dropdown-item" href="${path}/News">뉴스</a
                   >
                 </div>
               </li>
@@ -137,7 +132,7 @@
                   class="dropdown-menu"
                   aria-labelledby="homeDropdownMenuLink"
                 >
-                  <a class="dropdown-item" href="${path}">공연</a
+                  <a class="dropdown-item" href="${path}/perform/Perform_remake">공연</a
                   ><a class="dropdown-item" href="${path}/ott/OTTMain">OTT</a
                   ><a class="dropdown-item" href="${path}/location/Restaurant">식당 카페</a
                   ><a class="dropdown-item" href="${path}/sports/SportMain">생활 체육</a
@@ -157,46 +152,15 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  동네거래</a
-                >
-                <div
-                  class="dropdown-menu"
-                  aria-labelledby="homeDropdownMenuLink"
-                >
-                  <a class="dropdown-item" href="index.html">Rooms</a
-                  ><a class="dropdown-item" href="index-2.html">Restaurants</a
-                  ><a class="dropdown-item" href="index-3.html">Travel</a
-                  ><a class="dropdown-item" href="index-4.html"
-                    >Real Estate
-                    <span class="badge badge-info-light ms-1 mt-n1"
-                      >New</span
-                    ></a
-                  >
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle active"
-                  id="homeDropdownMenuLink"
-                  href="index.html"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
                   커뮤니티</a
                 >
                 <div
                   class="dropdown-menu"
                   aria-labelledby="homeDropdownMenuLink"
                 >
-                  <a class="dropdown-item" href="index.html">Rooms</a
-                  ><a class="dropdown-item" href="index-2.html">Restaurants</a
-                  ><a class="dropdown-item" href="index-3.html">Travel</a
-                  ><a class="dropdown-item" href="index-4.html"
-                    >Real Estate
-                    <span class="badge badge-info-light ms-1 mt-n1"
-                      >New</span
-                    ></a
+                  <a class="dropdown-item" href="${path}/community?page=1&type=product">중고 거래</a
+                  ><a class="dropdown-item" href="${path}/community?page=1&type=pet">반려 동물</a
+                  ><a class="dropdown-item" href="${path}/community?page=1&type=talent">재능 거래</a
                   >
                 </div>
               </li>

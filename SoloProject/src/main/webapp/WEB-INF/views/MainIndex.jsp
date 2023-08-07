@@ -59,7 +59,7 @@
         </div>
 
         <div class="row">
-          <div class="col d-flex">
+          <div class="col d-flex"> <a class="nav-link" href="${path}/perform/Perform_remake">
             <div class="card border-0 bg-solo-1">
               <div class="container">
                 <div class="mt-3 ms-3 fw-bold">슬기로운 문화생활</div>
@@ -74,6 +74,7 @@
                 </div>
               </div>
             </div>
+             </a>
           </div>
           <div class="col d-flex">
            <a class="nav-link" href="${path}/ott/OTTMain">
@@ -218,7 +219,7 @@
             <div class="text-center">
               <span
                 class="btn bg-solo-5 nav-fill my-2"
-                style="width: 21.875rem; vertical-align: middle" onclick="location.href='${path}/community?type=pet'"
+                style="width: 21.875rem; vertical-align: middle" onclick="location.href='${path}/community?page=1&type=pet'"
               >
                 <ul class="nav" style="vertical-align: middle">
                   <li class="d-flex mx-2">
@@ -226,7 +227,7 @@
                   </li>
                   <li class="nav-justified mx-2">
                     <div class="text-start text-light card-text">
-                      <span class="h6 fw-bold">동네 중고 거래</span>
+                      <span class="h6 fw-bold">반려 동물 </span>
                       <br />
                       <span class="fw-normal">진행 중인 거래 51건</span>
                     </div>
@@ -239,7 +240,7 @@
 
               <span
                 class="btn bg-solo-5 nav-fill my-2"
-                style="width: 21.875rem; vertical-align: middle" onclick="location.href='${path}/community?type=talent'"
+                style="width: 21.875rem; vertical-align: middle" onclick="location.href='${path}/community?page=1&type=talent'"
               >
                 <ul class="nav" style="vertical-align: middle">
                   <li class="d-flex mx">
@@ -247,7 +248,7 @@
                   </li>
                   <li class="nav-justified mx-2">
                     <div class="text-start text-light card-text">
-                      <span class="h6 fw-bold">반려동물 임보 위탁</span>
+                      <span class="h6 fw-bold">재능 기부</span>
                       <br />
                       <span class="">진행 중인 거래 51건</span>
                     </div>
@@ -260,7 +261,7 @@
 
               <span
                 class="btn bg-solo-5 nav-fill my-2"
-                style="width: 21.875rem; vertical-align: middle" onclick="location.href='${path}/community?type=product'"
+                style="width: 21.875rem; vertical-align: middle" onclick="location.href='${path}/community?page=1&type=product'"
               >
                 <ul class="nav" style="vertical-align: middle">
                   <li class="d-flex mx-2">
@@ -269,7 +270,7 @@
                   <li class="nav-justified mx-2">
                     <div class="text-start text-light card-text">
                       <span class="h6 fw-bold card-text"
-                        >반려동물 임보 위탁</span
+                        >중고 거래</span
                       >
                       <br />
                       <span class="card-text">진행 중인 거래 51건</span>

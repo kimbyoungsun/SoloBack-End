@@ -26,10 +26,10 @@
                             <div class="col-lg-6 order-1">
                                 <div class="p-4" style="padding: 4rem !important;">
                                     <!-- Logo -->
-                                    <div class="text-center">
-                                        <a href="MainIndex.html">
-                                            <img class="mb-4" style="height: 50px;" src="${path}/resources/img/logo.svg" alt="logo">
-                                        </a>
+                                    <div class="text-center" >
+                                        <div class="display-4">
+                                        	자취 월장
+                                        </div>
                                     </div>
             
                                     <!-- Form START -->

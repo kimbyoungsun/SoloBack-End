@@ -8,15 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PerformPlaceInfo {
-	public String     fcltynm		;
-	public String     mt10id		;
-	public String     mt13cnt		;
-	public String     fcltychartr	;
-	public String     opende		;
-	public String     seatscale	    ;
-	public String     telno		    ;
-	public String     relateurl	    ;
-	public String     adres		    ;
-	public String     la			;
-	public String     lo			;
+	public String fcltynm;
+	public String mt10id;
+	public String mt13cnt;
+	public String fcltychartr;
+	public String opende;
+	public String seatscale;
+	public String telno;
+	public String relateurl;
+	public String adres;
+	public String la;
+	public String lo;
 }

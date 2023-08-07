@@ -73,15 +73,15 @@
               <h6 class="text-uppercase text-dark mb-3 h4">정보</h6>
               <ul class="list-unstyled">
                 <li>
-                  <a class="text-black" href="index.html">공공임대주택</a>
+                  <a class="text-black" href="${path}/location/RentalHouse?category=서울특별시">공공임대주택</a>
                 </li>
                 <li>
-                  <a class="text-black" href="category-rooms.html"
+                  <a class="text-black" href="${path}/program/ProgramMain"
                     >정부지원사업</a
                   >
                 </li>
                 <li>
-                  <a class="text-black" href="category-2-rooms.html"
+                  <a class="text-black" href="${path}/News"
                     >1인가구 뉴스</a
                   >
                 </li>
@@ -91,17 +91,17 @@
               <h6 class="text-uppercase text-dark mb-3 h4">라이프</h6>
               <ul class="list-unstyled">
                 <li>
-                  <a class="text-black" href="compare.html">공연 라이프</a>
+                  <a class="text-black" href="${path}/perform/Perform_remake">공연 라이프</a>
                 </li>
-                <li><a class="text-black" href="team.html">OTT 라이프</a></li>
+                <li><a class="text-black" href="${path}/ott/OTTMain">OTT 라이프</a></li>
                 <li>
-                  <a class="text-black" href="contact.html">식당 라이프 </a>
-                </li>
-                <li>
-                  <a class="text-black" href="contact.html"> 체육 라이프</a>
+                  <a class="text-black" href="${path}/location/Restaurant">식당 라이프 </a>
                 </li>
                 <li>
-                  <a class="text-black" href="contact.html">도서 라이프</a>
+                  <a class="text-black" href="${path}/sports/SportMain"> 체육 라이프</a>
+                </li>
+                <li>
+                  <a class="text-black" href="${path}/book/BookSearch">도서 라이프</a>
                 </li>
               </ul>
             </div>
@@ -109,23 +109,11 @@
               <h6 class="text-uppercase text-dark mb-3 h4">커뮤니티</h6>
               <ul class="list-unstyled">
                 <li>
-                  <a class="text-black" href="compare.html">공지사항</a>
+                  <a class="text-black" href="${path}/community?page=1&type=product">중고거래</a>
                 </li>
-                <li><a class="text-black" href="team.html">자유게시판</a></li>
+                <li><a class="text-black" href="${path}/community?page=1&type=talent">재능거래</a></li>
                 <li>
-                  <a class="text-black" href="contact.html">건의게시판 </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-              <h6 class="text-uppercase text-dark mb-3 h4">동네거래</h6>
-              <ul class="list-unstyled">
-                <li>
-                  <a class="text-black" href="compare.html">중고거래</a>
-                </li>
-                <li><a class="text-black" href="team.html">재능거래</a></li>
-                <li>
-                  <a class="text-black" href="contact.html"
+                  <a class="text-black" href="${path}/community?page=1&type=pet"
                     >반려동물 임보.위탁
                   </a>
                 </li>
