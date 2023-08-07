@@ -75,15 +75,15 @@
               <h6 class="text-uppercase text-dark mb-3 h4">정보</h6>
               <ul class="list-unstyled">
                 <li>
-                  <a class="text-black" href="index.html">공공임대주택</a>
+                  <a class="text-black" href="${path}/location/RentalHouse?category=서울특별시">공공임대주택</a>
                 </li>
                 <li>
-                  <a class="text-black" href="category-rooms.html"
+                  <a class="text-black" href="${path}/program/ProgramMain"
                     >정부지원사업</a
                   >
                 </li>
                 <li>
-                  <a class="text-black" href="category-2-rooms.html"
+                  <a class="text-black" href="${path}/News"
                     >1인가구 뉴스</a
                   >
                 </li>
@@ -93,17 +93,17 @@
               <h6 class="text-uppercase text-dark mb-3 h4">라이프</h6>
               <ul class="list-unstyled">
                 <li>
-                  <a class="text-black" href="compare.html">공연 라이프</a>
+                  <a class="text-black" href="${path}/perform/Perform_remake">공연 라이프</a>
                 </li>
-                <li><a class="text-black" href="team.html">OTT 라이프</a></li>
+                <li><a class="text-black" href="${path}/ott/OTTMain">OTT 라이프</a></li>
                 <li>
-                  <a class="text-black" href="contact.html">식당 라이프 </a>
-                </li>
-                <li>
-                  <a class="text-black" href="contact.html"> 체육 라이프</a>
+                  <a class="text-black" href="${path}/location/Restaurant">식당 라이프 </a>
                 </li>
                 <li>
-                  <a class="text-black" href="contact.html">도서 라이프</a>
+                  <a class="text-black" href="${path}/sports/SportMain"> 체육 라이프</a>
+                </li>
+                <li>
+                  <a class="text-black" href="${path}/book/BookSearch">도서 라이프</a>
                 </li>
               </ul>
             </div>
@@ -111,23 +111,11 @@
               <h6 class="text-uppercase text-dark mb-3 h4">커뮤니티</h6>
               <ul class="list-unstyled">
                 <li>
-                  <a class="text-black" href="compare.html">공지사항</a>
+                  <a class="text-black" href="${path}/community?page=1&type=product">중고거래</a>
                 </li>
-                <li><a class="text-black" href="team.html">자유게시판</a></li>
+                <li><a class="text-black" href="${path}/community?page=1&type=talent">재능거래</a></li>
                 <li>
-                  <a class="text-black" href="contact.html">건의게시판 </a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-              <h6 class="text-uppercase text-dark mb-3 h4">동네거래</h6>
-              <ul class="list-unstyled">
-                <li>
-                  <a class="text-black" href="compare.html">중고거래</a>
-                </li>
-                <li><a class="text-black" href="team.html">재능거래</a></li>
-                <li>
-                  <a class="text-black" href="contact.html"
+                  <a class="text-black" href="${path}/community?page=1&type=pet"
                     >반려동물 임보.위탁
                   </a>
                 </li>
@@ -182,5 +170,54 @@
     </script>
     <!-- Main Theme JS file    -->
     <script src="js/theme.js"></script>
+    <!-- kbs footer -->
+    <script>
+      // ------------------------------------------------------- //
+      //   Inject SVG Sprite -
+      //   see more here
+      //   https://css-tricks.com/ajaxing-svg-sprite/
+      // ------------------------------------------------------ //
+      function injectSvgSprite(path) {
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", path, true);
+        ajax.send();
+        ajax.onload = function (e) {
+          var div = document.createElement("div");
+          div.className = "d-none";
+          div.innerHTML = ajax.responseText;
+          document.body.insertBefore(div, document.body.childNodes[0]);
+        };
+      }
+      // to avoid CORS issues when viewing using file:// protocol, using the demo URL for the SVG sprite
+      // use your own URL in production, please :)
+      // https://demo.bootstrapious.com/directory/1-0/icons/orion-svg-sprite.svg
+      //- injectSvgSprite('${path}icons/orion-svg-sprite.svg');
+      injectSvgSprite(
+        "https://demo.bootstrapious.com/directory/1-4/icons/orion-svg-sprite.svg"
+      );
+    </script>
+
+
+    <!-- jQuery-->
+    <script src="${path}/resources/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap JS bundle - Bootstrap + PopperJS-->
+    <script src="${path}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Magnific Popup - Lightbox for the gallery-->
+    <script src="${path}/resources/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Smooth scroll-->
+    <script src="${path}/resources/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <!-- Bootstrap Select-->
+    <script src="${path}/resources/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
+    <script src="${path}/resources/vendor/object-fit-images/ofi.min.js"></script>
+    <!-- Swiper Carousel                       -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+    <script>
+      var basePath = "";
+    </script>
+    <!-- Main Theme JS file    -->
+    <script src="${path}/resources/js/theme.js"></script>
+    <script src="${path}/resources/js/kbs.js"></script>      
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   </body>
 </html>

@@ -20,15 +20,13 @@
             </div>
             <hr>
             <div>
-                <span><a href="">콘서트 ></a></span>
-                <span><a href="">페스티벌 ></a></span>
-                <span style="border: 1px solid red;">단독특가</span>
+                <span>${info.genrenm}</span>
             </div>
             <div class="rn-02" style="margin-top: 2rem; margin-bottom: 2rem;">
-                <p class="rn-big-title">어쩌구저쩌구</p>
+                <p class="rn-big-title">${info.prfnm}</p>
                 <div class="rn-product-short-data">
                   <p>
-                    <span class="ps-date">2023.06.04 ~ 2023.08.27</span>
+                    <span class="ps-date">${info.prfpdfrom } ~ ${info.prfpdto }</span>
                   </p>
                 </div>
                 <hr class="hr-bk">
@@ -39,22 +37,24 @@
       <div class="container">
         <div class="rn-03">
           <div class="rn-03-left">
-            <div class="rn-product-imgbox">
-              <img src="${path}/resources/img/yg/공연이미지3.jpg" alt="공연이미지3">
+            <div class="rn-product-imgbox" >
+              <img src="${info.poster}" alt="공연이미지3" width="420">
             </div>
           </div>
           <div class="rn-03-right">
             <div class="rn-product-area1">
               <dl>
                 <dt>등급</dt>
-                <dd>&nbsp;14세 이상</dd>
+                <dd>&nbsp;${info.prfage }</dd>
                 <dt>관람시간</dt>
-                <dd>&nbsp;총 165분 (인터미션 15분 포함)  </dd>
+                <dd>&nbsp;${info.prfruntime } (인터미션 15분 포함)  </dd>
                 <dt>출연</dt>
-                <dd>&nbsp <a href=""></a></dd>
+                <dd>&nbsp ${info.prfcast }</dd>
+                <dt>위치</dt>
+                <dd>&nbsp ${info.adres }</dd>
                 <dt id="">가격</dt>
                 <dd id="" class="rn-product-price">
-                  <ul class="rn-product-price1"></ul>
+                  <ul class="rn-product-price1">${info.pcseguidance }</ul>
                 </dd>
               </dl>
             </div>
@@ -62,11 +62,7 @@
               <dl>
                 <dt>공연시간 안내</dt>
                 <dd>
-                  "※ 수~금요일 7시 30분 │ 토~일요일 2시, 6시 30분"
-                  <br>
-                  "* 문화가 있는 날 : 7월 26일(수) 3시, 7시 30분 미오픈"
-                  <br>
-                  "* 7월 1일(토) 2시, 7/20(목) 7시 30분 공연 R석 미오픈"
+                  "※ ${info.dtguidance }"
                   <br>
                 </dd>
                 <dt>배송정보</dt>
@@ -75,47 +71,47 @@
             </div>
           </div>
         </div>
-        <div class="rn-04">
-          <div class="rn-04-left off">
-            <div class="CalendarBody">
-              <h4>관람일</h4>
-              <table class="Calendar">
-                  <thead>
-                      <tr>
-                          <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td>
-                          <td colspan="5">
-                              <span id="calYear"></span>년
-                              <span id="calMonth"></span>월
-                          </td>
-                          <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td>
-                      </tr>
-                      <tr>
-                          <td>일</td>
-                          <td>월</td>
-                          <td>화</td>
-                          <td>수</td>
-                          <td>목</td>
-                          <td>금</td>
-                          <td>토</td>
-                      </tr>
-                  </thead>
+<!--         <div class="rn-04"> -->
+<!--           <div class="rn-04-left off"> -->
+<!--             <div class="CalendarBody"> -->
+<!--               <h4>관람일</h4> -->
+<!--               <table class="Calendar"> -->
+<!--                   <thead> -->
+<!--                       <tr> -->
+<!--                           <td onClick="prevCalendar();" style="cursor:pointer;">&#60;</td> -->
+<!--                           <td colspan="5"> -->
+<!--                               <span id="calYear"></span>년 -->
+<!--                               <span id="calMonth"></span>월 -->
+<!--                           </td> -->
+<!--                           <td onClick="nextCalendar();" style="cursor:pointer;">&#62;</td> -->
+<!--                       </tr> -->
+<!--                       <tr> -->
+<!--                           <td>일</td> -->
+<!--                           <td>월</td> -->
+<!--                           <td>화</td> -->
+<!--                           <td>수</td> -->
+<!--                           <td>목</td> -->
+<!--                           <td>금</td> -->
+<!--                           <td>토</td> -->
+<!--                       </tr> -->
+<!--                   </thead> -->
       
-                  <tbody>
-                  </tbody>
-              </table>
-              <hr>
-              <div>
-                <h4>회차</h4>
-                <div>
-                  <h4>10:00</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="rn-04-right" style="height: 600px;">
-              <p class="rn-04-right-tit">극장 목록</p>
-          </div>
-        </div>
+<!--                   <tbody> -->
+<!--                   </tbody> -->
+<!--               </table> -->
+<!--               <hr> -->
+<!--               <div> -->
+<!--                 <h4>회차</h4> -->
+<!--                 <div> -->
+<!--                   <h4>10:00</h4> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--           <div class="rn-04-right" style="height: 600px;"> -->
+<!--               <p class="rn-04-right-tit">극장 목록</p> -->
+<!--           </div> -->
+<!--         </div> -->
         
         <div style="background-color: rgba(216, 234, 97, 0.6); width: 100%; height: 100px;"></div>
       </div>
@@ -128,9 +124,28 @@
           </a>
         </div>
         <div style="text-align: center;">
-          <p style="padding-top: 50px; padding-bottom: 30px;" class="rn-tit">할인 정보</p>
-          <img src="${path}/resources/img/yg/공연상세1.jpg" alt="공연상세1">
-        </div>
+		   <p style="padding-top: 50px; padding-bottom: 30px;" class="rn-tit">공연 정보</p>
+		    <c:if test="${'-' != info.styurl1}">
+		        <div>
+		            <img src="${info.styurl1}" alt="공연상세1" width = "750px">
+		        </div>
+		    </c:if>
+		    <c:if test="${'-' != info.styurl2}">
+		        <div>
+		            <img src="${info.styurl2}" alt="공연상세2" width = "750px">
+		        </div>
+		    </c:if>
+		    <c:if test="${'-' != info.styurl3}">
+		        <div>
+		            <img src="${info.styurl3}" alt="공연상세3" width = "750px">
+		        </div>
+		    </c:if>
+		    <c:if test="${'-' != info.styurl4}">
+		        <div>
+		            <img src="${info.styurl4}" alt="공연상세4" width = "750px">
+		        </div>
+		    </c:if>
+		</div>
       </div>
     </section>
     <section>
