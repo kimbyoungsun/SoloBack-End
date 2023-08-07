@@ -27,10 +27,6 @@ public class PerformInfo {
 	public String genrenm;
 	public String prfstate;
 	public String openrun;
-	public String styurl1;
-	public String styurl2;
-	public String styurl3;
-	public String styurl4;
-	public String adres;
+	public List<String> styurls;
 	public String dtguidance;
 }

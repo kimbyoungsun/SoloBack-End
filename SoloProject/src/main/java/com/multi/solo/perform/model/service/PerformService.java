@@ -16,41 +16,12 @@ public class PerformService {
 	@Autowired
 	private PerformMapper mapper;
 	
-//	public List<PerformInfo> getPerformList(PageInfo pageInfo, Map<String, String> param){
-//		param.put("limit", "" + pageInfo.getListLimit());
-//		param.put("offset", "" + (pageInfo.getStartList() - 1));
-//		
-//		return mapper.selectPerformList(param);
-//	}
-//	이미지 바꾸기
-	public List<PerformInfo> getselectPerformCategory(PageInfo pageInfo, Map<String,String> paramMap) {
-		paramMap.put("limit", "" + pageInfo.getListLimit());
-		paramMap.put("offset", "" + (pageInfo.getStartList() - 1));
-        return mapper.selectPerformCategory(paramMap);
-    }
-	
-//	remake_최상단 swiper
-	public List<PerformInfo> getselectPerformRemakeTop(PageInfo pageInfo, Map<String,String> paramMap) {
-		return mapper.selectPerformRemakeTop(paramMap);
+	public List<PerformInfo> getPerformList(PageInfo pageInfo, Map<String, String> param){
+		param.put("limit", "" + pageInfo.getListLimit());
+		param.put("offset", "" + (pageInfo.getStartList() - 1));
+		
+		return mapper.selectPerformList(param);
 	}
-	
-//	remake 최신 리스트
-	public List<PerformInfo> getselectLatestList(PageInfo pageInfo, Map<String,String> paramMap) {
-		return mapper.selectLatestList(paramMap);
-	}
-	
-//	search 리스트
-	public List<PerformInfo> getPerformSearchList(PageInfo pageInfo, Map<String,String> paramMap){
-		paramMap.put("limit", "" + pageInfo.getListLimit());
-		paramMap.put("offset", "" + (pageInfo.getStartList() - 1));
-		return mapper.selectPerformSearchList(paramMap);
-	}
-	
-//	search 디테일
-	public PerformInfo selectPerformDetail(String no) {
-		return mapper.selectPerformDetail(no);
-	}
-	
 	
 	public int getPerformCount(Map<String, String> param) {
 		return mapper.selectPerformCount(param);
@@ -73,7 +44,4 @@ public class PerformService {
 	public PerformPlaceInfo findPerformPlaceById(String id) {
 		return mapper.selectPerformPlaceById(id); 
 	}
-
-
-
 }

@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
-
 <jsp:include page="/WEB-INF/views/common/YIGHeader.jsp"></jsp:include>
       
 
@@ -66,8 +65,8 @@
                 <label style="margin-bottom: 1rem;">영업 시간</label>
                 <form id="time-form">
                   <div class="multi-range-slider">
-                    <input type="range" id="input-left" name="start-time" min="0" max="1440" value="0" />
-                    <input type="range" id="input-right" name="end-time" min="0" max="1440" value="1440" />
+                    <input type="range" id="input-left" name="start-time" min="0" max="2400" value="600" />
+                    <input type="range" id="input-right" name="end-time" min="0" max="2400" value="1800" />
                   
                     <div class="slider">
                       <div class="track"></div>
@@ -256,17 +255,15 @@
       </nav>
     </section>
     
-    
     <!-- 시간 슬라이더 -->
-    
     <script>
       const form = document.getElementById("time-form");
       const inputLeft = document.getElementById("input-left");
       const inputRight = document.getElementById("input-right");
     
       function convertToTime(value) {
-        const hours = Math.floor(value / 60);
-        const minutes = value % 60;
+        const hours = Math.floor(value / 100);
+        const minutes = value % 100;
         return `${String(hours).padStart(2, '0')}시 ${String(minutes).padStart(2, '0')}분`;
       }
     

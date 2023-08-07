@@ -65,6 +65,6 @@ public class HomeController {
 //		test();
 		
 		
-		return "home";
+		return "etc/restaurant";
 	}
 }
