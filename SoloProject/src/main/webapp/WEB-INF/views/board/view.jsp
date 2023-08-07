@@ -39,7 +39,7 @@
 	<table id="tbl-board">
 		<tr>
 			<th>글번호</th>
-			<td><c:out value="${board.BNo}"/></td>
+			<td><c:out value="${board.bno}"/></td>
 		</tr>
 		<tr>
 			<th>제목</th>
@@ -84,7 +84,7 @@
 								and (fn:contains(board.originalFileName,'.jpg')
 									 or fn:contains(board.originalFileName,'.png')
 									  or fn:contains(board.originalFileName,'.jpeg'))}">
-							<img src="${path}/board/file/${board.renamedFileName}"
+							<img src="${path}/community/file/${board.renamedFileName}"
 								width="100%" height="100%"/>
 				</c:if>
 			</td>
@@ -111,7 +111,7 @@
 	<div id="comment-container">
     	<div class="comment-editor" align="center">
     		<form action="${path}/board/reply" method="post">
-    			<input type="hidden" name="BNo" value="${board.BNo}" />
+    			<input type="hidden" name="bno" value="${board.bno}" />
     			<input type="hidden" name="id" value="${loginMember.id}" />
 				<textarea name="content" id="replyContent" cols="55" rows="3"></textarea>
 				<button type="submit" id="btn-insert">등록</button>	  	
@@ -132,7 +132,7 @@
 					</td>
 					<td>
 						<c:if test="${ !empty loginMember && (loginMember.id == reply.id 	|| loginMember.role == 'ROLE_ADMIN') }">
-						<button class="btn-delete" onclick="deleteReply('${reply.RNo}','${board.BNo}');" >삭제</button>
+						<button class="btn-delete" onclick="deleteReply('${reply.rno}','${board.bno}');" >삭제</button>
 						</c:if>
 					</td>
 				</tr>
@@ -155,12 +155,12 @@
 <script type="text/javascript">
 	$(document).ready(() => {
 		$("#btnUpdate").click((e) => {
-			location.href = "${path}/board/update?no=${board.BNo}";
+			location.href = "${path}/board/update?no=${board.bno}";
 		});
 		
 		$("#btnDelete").click((e) => {
 			if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
-				location.replace("${path}/board/delete?no=${board.BNo}");
+				location.replace("${path}/board/delete?no=${board.bno}");
 			}
 		});
 	});

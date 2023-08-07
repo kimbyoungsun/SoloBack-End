@@ -99,9 +99,8 @@
       >
         <div class="container">
           <div class="d-flex align-items-center">
-            <a class="navbar-brand py-1" href="${path}/"
-              ><img src="${path}/resources/img/logo.svg" alt="Directory logo"
-            /></a>
+            <a class="navbar-brand py-1 fw-bold diplay-1" href="${path}/"
+              >자취월장</a>
           </div>
           <button
             class="navbar-toggler navbar-toggler-right"
@@ -159,14 +158,13 @@
                   class="dropdown-menu"
                   aria-labelledby="homeDropdownMenuLink"
                 >
-                  <a class="dropdown-item" href="index.html">공연</a
-                  ><a class="dropdown-item" href="index-2.html">OTT</a
-                  ><a class="dropdown-item" href="index-3.html">식당 카페</a
-                  ><a class="dropdown-item" href="index-4.html"
-                    >생활 체육
-                    <span class="badge badge-info-light ms-1 mt-n1"
-                      >도서</span
-                    ></a
+                  <a class="dropdown-item" href="${path}">공연</a
+                  ><a class="dropdown-item" href="${path}/ott/OTTMain">OTT</a
+                  ><a class="dropdown-item" href="${path}/location/Restaurant">식당 카페</a
+                  ><a class="dropdown-item" href="${path}/sports/SportMain">생활 체육</a
+                  ><a class="dropdown-item" href="${path}/book/BookSearch"
+                    >도서
+                    </a
                   >
                 </div>
               </li>
@@ -228,9 +226,20 @@
               <li
                 class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"
               >
-                <a class="btn btn-primary" href="user-add-0.html"
+              <c:if test="${loginMember != null}">
+              <span class="mx-2">어서오세요  ${loginMember.name} 님</span>
+              <a class="btn btn-primary" href="${path}/account/AccountProfile"
+                  >마이페이지</a
+                >
+                <a class="btn btn-primary" href="${path}/logout"
+                  >로그아웃</a
+                >
+              </c:if>
+              <c:if test="${loginMember == null}">
+                <a class="btn btn-primary" href="${path}/login"
                   >로그인/회원가입</a
                 >
+              </c:if>
               </li>
             </div>
           </div>

@@ -29,7 +29,7 @@
   </section>
 
   <!-- trac01(중고거래) post section 시작 -->
-  <div class="row" style="margin-top: 3rem">
+   <div class="row" style="margin-top: 3rem">
     <section class="mb-5">
       <div class="container card bg-light">
         <div class="card-body">
@@ -37,15 +37,15 @@
           <form>
             <div class="mb-3">
               <label for="postTitle" class="form-label">제목<span class="text-danger">*</span></label>
-              <input type="text" class="form-control-custom" id="postTitle" placeholder="제목을 입력해주세요">
+              <input type="text" class="form-control" id="postTitle" placeholder="제목을 입력해주세요">
             </div>
             <div class="mb-3">
               <label for="postContent" class="form-label">내용<span class="text-danger">*</span></label>
-              <textarea class="form-control-custom" id="postContent" rows="5" placeholder="내용을 입력해주세요"></textarea>
+              <textarea class="form-control" id="postContent" rows="5" placeholder="내용을 입력해주세요"></textarea>
             </div>
             <div class="mb-3">
               <label for="fileInput" class="form-label">파일 선택</label>
-              <input type="file" class="form-control-custom" id="fileInput">
+              <input type="file" class="form-control" id="fileInput">
             </div>
             <div class="row">
               <div class="col-6">

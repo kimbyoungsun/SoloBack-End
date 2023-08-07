@@ -18,8 +18,8 @@
           <div class="col text-center">
             <img
               class="position-relative"
-              src="${path}/resources/img/kbs/basketball_court-pana.png"
-              style="width: 30rem; left: 80px; top: -50px"
+              src="${path}/resources/img/kbs/city.png"
+              style="width: 30rem; left: 80px"
               alt=""
             />
           </div>

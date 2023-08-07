@@ -5,9 +5,9 @@
 <mapper namespace="com.multi.solo.board.model.mapper.BoardMapper">
 
 	<resultMap type="Board" id="boardListResultMap">
-		<id property="bNo" column="bNo"/>
+		<id property="bno" column="bNo"/>
 		<result property="title" column="TITLE"/>
-		<result property="mNo" column="mNo"/>
+		<result property="mno" column="mNo"/>
 		<result property="id" column="ID"/>
 		<result property="readCount" column="READCOUNT"/>
 		<result property="originalFileName" column="ORIGINAL_FILENAME"/>
@@ -19,9 +19,9 @@
 	</resultMap>
 
 	<resultMap type="Reply" id="boardReplyResultMap">
-		<id 	property="rNo"			column="rNo"/>
-		<result property="bNo" 			column="bNo"/>
-		<result property="mNo" 			column="mNo"/>
+		<id 	property="rno"			column="rNo"/>
+		<result property="bno" 			column="bNo"/>
+		<result property="mno" 			column="mNo"/>
 		<result property="id" 			column="ID"/>
 		<result property="content" 		column="CONTENT"/>
 		<result property="createDate" 	column="CREATE_DATE"/>
@@ -35,7 +35,7 @@
 	
 	<select id="selectBoardList" resultMap="boardListResultMap" parameterType="map">
 		SELECT  
-			DISTINCT B.BNO, B.TITLE, M1.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
+			DISTINCT B.BNO, B.TITLE, M1.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS, B.TYPE,B.CONTENT
 		FROM BOARD B
 		LEFT OUTER JOIN MEMBER M1 ON B.MNO = M1.MNO
 		LEFT OUTER JOIN REPLY R ON R.BNO = B.BNO 
@@ -50,6 +50,9 @@
 		<if test="content != null">
 			AND B.CONTENT LIKE '%${content}%' 
 		</if>		
+		<if test="type != null">
+			AND B.TYPE LIKE '%${type}%' 
+		</if>	
 		<if test="all != null">
 			AND(
 				b.title like 			'%${all}%' 
@@ -79,6 +82,9 @@
 		</if>		
 		<if test="content != null">
 			AND B.CONTENT LIKE '%${content}%' 
+		</if>	
+		<if test="type != null">
+			AND B.TYPE LIKE '%${type}%' 
 		</if>		
 		<if test="all != null">
 			AND(
@@ -104,7 +110,7 @@
 		JOIN MEMBER M ON(B.MNO = M.MNO)
 		LEFT OUTER JOIN REPLY R ON (B.BNO = R.BNO)
 		LEFT OUTER JOIN MEMBER M2 ON (R.MNO = M2.MNO)
-		WHERE B.STATUS = 'Y' AND B.BNO = #{bNo}
+		WHERE B.STATUS = 'Y' AND B.BNO = #{bno}
 	</select>
 	
 	<insert id="insertBoard" parameterType="Board">
@@ -114,10 +120,10 @@
 			RENAMED_FILENAME, READCOUNT, STATUS,
 			CREATE_DATE, MODIFY_DATE, TYPE	
 		) VALUES (
-			0, #{mNo}, #{title}, 
+			0, #{mno}, #{title}, 
 			#{content}, #{originalFileName}, 
 			#{renamedFileName}, DEFAULT, DEFAULT, 
-			DEFAULT, DEFAULT, DEFAULT			
+			DEFAULT, DEFAULT, #{type}			
 		)
 	</insert>
 	
@@ -127,7 +133,7 @@
 				RNO, BNO, MNO, 
 				CONTENT, STATUS, CREATE_DATE, MODIFY_DATE) 
 			VALUES(
-				0, #{bNo}, #{mNo}, #{content}, 
+				0, #{bno}, #{mno}, #{content}, 
 				DEFAULT, DEFAULT, DEFAULT
 			)
 	</insert>
@@ -145,19 +151,19 @@
 			</if>
 			MODIFY_DATE = CURRENT_TIMESTAMP
 		WHERE
-			BNO=#{bNo}
+			BNO=#{bno}
 	</update>
 	
 	<update id="updateReadCount" parameterType="map">
-		UPDATE BOARD SET READCOUNT=#{readCount} WHERE BNO=#{bNo}
+		UPDATE BOARD SET READCOUNT=#{readCount} WHERE BNO=#{bno}
 	</update>
 	
 	<update id="deleteBoard" parameterType="int">
-		UPDATE BOARD SET STATUS='N' WHERE BNO=#{bNo}
+		UPDATE BOARD SET STATUS='N' WHERE BNO=#{bno}
 	</update>
 	
 	<delete id="deleteReply" parameterType="int">
-		DELETE FROM REPLY WHERE RNO=#{rNo}
+		DELETE FROM REPLY WHERE RNO=#{rno}
 	</delete>
 	
 

@@ -72,74 +72,157 @@
 
 <body style="padding-top: 72px">
   <header class="header">
-    <!-- Navbar-->
-    <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white">
-      <div class="container">
-        <div class="d-flex align-items-center">
-          <a class="navbar-brand py-1" href="index.html"><img src="${path}/resources/img/logo.svg" alt="Directory logo" /></a>
-        </div>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <i class="fa fa-bars"></i>
-        </button>
-        <!-- Navbar Collapse -->
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" id="homeDropdownMenuLink" href="index.html"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                정보</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
-                <a class="dropdown-item" href="index.html">Rooms</a><a class="dropdown-item"
-                  href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a
-                  class="dropdown-item" href="index-4.html">Real Estate
-                  <span class="badge badge-info-light ms-1 mt-n1">New</span></a>
-              </div>
-            </li>
+      <!-- Navbar-->
+      <nav
+        class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white"
+      >
+        <div class="container">
+          <div class="d-flex align-items-center">
+            <a class="navbar-brand py-1 fw-bold diplay-1" href="${path}/"
+              >자취월장</a>
+          </div>
+          <button
+            class="navbar-toggler navbar-toggler-right"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fa fa-bars"></i>
+          </button>
+          <!-- Navbar Collapse -->
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle active"
+                  id="homeDropdownMenuLink"
+                  href="index.html"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  정보</a
+                >
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="homeDropdownMenuLink"
+                >
+                  <a class="dropdown-item" href="index.html">Rooms</a
+                  ><a class="dropdown-item" href="index-2.html">Restaurants</a
+                  ><a class="dropdown-item" href="index-3.html">Travel</a
+                  ><a class="dropdown-item" href="index-4.html"
+                    >Real Estate
+                    <span class="badge badge-info-light ms-1 mt-n1"
+                      >New</span
+                    ></a
+                  >
+                </div>
+              </li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" id="homeDropdownMenuLink" href="index.html"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                라이프</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
-                <a class="dropdown-item" href="index.html">Rooms</a><a class="dropdown-item"
-                  href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a
-                  class="dropdown-item" href="index-4.html">Real Estate
-                  <span class="badge badge-info-light ms-1 mt-n1">New</span></a>
-              </div>
-            </li>
-            <!-- Megamenu-->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" id="homeDropdownMenuLink" href="index.html"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                동네거래</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
-                <a class="dropdown-item" href="index.html">Rooms</a><a class="dropdown-item"
-                  href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a
-                  class="dropdown-item" href="index-4.html">Real Estate
-                  <span class="badge badge-info-light ms-1 mt-n1">New</span></a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" id="homeDropdownMenuLink" href="index.html"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                커뮤니티</a>
-              <div class="dropdown-menu" aria-labelledby="homeDropdownMenuLink">
-                <a class="dropdown-item" href="index.html">Rooms</a><a class="dropdown-item"
-                  href="index-2.html">Restaurants</a><a class="dropdown-item" href="index-3.html">Travel</a><a
-                  class="dropdown-item" href="index-4.html">Real Estate
-                  <span class="badge badge-info-light ms-1 mt-n1">New</span></a>
-              </div>
-            </li>
-          </ul>
-          <div class="ms-auto">
-            <li class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block">
-              <a class="btn btn-primary" href="${path}/login">로그인/회원가입</a>
-            </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle active"
+                  id="homeDropdownMenuLink"
+                  href="index.html"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  라이프</a
+                >
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="homeDropdownMenuLink"
+                >
+                  <a class="dropdown-item" href="${path}">공연</a
+                  ><a class="dropdown-item" href="${path}/ott/OTTMain">OTT</a
+                  ><a class="dropdown-item" href="${path}/location/Restaurant">식당 카페</a
+                  ><a class="dropdown-item" href="${path}/sports/SportMain">생활 체육</a
+                  ><a class="dropdown-item" href="${path}/book/BookSearch"
+                    >도서
+                    </a
+                  >
+                </div>
+              </li>
+              <!-- Megamenu-->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle active"
+                  id="homeDropdownMenuLink"
+                  href="index.html"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  동네거래</a
+                >
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="homeDropdownMenuLink"
+                >
+                  <a class="dropdown-item" href="index.html">Rooms</a
+                  ><a class="dropdown-item" href="index-2.html">Restaurants</a
+                  ><a class="dropdown-item" href="index-3.html">Travel</a
+                  ><a class="dropdown-item" href="index-4.html"
+                    >Real Estate
+                    <span class="badge badge-info-light ms-1 mt-n1"
+                      >New</span
+                    ></a
+                  >
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle active"
+                  id="homeDropdownMenuLink"
+                  href="index.html"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  커뮤니티</a
+                >
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="homeDropdownMenuLink"
+                >
+                  <a class="dropdown-item" href="index.html">Rooms</a
+                  ><a class="dropdown-item" href="index-2.html">Restaurants</a
+                  ><a class="dropdown-item" href="index-3.html">Travel</a
+                  ><a class="dropdown-item" href="index-4.html"
+                    >Real Estate
+                    <span class="badge badge-info-light ms-1 mt-n1"
+                      >New</span
+                    ></a
+                  >
+                </div>
+              </li>
+            </ul>
+            <div class="ms-auto">
+              <li
+                class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"
+              >
+              <c:if test="${loginMember != null}">
+              <span class="mx-2">어서오세요  ${loginMember.name} 님</span>
+              <a class="btn btn-primary" href="${path}/account/AccountProfile"
+                  >마이페이지</a
+                >
+                <a class="btn btn-primary" href="${path}/logout"
+                  >로그아웃</a
+                >
+              </c:if>
+              <c:if test="${loginMember == null}">
+                <a class="btn btn-primary" href="${path}/login"
+                  >로그인/회원가입</a
+                >
+              </c:if>
+              </li>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
-    <!-- /Navbar -->
-  </header>
+      </nav>
+      <!-- /Navbar -->
+    </header>

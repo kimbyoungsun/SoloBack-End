@@ -14,10 +14,28 @@
           <div class="container py-6 py-md-7 text-white z-index-20">
             <div class="row">
               <div class="col-xl-6">
+              <c:if test="${board.type == 'pet' }">
                 <div class="text-center text-lg-start">
                     <h1 class="display-3 fw-bold text-shadow">도와줘요!</h1>
                     <h1 class="display-3 fw-bold text-shadow">반려동물 임보 위탁</h1>
                 </div>
+              </c:if>
+              <c:if test="${board.type == 'talent'}">
+                    <div class="text-center text-lg-start" style="padding-top: 4.5rem">
+                    <h1 class="display-3 fw-bold text-shadow">동네 재능 거래</h1>
+                  </div>
+                  <div class="text-center text-lg-start">
+                    <h2 class="display-8-custom fw-normal">도움이 필요한가요?<br>당신의 가장 가까운 이웃에게 부탁해요!</h2>
+                  </div>
+              </c:if>
+              <c:if test="${board.type == 'product'}">
+               <div class="text-center text-lg-start">
+                  <h1 class="display-3 fw-bold text-shadow">동네 중고 거래</h1>
+                </div>
+                <div class="text-center text-lg-start">
+                  <h2 class="display-8-custom fw-normal">돈도 벌고 지구도 살리는 가장 현명한 방법</h2>
+                </div>
+              </c:if>
                 <div class="p-lg-1 ps-lg-4">
                   <form action="#">
                     <div class="row">
@@ -46,14 +64,29 @@
                   </form>
                 </div>
               </div>
-              <div class="col text-center">
-                <img
-                  class="figure position-relative"
-                  src="${path}/resources/img/kbs/petwalk_image.png"
-                  style="width: 30rem; left: 6.25rem"
-                  alt=""
-                />
+              
+              <c:if test="${board.type == 'pet' }">
+             	<div class="col text-center">
+            <img
+              class="figure position-relative"
+              src="${path}/resources/img/kbs/petwalk_image.png"
+              style="width: 30rem; left: 6.25rem"
+              alt=""
+            />
+          </div>
+              </c:if>
+              
+               <c:if test="${board.type == 'product' }">
+             <div class="col">
+                <img src="${path}/resources/img/trace/trace01.png" alt="동네 중고 거래 일러스트" />
               </div>
+              </c:if>
+               <c:if test="${board.type == 'talent' }">
+              <div class="col-xl-6" style="overflow:hidden;">
+                <img style="width:100%; height: 100%;" src="${path}/resources/img/trace/trace02.png" alt="동네 재능 거래 일러스트" />
+              </div>
+              </c:if>
+              
             </div>
           </div>
         </section>
@@ -88,17 +121,15 @@
                   <!-- carousel images -->
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <div class="p-4 p-sm-5"
-                        style="background-image: url(img/trace/pet-community01.jpg); 
+                       <c:if test="${not empty board.originalFileName 
+								and (fn:contains(board.originalFileName,'.jpg')
+									 or fn:contains(board.originalFileName,'.png')
+									  or fn:contains(board.originalFileName,'.jpeg'))}">
+							<div class="p-4 p-sm-5"
+                       style="background-image: url(${path}/community/file/${board.renamedFileName}); 
                                     background-position: center center; background-repeat: no-repeat; background-size: contain; height: 600px;">
                       </div>
-                    </div>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <div class="p-4 p-sm-5"
-                          style="background-image: url(img/trace/pet-community02.jpg);
-                                 background-position: center center; background-repeat: no-repeat; background-size: contain; height: 600px;"> </div>
-                      </div>
+					</c:if>
                     </div>
                   </div>
 
@@ -116,15 +147,12 @@
                 <!-- 상품 설명 시작 -->
                 <div class="mt-4">
                   <div class="row">
-                    <div class="col-8 px-3"><h5>7/13 ~ 7/14 저희집 방문해 강아지 돌봐주실 분을 찾습니다</h5></div>
+                    <div class="col-8 px-3"><h5>${board.title}</h5></div>
                     <div class="col-lg-4 px-3 text-end"><h5>협의 후 결정</h5></div>
                   </div>
                   <hr>
                   <div>
-                    <p>저희 강아지 너무 귀엽죠. 제가 7/13 ~ 7/14 집을 비워서 돌봐주실 분을 찾습니다 ㅠㅠ<br>
-                    물지 않고 순한 친구입니다.<br>
-                    밥과 물 하루 세 번 챙겨주시고 산책은 하루 1시간 시켜주시면 됩니다.<br>
-                    오픈카톡으로 연락할 예정이고 사진과 동영상 부탁드릴 수도 있어요! 
+                    <p>${board.content}
                     </p>
                   </div>
                 </div>
@@ -139,10 +167,14 @@
               <!-- ****상품 소개글 끝**** -->
 
               <!-- ****상품 소개글 수정/삭제 버튼 시작**** -->
-              <div class="text-end">
-                <a href="#" class="btn btn-success-custom">수정</a>
-                <a href="#" class="btn btn-cancel-custom">삭제</a>
-              </div>
+              <c:if test="${not empty loginMember && (loginMember.id == board.id 
+									|| loginMember.role == 'ROLE_ADMIN')}">
+				<div class="text-end">
+					<button class="btn btn-success-custom" type="button" id="btnUpdate">수정</button>
+					<button class="btn btn-cancel-custom" type="button" id="btnDelete">삭제</button>
+				</div>
+				</c:if>
+				
               <!-- ****상품 소개글 수정/삭제 버튼 끝**** -->
 
               <!-- ****댓글 card 시작**** -->
@@ -153,48 +185,35 @@
                 </div>
                 <!-- 댓글 card body -->
                 <div class="card-body container">
-                  <div class="d-flex align-items-center mb-2">
+                <c:if test="${!empty replyList}">
+                <c:forEach var="item" items="${replyList}">
+                <div class="d-flex align-items-center mb-2">
                     <div class="border-1 bg-light rounded-circle flex-shrink-0">
                     <img src="${path}/resources/static/img/avatar/avatar-4.jpg" alt="유저 프로필 이미지" style="height: 40px; border-radius: 50%;" />
                     </div>
                     <div class="row ms-2 container">
                       <div class="col-10">
-                        <h6 class="mb-0">권수경</h6>
-                        <span class="small">강아지가 정말 귀엽네요! 13, 14일 양일 모두 돌봄 가능합니다.</span>
+                        <h6 class="mb-0">${item.id}</h6>
+                        <span class="small">${item.content}</span>
                       </div>
                       <div class="col-2">
-                        <a href="#" class="btn btn-custom" style="height: auto; white-space: nowrap;">
-                          댓글 달기
-                        </a>
                       </div>
                     </div>
                   </div>
                   <hr>
-                  <div class="d-flex align-items-center mb-2">
-                    <div class="border-1 bg-light rounded-circle flex-shrink-0">
-                    <img src="${path}/resources/static/img/avatar/avatar-4.jpg" alt="유저 프로필 이미지" style="height: 40px; border-radius: 50%;" />
-                    </div>
-                    <div class="row ms-2 container">
-                      <div class="col-10">
-                        <h6 class="mb-0">윤일권</h6>
-                        <span class="small">정말 예쁜 강아지네요^^ 줄 섭니다~</span>
-                      </div>
-                      <div class="col-2">
-                        <a href="#" class="btn btn-custom" style="height: auto; white-space: nowrap;">
-                          댓글 달기
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <hr>
+                  <button class="btn-delete" onclick="deleteReply('${item.rno}','${board.bno}');" >삭제</button>
+                </c:forEach>
+                </c:if>
                 </div>
               </div>
               <!-- ****댓글 card 끝**** -->
 
               <!-- ****댓글 작성란 시작**** -->
-              <form class="mb-4">
+              <form class="mb-4" action="${path}/board/reply" method="post">
+              <input type="hidden" name="bno" value="${board.bno}" />
+    			<input type="hidden" name="id" value="${loginMember.id}" />
                 <div class="d-flext align-items-start">
-                  <textarea class="form-control" rows="3" placeholder="댓글을 남겨보세요!"></textarea>
+                  <textarea class="form-control" name="content" id="replyContent" rows="3" placeholder="댓글을 남겨보세요!"></textarea>
                   <div class="mt-2" style="float: right;">
                     <button type="submit" class="btn btn-custom ms-3"
                     style="height: auto; white-space: nowrap;">댓글 등록하기</button>
@@ -333,3 +352,29 @@
         </div>
 <!-- **************** MAIN CONTENT END **************** -->
 <jsp:include page="/WEB-INF/views/common/KSKFooter.jsp"></jsp:include>
+<script type="text/javascript">
+	$(document).ready(() => {
+		$("#btnUpdate").click((e) => {
+			location.href = "${path}/community/update?no=${board.bno}";
+		});
+		
+		$("#btnDelete").click((e) => {
+			if(confirm("정말로 게시글을 삭제 하시겠습니까?")) {
+				location.replace("${path}/community/delete?no=${board.bno}");
+			}
+		});
+	});
+	
+	function deleteReply(replyNo, boardNo){
+		var url = "${path}/community/replyDel?replyNo=";
+		var requestURL = url + replyNo +"&boardNo=" + boardNo;
+		location.replace(requestURL);
+	}
+	
+	function fileDownload(oriname, rename) {
+		const url = "/community/fileDown";
+		let oName = encodeURIComponent(oriname);
+		let rName = encodeURIComponent(rename);
+		location.assign(url + "?oriname=" + oName + "&rename=" + rName);
+	}
+</script>

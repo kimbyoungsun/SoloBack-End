@@ -218,7 +218,7 @@
             <div class="text-center">
               <span
                 class="btn bg-solo-5 nav-fill my-2"
-                style="width: 21.875rem; vertical-align: middle"
+                style="width: 21.875rem; vertical-align: middle" onclick="location.href='${path}/community?type=pet'"
               >
                 <ul class="nav" style="vertical-align: middle">
                   <li class="d-flex mx-2">
@@ -239,7 +239,7 @@
 
               <span
                 class="btn bg-solo-5 nav-fill my-2"
-                style="width: 21.875rem; vertical-align: middle"
+                style="width: 21.875rem; vertical-align: middle" onclick="location.href='${path}/community?type=talent'"
               >
                 <ul class="nav" style="vertical-align: middle">
                   <li class="d-flex mx">
@@ -260,7 +260,7 @@
 
               <span
                 class="btn bg-solo-5 nav-fill my-2"
-                style="width: 21.875rem; vertical-align: middle"
+                style="width: 21.875rem; vertical-align: middle" onclick="location.href='${path}/community?type=product'"
               >
                 <ul class="nav" style="vertical-align: middle">
                   <li class="d-flex mx-2">

@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Board {
-	private int bNo;
-	private int mNo;
+	private int bno;
+	private int mno;
 	private String id;
 	private String title;
 	private String content;

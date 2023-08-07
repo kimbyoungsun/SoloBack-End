@@ -10,7 +10,7 @@
     <section class="hero-home" style="background-color: #50a78b">
       <div class="container py-md-2 text-white z-index-20">
         <div class="row">
-          <div class="col-xl-6 mt-7 pt-5">
+          <div class="col-xl-6 mt-5 pt-5">
             <div class="text-center text-lg-start">
               <h1 class="display-3 fw-bold text-shadow">1인 가구 프로그램</h1>
             </div>
@@ -18,7 +18,7 @@
           <div class="col text-center">
             <img
               class="figure"
-              src="${path}/resources/img/kbs/basketball_court-pana.png"
+              src="${path}/resources/img/kbs/image1.png"
               style="width: 30rem; left: 100px"
               alt=""
             />
