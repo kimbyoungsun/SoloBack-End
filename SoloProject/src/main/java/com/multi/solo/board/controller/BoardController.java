@@ -104,7 +104,7 @@ public class BoardController {
 			) {
 		log.info("게시글 작성 요청");
 		
-		board.setMNo(loginMember.getMNo());
+		board.setMno(loginMember.getMNo());
 		
 		// 파일 저장 로직
 		if(upfile != null && upfile.isEmpty() == false) {
@@ -136,7 +136,7 @@ public class BoardController {
 			@SessionAttribute(name = "loginMember", required = false) Member loginMember,
 			@ModelAttribute Reply reply
 			) {
-		reply.setMNo(loginMember.getMNo());
+		reply.setMno(loginMember.getMNo());
 		log.info("리플 작성 요청 Reply : " + reply);
 		
 		int result = service.saveReply(reply);
@@ -146,7 +146,7 @@ public class BoardController {
 		}else {
 			model.addAttribute("msg", "리플 등록에 실패하였습니다.");
 		}
-		model.addAttribute("location", "/board/view?no="+reply.getBNo());
+		model.addAttribute("location", "/community/view?no="+reply.getBno());
 		return "common/msg";
 	}
 	
@@ -204,7 +204,7 @@ public class BoardController {
 			) {
 		log.info("게시글 수정 요청");
 		
-		board.setMNo(loginMember.getMNo());
+		board.setMno(loginMember.getMNo());
 		
 		// 파일 저장 로직
 		if(reloadFile != null && reloadFile.isEmpty() == false) {

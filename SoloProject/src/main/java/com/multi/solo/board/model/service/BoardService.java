@@ -24,7 +24,7 @@ public class BoardService {
 	@Transactional(rollbackFor = Exception.class)
 	public int saveBoard(Board board) {
 		int result = 0;
-		if(board.getBNo() == 0) {
+		if(board.getBno() == 0) {
 			result = mapper.insertBoard(board);
 		}else {
 			result = mapper.updateBoard(board);

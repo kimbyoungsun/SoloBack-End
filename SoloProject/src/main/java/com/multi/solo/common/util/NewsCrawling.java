@@ -74,13 +74,26 @@ public class NewsCrawling {
 //		}
 		
 		int i = 0;
-		for(String item : url) {
+		for(String item : img) {
 			newsInfo = new NewsInfo();
-			newsInfo.setImg(img.get(i));
-			newsInfo.setTitle(title.get(i));
-			newsInfo.setUrl(url.get(i));
-			newsInfo.setText(text.get(i));
-			newsInfo.setCompony(newscompony.get(i));
+			if (img.get(i) != null) {
+				newsInfo.setImg(img.get(i));
+			}
+			if (title.get(i) != null) {
+				newsInfo.setTitle(title.get(i));
+			}
+			if (url.get(i) != null) {
+				newsInfo.setUrl(url.get(i));
+			}
+			if (text.get(i) != null) {
+				newsInfo.setImg(img.get(i));
+			}
+			if (text.get(i) != null) {
+				newsInfo.setText(text.get(i));
+			}
+			if (newscompony.get(i) != null) {
+				newsInfo.setCompony(newscompony.get(i));
+			}
 			
 			newsList.add(newsInfo);
 //			System.out.println("img : " +newsList.get(i).getImg());
@@ -88,7 +101,7 @@ public class NewsCrawling {
 //			System.out.println("url : " +newsList.get(i).getUrl());
 			i++;
 		}
-		System.out.println("---------------------------------------------------");
+//		System.out.println("---------------------------------------------------");
 //		for (NewsInfo info : newsList) {
 //			System.out.println("img : "+info.getImg());
 //			System.out.println("title : "+info.getTitle());

@@ -47,7 +47,10 @@
       <div class="container card bg-light">
         <div class="card-body">
           <div class="mb-4 h2">게시글 작성</div>
-          <form action="${path}/community/write" method="post" enctype="multipart/form-data">
+          <form 	action="${path}/community/update" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="bno" value="${board.bno}">
+		<input type="hidden" name="originalFileName" value="${board.originalFileName}" />
+		<input type="hidden" name="reloadFile" value="${board.renamedFileName}" />
             <div class="mb-3">
               <label for="postTitle" class="form-label">제목<span class="text-danger">*</span></label>
               <input type="text" class="form-control" name="title" id="postTitle" placeholder="제목을 입력해주세요">
@@ -66,14 +69,21 @@
             <input type="hidden" name="id" value="${loginMember.id}" readonly class="input-text">
             <div class="mb-3">
               <label for="fileInput" class="form-label">파일 선택</label>
-              <input type="file" class="form-control" name="upfile" id="fileInput">
+              <input  type="file" class="form-control" name="reloadFile" id="fileInput">
+					<c:if test="${!empty board.originalFileName}"><br>
+						현재 업로드 파일 :
+						<a>
+							${board.originalFileName}
+						</a>
+					</c:if>
             </div>
             <div class="row">
               <div class="col-6">
                 <button class="btn btn-cancel-custom" type="reset">취소</button>
               </div>
               <div class="col-6 text-end">
-                <button type="submit" class="btn btn-success-custom">확인</button>
+                <button type="submit" class="btn btn-success-custom">수정</button>
+                <input type="button" onclick="location.replace('${path}/community')" value="목록으로">
               </div>
             </div>
           </form>

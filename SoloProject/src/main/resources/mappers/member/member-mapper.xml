@@ -7,7 +7,7 @@
 	<sql id="selectMemberSql">
 		SELECT 	
 			MNO, ID, PASSWORD, ROLE, NAME, PHONE,
-			EMAIL, ADDRESS, HOBBY,
+			EMAIL, ADDRESS, GENDER,BIRTHDATE,PROFILEIMG
 			STATUS, ENROLL_DATE, MODIFY_DATE 
 		FROM MEMBER
 	</sql>
@@ -21,7 +21,9 @@
 		<result property="phone" 	column="PHONE" />
 		<result property="email" 	column="EMAIL" />
 		<result property="address" 	column="ADDRESS" />
-		<result property="hobby" 	column="HOBBY" />
+		<result property="gender" 	column="GENDER" />
+		<result property="birthDate" 	column="BIRTHDATE" />
+		<result property="profileImg" 	column="PROFILEIMG" />
 		<result property="status" 	column="STATUS" />
 		<result property="enrollDate" column="ENROLL_DATE" />
 		<result property="modifyDate" column="MODIFY_DATE" />
@@ -35,20 +37,20 @@
 		<include refid="selectMemberSql"/>
 	</select>
 	
-	<select id="selectMemberById" parameterType="string" resultType="Member">
-		SELECT * FROM MEMBER WHERE ID = #{id} AND STATUS = 'Y'
-	</select>
+	<select id="selectMember" parameterType="string" resultMap="memberResultMap">
+		<include refid="selectMemberSql"/>
+		WHERE ID = #{id} AND STATUS = 'Y'
+	</select>	
 	
 	<insert id="insertMember" parameterType="Member">
 		INSERT INTO MEMBER(
-			MNO, ID, PASSWORD, 	
-			ROLE, NAME, PHONE,
-			EMAIL, ADDRESS,HOBBY, 		
-			STATUS, ENROLL_DATE, MODIFY_DATE
+			MNO, ID, PASSWORD, ROLE, NAME, PHONE,
+			EMAIL, ADDRESS, GENDER,BIRTHDATE,PROFILEIMG,
+			STATUS, ENROLL_DATE, MODIFY_DATE 
 		) VALUES (
 			 0, #{id}, #{password},
 			 default, #{name}, #{phone},
-			 #{email}, #{address}, #{hobby},
+			 #{email}, #{address}, #{gender},#{birthDate},#{profileImg},
 			 DEFAULT, DEFAULT, DEFAULT)
 	</insert>
 	
@@ -59,7 +61,9 @@
 	 		PHONE		= #{phone},
 	 		EMAIL		= #{email},
 	 		ADDRESS		= #{address},
-	 		HOBBY		= #{hobby},
+	 		GENDER		= #{gender},
+	 		BIRTHDATE   = #{birthDate},
+	 		PROFILEIMG	= #{profileImg},
 	 		MODIFY_DATE	= #{modifyDate}
 	 	WHERE MNO = #{mNo}
 	 </update>

@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Reply {
-	private int rNo;
-	private int bNo;
-	private int mNo;
+	private int rno;
+	private int bno;
+	private int mno;
 	private String id;
 	private String content;	
 	private Date createDate;

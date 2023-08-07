@@ -36,7 +36,7 @@
           <div class="col text-center">
             <img
               class="figure"
-              src="${path}/resources/img/kbs/basketball_court-pana.png"
+              src="${path}/resources/img/kbs/image2.png"
               style="width: 30rem; left: 100px"
               alt=""
             />

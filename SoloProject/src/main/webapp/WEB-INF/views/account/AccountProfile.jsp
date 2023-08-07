@@ -6,10 +6,7 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <jsp:include page="/WEB-INF/views/common/KSKHeader.jsp"></jsp:include>
-  <section class="hero-home">
-    <div class="swiper-container hero-slider">
-      <div class="swiper-slide" style="background-color: #50a78b"></div>
-    </div>
+  <section class="hero-home" style="background-color: #50a78b">
     <div class="container py-6 text-white z-index-20">
       <div class="row">
         <div class="col-xl-6">
@@ -57,10 +54,10 @@
 											<!-- Avatar -->
 											<div class="avatar avatar-xl mb-2">
 												<img class="rounded-circle border border-2 border-white"
-													src="${path}/resources/assets/images/avatar/01.jpg" alt="">
+													src="${path}/resources/img/avatar/avatar-2.jpg" width="100%" alt="">
 											</div>
-											<h6 class="mb-0">테스트계정</h6>
-											<a href="#" class="text-reset text-hover-custom small">test@email.com</a>
+											<h6 class="mb-0">${loginMember.name}</h6>
+											<a href="#" class="text-reset text-hover-custom small">${loginMember.email}</a>
 											<hr>
 										</div>
 
@@ -87,7 +84,7 @@
 														class="bi bi-gear fa-fw me-2"></i>설정</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link text-danger bg-danger-soft-hover" href="#"><i
+												<a class="nav-link text-danger bg-danger-soft-hover" href="${path}/logout"><i
 														class="fas fa-sign-out-alt fa-fw me-2"></i>로그아웃</a>
 											</li>
 										</ul>
@@ -102,184 +99,208 @@
 					<!-- Sidebar END -->
 
 					<!-- Main content START -->
-					<div class="col-lg-8 col-xl-9 mb-5">
+		<div class="col-lg-8 col-xl-9 mb-5">
 
-						<div class="vstack gap-4">
-							<!-- Personal info START -->
-							<div class="card border">
-								<!-- Card header -->
-								<div class="card-header border-bottom">
-									<h4 class="card-header-title">회원정보</h4>
-								</div>
-
-								<!-- Card body START -->
-								<div class="card-body">
-									<!-- Form START -->
-									<form class="row g-3">
-										<!-- Profile photo -->
-										<div class="col-12">
-											<label class="form-label">프로필 사진 업로드<span
-													class="text-danger">*</span></label>
-											<div class="d-flex align-items-center">
-												<label class="position-relative me-4" for="uploadfile-1"
-													title="Replace this pic">
-													<!-- Avatar place holder -->
-													<span class="avatar avatar-xl">
-														<img id="uploadfile-1-preview"
-															class="avatar-img rounded-circle border border-white border-3 shadow"
-															src="${path}/resources/assets/images/avatar/01.jpg" alt="">
-													</span>
-												</label>
-												<!-- Upload button -->
-												<label class="btn btn-sm btn-custom2 mb-0" for="uploadfile-1">변경</label>
-												<input id="uploadfile-1" class="form-control d-none" type="file">
-											</div>
-										</div>
-
-										<!-- Name -->
-										<div class="col-md-6">
-											<label class="form-label">이름<span class="text-danger">*</span></label>
-											<input type="text" class="form-control" value="테스트계정"
-												placeholder="이름을 입력하세요.">
-										</div>
-
-										<!-- Email -->
-										<div class="col-md-6">
-											<label class="form-label">이메일<span class="text-danger">*</span></label>
-											<input type="email" class="form-control" value="test@email.com"
-												placeholder="이메일을 입력하세요.">
-										</div>
-
-										<!-- Mobile -->
-										<div class="col-md-6">
-											<label class="form-label">아이디<span class="text-danger">*</span></label>
-											<input type="text" class="form-control" value="testID123"
-												placeholder="아이디를 입력하세요.">
-										</div>
-
-										<!-- phone number -->
-										<div class="col-md-6">
-											<label class="form-label">휴대폰 번호<span class="text-danger">*</span></label>
-											<input type="text" class="form-control" value="010-1234-5678"
-												placeholder="휴대폰 번호를 입력하세요.">
-										</div>
-
-
-										<!-- Date of birth -->
-										<div class="col-md-6">
-											<label class="form-label">생년월일<span class="text-danger">*</span></label>
-											<input type="text" class="form-control flatpickr" value="1999 Oct 19"
-												placeholder="생년월일을 입력하세요." data-date-format="Y-m-d">
-										</div>
-
-										<!-- Gender -->
-										<div class="col-md-6">
-											<label class="form-label">성별<span class="text-danger">*</span></label>
-											<div class="d-flex gap-4">
-												<div class="form-check radio-bg-light">
-													<input class="form-check-input" type="radio" name="flexRadioDefault"
-														id="flexRadioDefault1" checked="">
-													<label class="form-check-label" for="flexRadioDefault1">
-														남자
-													</label>
-												</div>
-												<div class="form-check radio-bg-light">
-													<input class="form-check-input" type="radio" name="flexRadioDefault"
-														id="flexRadioDefault2">
-													<label class="form-check-label" for="flexRadioDefault2">
-														여자
-													</label>
-												</div>
-											</div>
-										</div>
-
-										<!-- Address -->
-										<div class="col-12">
-											<label class="form-label">주소</label>
-											<textarea class="form-control" rows="3"
-												spellcheck="false">서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)</textarea>
-										</div>
-
-										<!-- Button -->
-										<div class="col-12 text-end">
-											<a href="#" class="btn btn-custom mb-0">저장</a>
-										</div>
-									</form>
-									<!-- Form END -->
-								</div>
-								<!-- Card body END -->
-							</div>
-							<!-- Personal info END -->
-
-							<!-- Update email START -->
-							<div class="card border">
-								<!-- Card header -->
-								<div class="card-header border-bottom">
-									<h4 class="card-header-title">이메일 변경</h4>
-									<p class="mb-0">현재 이메일: <span class="text-primary">test@email.com</span></p>
-								</div>
-
-								<!-- Card body START -->
-								<div class="card-body">
-									<form>
-										<!-- Email -->
-										<label class="form-label">새 이메일을 입력하세요<span class="text-danger">*</span></label>
-										<input type="email" class="form-control" placeholder="이메일 입력">
-
-										<div class="text-end mt-3">
-											<a href="#" class="btn btn-custom mb-0">변경</a>
-										</div>
-									</form>
-								</div>
-								<!-- Card body END -->
-							</div>
-							<!-- Update email END -->
-
-							<!-- Update Password START -->
-							<div class="card border">
-								<!-- Card header -->
-								<div class="card-header border-bottom">
-									<h4 class="card-header-title">비밀번호 변경</h4>
-									<p class="mb-0">현재 비밀번호: <span class="text-primary">123******</span></p>
-								</div>
-
-								<!-- Card body START -->
-								<form class="card-body">
-									<!-- Current password -->
-									<div class="mb-3">
-										<label class="form-label">현재 비밀번호</label>
-										<input class="form-control" type="password" placeholder="현재 비밀번호">
-									</div>
-									<!-- New password -->
-									<div class="mb-3">
-										<label class="form-label"> 새 비밀번호를 입력하세요</label>
-										<div class="input-group">
-											<input class="form-control fakepassword" placeholder="새 비밀번호"
-												type="password" id="psw-input">
-											<span class="input-group-text p-0 bg-transparent">
-												<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
-											</span>
-										</div>
-									</div>
-									<!-- Confirm -->
-									<div class="mb-3">
-										<label class="form-label">새 비밀번호 확인</label>
-										<input class="form-control" type="password" placeholder="새 비밀번호 확인">
-									</div>
-
-									<div class="text-end">
-										<a href="#" class="btn btn-custom mb-0">변경</a>
-									</div>
-								</form>
-								<!-- Card body END -->
-							</div>
-							<!-- Update Password END -->
-						</div>
+			<div class="vstack gap-4">
+				<!-- Personal info START -->
+				<div class="card border">
+					<!-- Card header -->
+					<div class="card-header border-bottom">
+						<h4 class="card-header-title">회원정보</h4>
 					</div>
-					<!-- Main content END -->
+
+					<!-- Card body START -->
+					<div class="card-body">
+						<!-- Form START -->
+						<form class="row g-3" id="memberInfo" name="memberInfo" action="${path}/member/update" method="post">
+							<!-- Profile photo -->
+							<div class="col-12">
+								<label class="form-label">프로필 사진 업로드<span
+										class="text-danger">*</span></label>
+								<div class="d-flex align-items-center">
+									<label class="position-relative me-4" for="profileImg"
+										title="Replace this pic">
+										<!-- Avatar place holder -->
+										<span class="avatar avatar-xl">
+											<img id="profileImg-preview"
+												class="avatar-img rounded-circle border border-white border-3 shadow"
+												src="${path}/resources/img/avatar/avatar-2.jpg" width="100%" alt="avatar">
+										</span>
+									</label>
+									<!-- Upload button -->
+									<label class="btn btn-sm btn-custom2 mb-0" for="uploadfile-1">변경</label>
+									<input type="file" name="profileImg" id="profileImg" class="form-control d-none"
+									 accept="image/*">
+								</div>
+							</div>
+
+							<!-- Name -->
+							<div class="col-md-6">
+								<label class="form-label">이름<span class="text-danger">*</span></label>
+								<input type="text" name="name" id="name" class="form-control"
+								 placeholder="이름을 입력하세요." value="${loginMember.name}">
+							</div>
+
+							<!-- Email -->
+							<div class="col-md-6">
+								<label class="form-label">이메일<span class="text-danger">*</span></label>
+								<input type="email" name="email" id="email" class="form-control"
+									placeholder="이메일을 입력하세요." value="${loginMember.email}">
+							</div>
+
+							<!-- Mobile -->
+							<div class="col-md-6">
+								<label class="form-label">아이디<span class="text-danger">*</span></label>
+								<input type="text" name="id" id="id" class="form-control"
+									placeholder="아이디를 입력하세요." value="${loginMember.id}">
+							</div>
+
+							<!-- phone number -->
+							<div class="col-md-6">
+								<label class="form-label">휴대폰 번호<span class="text-danger">*</span></label>
+								<input type="text" name="phone" id="phone" maxlength="11" class="form-control"
+									placeholder="휴대폰 번호를 입력하세요." value="${loginMember.phone}">
+							</div>
+
+
+							<!-- Date of birth -->
+							<div class="col-md-6">
+								<label class="form-label">생년월일<span class="text-danger">*</span></label>
+								<input type="date" class="form-control flatpickr" 
+									placeholder="생년월일을 입력하세요." data-date-format="Y-m-d" value="${loginMember.birthDate}">
+							</div>
+
+							<!-- Gender -->
+							<div class="col-md-6">
+								<label class="form-label">성별<span class="text-danger">*</span></label>
+								<div class="d-flex gap-4">
+									<div class="form-check radio-bg-light">
+										<input class="form-check-input" type="radio" name="gender" id="gender1">
+										<label class="form-check-label" for="gender1"
+										${fn:contains(loginMember.gender, '남자') ? 'checked' : ''}>
+											남자</label>
+									</div>
+									<div class="form-check radio-bg-light">
+										<input class="form-check-input" type="radio" name="gender" id="gender2">
+										<label class="form-check-label" for="gender2"
+										${fn:contains(loginMember.gender, '여자') ? 'checked' : ''}>
+											여자</label>
+									</div>
+								</div>
+							</div>
+
+							<!-- Address -->
+							<div class="col-12">
+								<label class="form-label">주소</label>
+								<textarea class="form-control" rows="3" spellcheck="false" name="address" id="address" value="${loginMember.address}"
+								placeholder="서울특별시 강남구 언주로 508 14층(역삼동, 서울상록빌딩)"></textarea>
+							</div>
+
+							<!-- Button -->
+							<button class="col-12 text-end btn btn-custom mb-0" type="submit">저장
+							</button>
+						</form>
+						<!-- Form END -->
+					</div>
+					<!-- Card body END -->
+				</div>
+				<!-- Personal info END -->
+
+				<!-- Update email START -->
+				<div class="card border">
+					<!-- Card header -->
+					<div class="card-header border-bottom">
+						<h4 class="card-header-title">이메일 변경</h4>
+						<p class="mb-0">현재 이메일: <span class="text-primary" th:text="${loginMember.email}"></span></p>
+					</div>
+
+					<!-- Card body START -->
+					<div class="card-body">
+						<form class="row g-3" id="newEmail" name="newEmail" action="${path}/member/update" method="post">
+							<!-- Email -->
+							<label class="form-label">새 이메일을 입력하세요<span class="text-danger">*</span></label>
+							<input type="email" class="form-control" placeholder="이메일 입력">
+
+							<button class="col-12 text-end btn btn-custom mb-0" type="submit">저장
+							</button>
+						</form>
+					</div>
+					<!-- Card body END -->
+				</div>
+				<!-- Update email END -->
+
+				<!-- Update Password START -->
+				<div class="card border">
+					<!-- Card header -->
+					<div class="card-header border-bottom">
+						<h4 class="card-header-title">비밀번호 변경</h4>
+						<p class="mb-0">현재 비밀번호: <span class="text-primary">${loginMember.password}</span></p>
+					</div>
+
+					<!-- Card body START -->
+					<form class="card-body" id="userPwd" name="userPwd" action="${path}/member/updatePwd" method="post">
+						<!-- Current password -->
+						<div class="mb-3">
+							<label class="form-label">현재 비밀번호</label>
+							<input class="form-control" type="password" placeholder="${loginMember.password}">
+						</div>
+						<!-- New password -->
+						<div class="mb-3">
+							<label class="form-label"> 새 비밀번호를 입력하세요</label>
+							<div class="input-group">
+								<input class="form-control fakepassword" placeholder="새 비밀번호"
+									type="password" name="userPwd" id="pass1">
+								<span class="input-group-text p-0 bg-transparent">
+									<i class="fakepasswordicon fas fa-eye-slash cursor-pointer p-2"></i>
+								</span>
+							</div>
+						</div>
+						<!-- Confirm -->
+						<div class="mb-3">
+							<label class="form-label">새 비밀번호 확인</label>
+							<input class="form-control" placeholder="새 비밀번호 확인"
+							type="password" id="pass2">
+						</div>
+
+						<button class="col-12 text-end btn btn-custom mb-0" type="submit" id="updateSubmit" 
+						onclick="return validate();">저장
+						</button>
+					</form>
+					<!-- Card body END --> 
+				</div>
+				<!-- Update Password END -->
+			</div>
+		</div>
+		<!-- Main content END -->
 
 				</div>
 			</div>
 		</section>
 	</main>	
  <jsp:include page="/WEB-INF/views/common/KSKFooter.jsp"></jsp:include>
+ <script type="text/javascript">
+	$(function () {
+		$("#deleteMember").click((e) => {
+			if(confirm("정말로 탈퇴하시겠습니까?!")) {
+				location.replace('${path}/member/delete');
+			}
+		});
+	});
+	$(document).ready(() => {
+		$("#updateSubmit").on("click", (e) => {
+			let pass1 = $("#pass1").val();			
+			let pass2 = $("#pass2").val();
+			
+			if(pass1.trim() != pass2.trim()) {
+				alert("비밀번호가 일치하지 않습니다.");
+				
+				$("#pass1").val("");
+				$("#pass2").val("");
+				$("#pass1").focus();
+				
+				return false;
+			}		
+		});
+	});
+</script>
+ 

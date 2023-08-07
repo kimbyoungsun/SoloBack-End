@@ -84,9 +84,9 @@
 			<c:if test="${not empty list}">
 				<c:forEach var="item" items="${list}">
 					<tr>
-						<td><c:out value="${item.BNo}"/></td>
+						<td><c:out value="${item.bno}"/></td>
 						<td>
-							<a href="${path}/board/view?no=${item.BNo}">
+							<a href="${path}/board/view?no=${item.bno}">
 								<c:out value="${item.title}"/>
 							</a>
 						</td>

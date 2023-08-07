@@ -21,8 +21,9 @@
 						<!-- Card body START -->
 						<div class="card-body">
 							<!-- Form START -->
-							<form id="enroll-container" name="memberEnrollFrm" action="${path}/member/enroll" method="post" class="row g-3">
+							<form id="enroll-container" name="memberEnrollFrm" action="${path}/enroll" method="post" class="row g-3" enctype="multipart/form-data">
 								<!-- Profile photo -->
+								<input type="hidden" name="profileimg" value="aaaaa">
 								<div class="col-12">
 									<label class="form-label">프로필 사진 업로드<span
 										class="text-danger">*</span></label>
@@ -37,29 +38,27 @@
 										</label>
 										<!-- Upload button -->
 										<label class="btn btn-return-custom btn-info-soft mb-0"
-											for="uploadfile-1">변경</label> <input id="uploadfile-1"
+											for="upfile" name="upfile">변경</label> <input id="upfile" 
 											class="form-control d-none" type="file">
 									</div>
 								</div>
-
+								<!-- 이메일 -->
+								<div class="col-md-6">
+									<label class="form-label">아이디<span class="text-danger">*</span></label>
+									<input type="text" class="form-control" name="id" value=""
+										placeholder="example">
+								</div>
 								<!-- 이메일 -->
 								<div class="col-md-6">
 									<label class="form-label">이메일<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value=""
+									<input type="email" class="form-control" name="email" value=""
 										placeholder="example@gmail.com">
-								</div>
-
-								<!-- 이름 -->
-								<div class="col-md-6">
-									<label class="form-label">이름<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value=""
-										placeholder="이름을 입력해주세요">
 								</div>
 
 								<!-- 비밀번호 -->
 								<div class="col-md-6">
 									<label class="form-label">비밀번호<span class="text-danger">*</span></label>
-									<input type="password" class="form-control" value=""
+									<input type="password" class="form-control" name="password" value=""
 										placeholder="">
 								</div>
 
@@ -69,35 +68,41 @@
 										class="text-danger">*</span></label> <input type="password"
 										class="form-control" value="" placeholder="">
 								</div>
+								<!-- 이름 -->
+								<div class="col-md-6">
+									<label class="form-label">이름<span class="text-danger">*</span></label>
+									<input type="text" class="form-control" name="name" value=""
+										placeholder="이름을 입력해주세요">
+								</div>
 
 								<!-- 전화번호 -->
 								<div class="col-md-6">
-									<label class="form-label">휴대폰 번호<span
-										class="text-danger">*</span></label> <input type="email"
-										class="form-control" value=""
+									<label class="form-label">핸드폰 번호<span
+										class="text-danger">*</span></label> <input type=""
+										class="form-control" value="" name="phone"
 										placeholder="- 없이 숫자만 입력해주세요 ex. 01012345678">
 								</div>
 
 								<!-- 생년월일 -->
 								<div class="col-md-6">
 									<label class="form-label">생년월일<span class="text-danger">*</span></label>
-									<input type="text" class="form-control" value=""
+									<input type="text" class="form-control" name="birthdate" 
 										placeholder="주민번호 앞자리를 입력해주세요 ex. 990101">
 								</div>
 
 								<!-- 선호지역 -->
 								<div class="col-md-6">
 									<label class="form-label">선호지역</label> <select
-										class="form-control form-select js-choice">
+										class="form-control form-select js-choice" name="address">
 										<option value="">지역 선택</option>
-										<option>서울/인천/경기</option>
-										<option>부산/울산/경남</option>
-										<option>대구/경북</option>
-										<option>대전/충청</option>
-										<option>광주/전남</option>
-										<option>전북</option>
-										<option>강원</option>
-										<option>제주</option>
+										<option value="서울/인천/경기">서울/인천/경기</option>
+										<option value="부산/울산/경남">부산/울산/경남</option>
+										<option value="대구/경북">대구/경북</option>
+										<option value="대전/충청">대전/충청</option>
+										<option value="광주/전남">광주/전남</option>
+										<option value="전북">전북</option>
+										<option value="강원">강원</option>
+										<option value="제주">제주</option>
 									</select>
 								</div>
 
@@ -107,13 +112,13 @@
 									<div class="d-flex gap-4 mt-3">
 										<div class="form-check radio-bg-light">
 											<input class="form-check-input" type="radio"
-												name="flexRadioDefault" id="flexRadioDefault1" checked="">
-											<label class="form-check-label" for="flexRadioDefault1">
+												name="gender" id="flexRadioDefault1" checked>
+											<label class="form-check-label" for="flexRadioDefault1" >
 												남 </label>
 										</div>
 										<div class="form-check radio-bg-light">
 											<input class="form-check-input" type="radio"
-												name="flexRadioDefault" id="flexRadioDefault2"> <label
+												name="gender" id="flexRadioDefault2"> <label
 												class="form-check-label" for="flexRadioDefault2"> 여
 											</label>
 										</div>
@@ -125,8 +130,7 @@
 									<label class="form-label">주소</label>
 									<textarea class="form-control" rows="3" spellcheck="false"></textarea>
 								</div>
-
-							</form>
+							
 							<!-- Form END -->
 						</div>
 						<!-- Card body END -->
@@ -145,6 +149,7 @@
 							<input type="submit" id="enrollSubmit" value="회원가입" class="btn btn-success-custom mb-0"/>
 						</div>
 					</div>
+					</form>
 				</div>
 			</div>
 			<!-- Main content END -->

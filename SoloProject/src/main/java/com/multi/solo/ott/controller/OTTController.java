@@ -103,8 +103,6 @@ public class OTTController {
 		List<Movie> list = service.getMovieList(pageInfo, searchMap);
 		String sortValue = searchMap.get("sort");
 		String sortText;
-		System.out.println("@@@@@@"+pageInfo.getStartPage());
-		System.out.println("@@@@@@"+pageInfo.getEndPage());
 		switch (sortValue) {
 	    case "vote_average":
 	        sortText = "추천순";
