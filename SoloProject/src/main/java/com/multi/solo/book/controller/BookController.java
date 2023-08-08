@@ -31,7 +31,6 @@ public class BookController {
 		Map<String,String> checked = new HashMap<>();
 		String selected = "title";
 		
-		System.out.println("@@@@@@"+String.valueOf(param.get("searchType")));
 		checked.put("sort", String.valueOf(param.get("sort")));
 		
 		if(param.get("searchType") != null) {

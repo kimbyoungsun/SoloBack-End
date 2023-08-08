@@ -76,16 +76,13 @@
         <div class="container" style="border:2px solid #50A78B; border-radius:20px; overflow:hidden;">
           <table class="text-gray-700 table table-striped table-hover" style="border-spacing:0; border-collapse:collapse;">
             <tbody>
-            <c:if test="${!empty reply}">
-            <c:if test="${not empty loginMember && (loginMember.MNo == reply.mno
-									|| loginMember.role == 'ROLE_ADMIN')}">
             <tr class="text-end">
              <td class="p-3 text-end align-middle;">
+             <c:if test="${!empty loginMember }">
             	<button class=" btn btn-primary"> 리뷰쓰기</button>
+             </c:if>
              </td>
             </tr>
-            </c:if>
-            </c:if>
             
             <c:if test="${empty reply}">
                	 <tr>

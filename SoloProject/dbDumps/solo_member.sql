@@ -1,0 +1,65 @@
+-- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: solo
+-- ------------------------------------------------------
+-- Server version	8.0.32
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `member`
+--
+
+DROP TABLE IF EXISTS `member`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `member` (
+  `mNo` int NOT NULL AUTO_INCREMENT,
+  `ID` varchar(30) NOT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `ROLE` varchar(10) DEFAULT 'ROLE_USER',
+  `NAME` varchar(15) NOT NULL,
+  `PHONE` varchar(13) DEFAULT NULL,
+  `EMAIL` varchar(100) DEFAULT NULL,
+  `ADDRESS` varchar(100) DEFAULT NULL,
+  `GENDER` varchar(10) DEFAULT NULL,
+  `BIRTHDATE` varchar(10) DEFAULT NULL,
+  `PROFILEIMG` varchar(255) DEFAULT NULL,
+  `STATUS` varchar(1) DEFAULT 'Y',
+  `ENROLL_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  `MODIFY_DATE` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`mNo`),
+  UNIQUE KEY `ID` (`ID`),
+  CONSTRAINT `member_chk_1` CHECK ((`STATUS` in (_utf8mb4'Y',_utf8mb4'N')))
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `member`
+--
+
+LOCK TABLES `member` WRITE;
+/*!40000 ALTER TABLE `member` DISABLE KEYS */;
+INSERT INTO `member` VALUES (1,'admin','$2a$10$6TsC2hYITCuUwb30WQB2kuwScMFqE8tMS2SoJMpdeuuRaf9.zzd1O','ROLE_ADMIN','관리자','12341234123','admin@test.com','','on',NULL,'','Y','2023-08-07 09:14:00',NULL),(2,'test1','$2a$10$crq0mJHyIt8HxPRANUgIxeyP1gbw2io9mf3K0vm9ytKHngxgXcf8K','ROLE_USER','test','01011112222','test@test.1234','서울/인천/경기','on',NULL,NULL,'Y','2023-08-07 17:58:40','2023-08-07 17:58:40');
+/*!40000 ALTER TABLE `member` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-08-07 19:29:49
