@@ -28,7 +28,9 @@
                                     <!-- Logo -->
                                     <div class="text-center" >
                                         <div class="display-4">
-                                        	자취 월장
+                                        	<a class="navbar-brand py-1 fw-bold diplay-1" href="${path}/"
+								              ><img src="${path}/resources/img/logo.png" style=" height:60px"alt=""
+								            /></a>
                                         </div>
                                     </div>
             

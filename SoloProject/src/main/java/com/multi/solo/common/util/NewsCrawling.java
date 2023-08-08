@@ -64,7 +64,6 @@ public class NewsCrawling {
 		
 		// <a href="https://v.daum.net/v/20230417112453656" class="link_txt">입술·혀로 기기 제어, 새 VR 경험 제공할까</a>
 		//System.out.println(newsList);
-		System.out.println("-----------------------------------------------------------------");
 
 		//		for(Elements e : newsList) {
 //			System.out.println(e.get(0).text());

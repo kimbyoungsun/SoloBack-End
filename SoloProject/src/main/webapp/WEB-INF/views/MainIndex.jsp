@@ -5,8 +5,8 @@
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 
 <jsp:include page="/WEB-INF/views/common/KBSHeader.jsp"></jsp:include>
-    <section class="hero-home" style="background-color: #50a78b">
-      <div class="container py-6 py-md-7 text-white z-index-20">
+    <section class="hero-home" style="background-color: #50a78b; margin-top:-50px; margin-bottom:-50px"  >
+      <div class="container text-white z-index-20">
         <div class="row">
           <div class="col-xl-6 mt-5">
             <div class="text-center text-lg-start">
@@ -51,7 +51,7 @@
     
     <!-- 라이프 -->
     <section>
-      <div class="container my-5">
+      <div class="container my-5" style="padding-top: 50px">
         <div class="h3 fw-bold text-solo-6">라이프</div>
         <div class="h5 fw-bold text-solo-5">
           혼자 살면 재미없다? 누구보다 알차게 삶을 즐기는 당신을 위한
@@ -193,7 +193,7 @@
     </section>
 
     <!--동네 거래 및 동네 핫스팟-->
-    <section style="margin-top: -250px">
+    <section style="margin-top: -220px">
       <div class="container my-10 py-10">
         <div class="row">
           <div class="col">
@@ -215,7 +215,7 @@
         </div>
 
         <div class="row pb-7">
-          <div class="col pt-4">
+          <div class="col pt-5">
             <div class="text-center">
               <span
                 class="btn bg-solo-5 nav-fill my-2"
