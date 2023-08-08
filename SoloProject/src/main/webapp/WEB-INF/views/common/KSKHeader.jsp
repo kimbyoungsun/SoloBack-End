@@ -11,7 +11,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Directory Theme by Bootstrapious</title>
+  <title>우리들의 자취이야기 자취월장</title>
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="all,follow" />
@@ -79,7 +79,8 @@
         <div class="container">
           <div class="d-flex align-items-center">
             <a class="navbar-brand py-1 fw-bold diplay-1" href="${path}/"
-              >자취월장</a>
+              ><img src="${path}/resources/img/logo.png" style=" height:30px"alt=""
+            /></a>
           </div>
           <button
             class="navbar-toggler navbar-toggler-right"
@@ -97,12 +98,13 @@
             <ul class="navbar-nav ms-auto">
               <li class="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle active"
+                  class="nav-link dropdown-toggle active "
                   id="homeDropdownMenuLink"
                   href="index.html"
                   data-bs-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  style="font-size: large !important"
                 >
                   정보</a
                 >
@@ -125,6 +127,7 @@
                   data-bs-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  style="font-size: large !important"
                 >
                   라이프</a
                 >
@@ -151,6 +154,7 @@
                   data-bs-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
+                  style="font-size: large !important"
                 >
                   커뮤니티</a
                 >
@@ -170,12 +174,12 @@
                 class="nav-item mt-3 mt-lg-0 ms-lg-3 d-lg-none d-xl-inline-block"
               >
               <c:if test="${loginMember != null}">
-              <span class="mx-2">어서오세요  ${loginMember.name} 님</span>
-              <a class="btn btn-primary" href="${path}/account/AccountProfile"
-                  >마이페이지</a
+              <span class="mx-2">어서오세요 <span class="fw-bold">${loginMember.name}</span>  님</span>
+              <a class="btn btn-link" href="${path}/account/AccountProfile" alt="mypage"
+                  ><img src="${path}/resources/img/icon/person-circle.svg" style="height:25px" alt="mypage"></a
                 >
-                <a class="btn btn-primary" href="${path}/logout"
-                  >로그아웃</a
+                <a class="btn btn-link" href="${path}/logout"
+                  ><img src="${path}/resources/img/icon/box-arrow-right.svg" style="height:25px" alt="logout"></a
                 >
               </c:if>
               <c:if test="${loginMember == null}">

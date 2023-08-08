@@ -136,7 +136,6 @@ public class OTTController {
 
 		Map<String, Object> map = new HashMap<>();
 		map.put("movie", movie);
-		System.out.println(map);
 		return ResponseEntity.status(HttpStatus.OK).body(map);
 	}
 
@@ -144,7 +143,6 @@ public class OTTController {
 	@JsonIgnore
 	public ResponseEntity<Map<String, Object>> moiveVideo(Model model, @RequestParam("id") String id) {
 		List<MovieVideo> movieVideo = service.findMovieByVideo(id);
-		System.out.println(id);
 		if (movieVideo == null) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
@@ -158,7 +156,6 @@ public class OTTController {
 		}
 		Map<String, Object> map = new HashMap<>();
 		map.put("result", movieVideo);
-		System.out.println(map);
 		return ResponseEntity.status(HttpStatus.OK).body(map);
 	}
 
@@ -166,12 +163,10 @@ public class OTTController {
 	@JsonIgnore
 	public ResponseEntity<Map<String, Object>> moiveCredit(Model model, @RequestParam("id") String id) {
 		List<MovieCredit> movieVideo = service.findMovieByCredit(id);
-		System.out.println(id);
 		if (movieVideo == null) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
 		String result = "";
-		System.out.println(movieVideo);
 		try {
 			ObjectMapper objectMapper = new ObjectMapper();
 			result = objectMapper.writeValueAsString(movieVideo);
@@ -180,7 +175,6 @@ public class OTTController {
 		}
 		Map<String, Object> map = new HashMap<>();
 		map.put("result", movieVideo);
-		System.out.println(map);
 		return ResponseEntity.status(HttpStatus.OK).body(map);
 	}
 
