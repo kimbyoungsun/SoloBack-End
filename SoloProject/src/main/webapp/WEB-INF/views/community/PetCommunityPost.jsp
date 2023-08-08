@@ -11,28 +11,9 @@
     <div class="container py-6 text-white z-index-20">
       <div class="row">
         <div class="col-xl-6">
-          <c:if test="${board.type == 'pet' }">
-                <div class="text-center text-lg-start">
-                    <h1 class="display-3 fw-bold text-shadow">도와줘요!</h1>
-                    <h1 class="display-3 fw-bold text-shadow">반려동물 임보 위탁</h1>
+                <div class="text-center text-lg-start mt-7">
+                    <h1 class="display-3 fw-bold text-shadow">커뮤니티 글쓰기</h1>
                 </div>
-              </c:if>
-              <c:if test="${board.type == 'talent'}">
-                    <div class="text-center text-lg-start" style="padding-top: 4.5rem">
-                    <h1 class="display-3 fw-bold text-shadow">동네 재능 거래</h1>
-                  </div>
-                  <div class="text-center text-lg-start">
-                    <h2 class="display-8-custom fw-normal">도움이 필요한가요?<br>당신의 가장 가까운 이웃에게 부탁해요!</h2>
-                  </div>
-              </c:if>
-              <c:if test="${board.type == 'product'}">
-               <div class="text-center text-lg-start">
-                  <h1 class="display-3 fw-bold text-shadow">동네 중고 거래</h1>
-                </div>
-                <div class="text-center text-lg-start">
-                  <h2 class="display-8-custom fw-normal">돈도 벌고 지구도 살리는 가장 현명한 방법</h2>
-                </div>
-              </c:if>
         </div>
         <div class="col-4">
           <img style="height: 90%;" src="${path}/resources/img/kbs/petwalk_image.png" alt="반려동물 임보위탁 일러스트" />

@@ -107,7 +107,7 @@
               style="top:10px; right:10px; border-color: #50a78b !important;">
               <div class="d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
                 <a href="#" style="color:#50a78b;">
-                  <i class="fa-regular fa-heart"></i>
+                  <i class="fa fa-regular fa-heart"></i>
                 </a>
               </div>
             </div>
@@ -148,7 +148,7 @@
                 <div class="mt-4">
                   <div class="row">
                     <div class="col-8 px-3"><h5>${board.title}</h5></div>
-                    <div class="col-lg-4 px-3 text-end"><h5>협의 후 결정</h5></div>
+                    <div class="col-lg-4 px-3 text-end"><h5></h5></div>
                   </div>
                   <hr>
                   <div>
