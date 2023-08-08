@@ -18,18 +18,18 @@
           <div class="swiper-wrapper">
           <c:forEach var="item" items="${swiperList}">
             <div class="swiper-slide swiper-slide-main">
+             <a href="${path}Perform_detail?no=${item.mt20id}">
               <img
                 style="height: 100%"
-                src="${item.poster }"
+                src="${item.poster}"
                 alt=""
               />
-              <a href="perform/Perform_detail.jsp"></a>
+             </a>
             </div>
 			</c:forEach>
           </div>
         </div>
         </form>
-        <h1> ↑그냥 DB에서 poster 아무거나 꺼내오기</h1>
       </div>
     </section>
       <div class="container text-white z-index-20" style="position: relative; bottom:;">
@@ -56,7 +56,6 @@
         <div class="row mb-5">
           <div style="text-align: center;  margin-top: 3rem;">
             <h1>최신 공연</h1>
-            <h1>↓DB 날짜순 정렬</h1>
           </div>
         </div>
         <!-- Slider main container-->
@@ -87,7 +86,6 @@
     </section>
     <section>
       <div id = "category" class="container">
-      		<h1>↓라디오버튼 클릭시 이쪽만 장르별로 정렬</h1>
 	        <form id="categoryForm" action="${path}/perform/Perform_remake" method="get">
 			    <div style="display: flex; text-align: center; margin-top: 2rem; margin-bottom: 2rem;">
 			        <label class="region_button" style="flex: 1;">
@@ -134,7 +132,6 @@
     <section>
       <div class="container">
         <div style="text-align: center; margin-bottom: 2rem; margin-top: 3rem;">
-        	<h1>↓라디오버튼 클릭시 이쪽만 지역에 따라 변경</h1>
         	<h1>지역별 공연</h1>
     	</div>
 	    <form id="regionForm" action="${path}/perform/Perform_remake" method="get">
