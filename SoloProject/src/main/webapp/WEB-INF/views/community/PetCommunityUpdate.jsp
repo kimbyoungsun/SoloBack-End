@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-xl-6">
           <c:if test="${board.type == 'pet' }">
-                <div class="text-center text-lg-start">
+                <div class="text-center text-lg-start mt-3">
                     <h1 class="display-3 fw-bold text-shadow">도와줘요!</h1>
                     <h1 class="display-3 fw-bold text-shadow">반려동물 임보 위탁</h1>
                 </div>
@@ -79,11 +79,10 @@
             </div>
             <div class="row">
               <div class="col-6">
-                <button class="btn btn-cancel-custom" type="reset">취소</button>
+                <button class="btn btn-cancel-custom" onclick="location.replace('${path}/community')" type="reset">취소</button>
               </div>
               <div class="col-6 text-end">
                 <button type="submit" class="btn btn-success-custom">수정</button>
-                <input type="button" onclick="location.replace('${path}/community')" value="목록으로">
               </div>
             </div>
           </form>
